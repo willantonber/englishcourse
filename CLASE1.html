@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Virtual: Curso de Inglés para Principiantes - Clase 1</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f8f9fa; }
+        .section { margin-bottom: 40px; padding: 20px; border-radius: 8px; background-color: white; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .gamified-score { font-size: 1.2em; color: #28a745; }
+        .correct { color: green; }
+        .incorrect { color: red; }
+        .preview { background-color: #e9ecef; padding: 15px; border-radius: 5px; }
+        .time-estimate { font-style: italic; color: #6c757d; }
+    </style>
+</head>
+<body>
+    <div class="container my-5">
+        <header class="text-center mb-5">
+            <h1>Campus Virtual: Curso de Inglés para Principiantes</h1>
+            <h2>Módulo 1 - Clase 1: Saludos y Presentaciones</h2>
+            <p>Duración: 1 hora | Por: William Bermudez</p>
+            <p class="time-estimate">Esta clase está diseñada para durar aproximadamente 1 hora: 10 min en objetivos y contenido, 10 min en ejemplos, 15 min en ejercicios, 15 min en juegos, 5 min en evaluación, 5 min en tareas y reseña.</p>
+            <div id="score" class="gamified-score">Puntos: 0 / 300</div>
+        </header>
+
+        <!-- Objetivos (5-10 min) -->
+        <section class="section">
+            <h3>Objetivos de la Clase</h3>
+            <ul>
+                <li>Aprender el verbo "to be" en presente simple.</li>
+                <li>Conocer saludos, presentaciones y despedidas básicas en inglés.</li>
+                <li>Practicar verbos únicos: to be, see, come, look, give, call, work, ask, feel, leave.</li>
+            </ul>
+        </section>
+
+        <!-- Contenido Principal (10 min) -->
+        <section class="section">
+            <h3>Contenido Principal</h3>
+            <h4>Verbo "To Be"</h4>
+            <p>El verbo "to be" significa "ser" o "estar". En presente simple:</p>
+            <ul>
+                <li>I am (Yo soy/estoy)</li>
+                <li>You are (Tú eres/estás)</li>
+                <li>He/She/It is (Él/Ella/Ello es/está)</li>
+                <li>We are (Nosotros somos/estamos)</li>
+                <li>You are (Vosotros sois/estáis)</li>
+                <li>They are (Ellos son/están)</li>
+            </ul>
+
+            <h4>Saludos</h4>
+            <ul>
+                <li>Hello / Hi (Hola)</li>
+                <li>Good morning (Buenos días)</li>
+                <li>Good afternoon (Buenas tardes)</li>
+                <li>Good evening (Buenas noches)</li>
+            </ul>
+
+            <h4>Presentaciones</h4>
+            <ul>
+                <li>My name is [Nombre] (Mi nombre es)</li>
+                <li>I am from [Lugar] (Soy de)</li>
+                <li>Nice to meet you (Encantado de conocerte)</li>
+            </ul>
+
+            <h4>Despedidas</h4>
+            <ul>
+                <li>Goodbye / Bye (Adiós)</li>
+                <li>See you later (Nos vemos luego)</li>
+                <li>Take care (Cuídate)</li>
+            </ul>
+
+            <h4>Verbos Únicos</h4>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Verbo</th>
+                        <th>Significado</th>
+                        <th>Ejemplo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>to be</td><td>ser/estar</td><td>I am happy.</td></tr>
+                    <tr><td>see</td><td>ver</td><td>I see you.</td></tr>
+                    <tr><td>come</td><td>venir</td><td>Come here.</td></tr>
+                    <tr><td>look</td><td>mirar</td><td>Look at this.</td></tr>
+                    <tr><td>give</td><td>dar</td><td>Give me the book.</td></tr>
+                    <tr><td>call</td><td>llamar</td><td>Call me later.</td></tr>
+                    <tr><td>work</td><td>trabajar</td><td>I work in an office.</td></tr>
+                    <tr><td>ask</td><td>preguntar</td><td>Ask a question.</td></tr>
+                    <tr><td>feel</td><td>sentir</td><td>I feel happy.</td></tr>
+                    <tr><td>leave</td><td>dejar/salir</td><td>Leave the room.</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Ejemplos (10 min) -->
+        <section class="section">
+            <h3>10 Ejemplos</h3>
+            <ol>
+                <li>Hi, how are you? - I'm fine, thanks.</li>
+                <li>Good morning! My name is Anna.</li>
+                <li>Hello, I'm from Spain. Nice to meet you.</li>
+                <li>Goodbye, see you later!</li>
+                <li>Take care, have a nice day.</li>
+                <li>Good evening, how's it going? - Pretty good.</li>
+                <li>Bye-bye, it was nice seeing you.</li>
+                <li>Hi there! What's your name? - I'm John.</li>
+                <li>Good afternoon, pleased to meet you.</li>
+                <li>Farewell, talk to you soon.</li>
+            </ol>
+        </section>
+
+        <!-- Ejercicios (15 min) -->
+        <section class="section">
+            <h3>10 Ejercicios</h3>
+            <p>Completa las oraciones con la forma correcta de "to be" o el saludo/despedida apropiado.</p>
+            <form id="exerciseForm">
+                <div class="mb-3">
+                    <label>1. I ___ happy.</label>
+                    <input type="text" id="ex1" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label>2. You ___ my friend.</label>
+                    <input type="text" id="ex2" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label>3. He ___ from England.</label>
+                    <input type="text" id="ex3" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label>4. We ___ students.</label>
+                    <input type="text" id="ex4" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label>5. ___ morning! How are you?</label>
+                    <input type="text" id="ex5" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label>6. Nice to ___ you.</label>
+                    <input type="text" id="ex6" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label>7. ___ bye!</label>
+                    <input type="text" id="ex7" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label>8. She ___ tall.</label>
+                    <input type="text" id="ex8" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label>9. They ___ happy.</label>
+                    <input type="text" id="ex9" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label>10. ___ evening, everyone.</label>
+                    <input type="text" id="ex10" class="form-control">
+                </div>
+                <button type="button" class="btn btn-primary" onclick="checkExercises()">Verificar</button>
+            </form>
+            <div id="exerciseFeedback"></div>
+        </section>
+
+        <!-- Juegos Interactivos (15 min) -->
+        <section class="section">
+            <h3>10 Juegos Interactivos</h3>
+            <p>Participa en estos juegos simples. Cada uno vale puntos.</p>
+            
+            <!-- Juego 1: Quiz Multiple Choice -->
+            <h4>Juego 1: Quiz de Saludos</h4>
+            <form id="game1Form">
+                <div class="mb-3">
+                    <label>"Hello" significa:</label><br>
+                    <input type="radio" name="g1q1" value="Hola"> Hola<br>
+                    <input type="radio" name="g1q1" value="Adiós"> Adiós
+                </div>
+                <button type="button" class="btn btn-primary" onclick="checkGame1()">Verificar</button>
+            </form>
+            <div id="game1Feedback"></div>
+
+            <!-- Juego 2: Matching -->
+            <h4>Juego 2: Empareja Saludos</h4>
+            <p>Empareja: Good morning - Buenos días (simula arrastrando, responde en texto).</p>
+            <input type="text" id="g2" class="form-control" placeholder="Escribe 'Good morning - Buenos días'">
+            <button type="button" class="btn btn-primary" onclick="checkGame2()">Verificar</button>
+            <div id="game2Feedback"></div>
+
+            <!-- Juego 3: Fill in Verb to Be -->
+            <h4>Juego 3: Completa con To Be</h4>
+            <input type="text" id="g3" class="form-control" placeholder="I ___ happy.">
+            <button type="button" class="btn btn-primary" onclick="checkGame3()">Verificar</button>
+            <div id="game3Feedback"></div>
+
+            <!-- Juego 4: Charades Simulation -->
+            <h4>Juego 4: Charadas - Describe "Hello"</h4>
+            <p>Describe la palabra en inglés (simula escribiendo).</p>
+            <input type="text" id="g4" class="form-control">
+            <button type="button" class="btn btn-primary" onclick="checkGame4()">Verificar</button>
+            <div id="game4Feedback"></div>
+
+            <!-- Juego 5: Action Race Simulation -->
+            <h4>Juego 5: Carrera de Acciones - "Come here"</h4>
+            <p>Escribe la acción correcta.</p>
+            <input type="text" id="g5" class="form-control">
+            <button type="button" class="btn btn-primary" onclick="checkGame5()">Verificar</button>
+            <div id="game5Feedback"></div>
+
+            <!-- Juego 6: Taboo -->
+            <h4>Juego 6: Taboo - Describe "Goodbye" sin decir "bye"</h4>
+            <input type="text" id="g6" class="form-control">
+            <button type="button" class="btn btn-primary" onclick="checkGame6()">Verificar</button>
+            <div id="game6Feedback"></div>
+
+            <!-- Juego 7: Word Search Simulation -->
+            <h4>Juego 7: Búsqueda de Palabras - Encuentra "Hi"</h4>
+            <p>Escribe la palabra encontrada.</p>
+            <input type="text" id="g7" class="form-control">
+            <button type="button" class="btn btn-primary" onclick="checkGame7()">Verificar</button>
+            <div id="game7Feedback"></div>
+
+            <!-- Juego 8: Role Play -->
+            <h4>Juego 8: Role Play - Saluda a alguien</h4>
+            <input type="text" id="g8" class="form-control" placeholder="Hi, my name is...">
+            <button type="button" class="btn btn-primary" onclick="checkGame8()">Verificar</button>
+            <div id="game8Feedback"></div>
+
+            <!-- Juego 9: Memory Match -->
+            <h4>Juego 9: Memoria - Empareja "Nice to meet you" con traducción</h4>
+            <input type="text" id="g9" class="form-control">
+            <button type="button" class="btn btn-primary" onclick="checkGame9()">Verificar</button>
+            <div id="game9Feedback"></div>
+
+            <!-- Juego 10: Quiz Radio -->
+            <h4>Juego 10: Quiz Despedidas</h4>
+            <form id="game10Form">
+                <div class="mb-3">
+                    <label>"Bye" significa:</label><br>
+                    <input type="radio" name="g10q1" value="Adiós"> Adiós<br>
+                    <input type="radio" name="g10q1" value="Hola"> Hola
+                </div>
+                <button type="button" class="btn btn-primary" onclick="checkGame10()">Verificar</button>
+            </form>
+            <div id="game10Feedback"></div>
+        </section>
+
+        <!-- Evaluación (5 min) -->
+        <section class="section">
+            <h3>Evaluación: 10 Preguntas</h3>
+            <form id="evalForm">
+                <div class="mb-3">
+                    <label>1. He ___ tall.</label>
+                    <input type="text" id="eval1" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label>2. "See you later" es una...</label><br>
+                    <input type="radio" name="eval2" value="despedida"> Despedida<br>
+                    <input type="radio" name="eval2" value="saludo"> Saludo
+                </div>
+                <div class="mb-3">
+                    <label>3. Traduce "I work here":</label>
+                    <input type="text" id="eval3" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label>4. Verbo para "preguntar":</label>
+                    <input type="text" id="eval4" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label>5. "Nice to meet you" significa:</label>
+                    <input type="text" id="eval5" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label>6. We ___ friends.</label>
+                    <input type="text" id="eval6" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label>7. Good ___! (mañana)</label>
+                    <input type="text" id="eval7" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label>8. She ___ from Spain?</label>
+                    <input type="text" id="eval8" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label>9. Take ___.</label>
+                    <input type="text" id="eval9" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label>10. My name ___ John.</label>
+                    <input type="text" id="eval10" class="form-control">
+                </div>
+                <button type="button" class="btn btn-primary" onclick="checkEval()">Evaluar</button>
+            </form>
+            <div id="evalFeedback"></div>
+        </section>
+
+        <!-- Tareas para el Hogar (5 min) -->
+        <section class="section">
+            <h3>Tareas para el Hogar</h3>
+            <ul>
+                <li>Practica 5 presentaciones personales usando "to be".</li>
+                <li>Aprende los 10 verbos y crea una oración con cada uno.</li>
+                <li>Escucha una canción simple en inglés (recomendación: Hello de Adele).</li>
+            </ul>
+        </section>
+
+        <!-- Reseña de la Próxima Clase -->
+        <section class="section preview">
+            <h3>Reseña de la Próxima Clase: La Familia</h3>
+            <p>En la clase 2, aprenderemos sobre miembros de la familia, adjetivos posesivos y verbos como need, help, try, etc. ¡Prepárate para hablar de tu familia en inglés!</p>
+        </section>
+    </div>
+
+    <script>
+        let points = 0;
+
+        function updateScore(add) {
+            points += add;
+            document.getElementById('score').innerText = `Puntos: ${points} / 300`;
+        }
+
+        function checkExercises() {
+            let feedback = '';
+            const answers = ['am', 'are', 'is', 'are', 'Good', 'meet', 'Good', 'is', 'are', 'Good'];
+            for (let i = 1; i <= 10; i++) {
+                const ex = document.getElementById(`ex${i}`).value.trim().toLowerCase();
+                if (ex === answers[i-1].toLowerCase()) {
+                    feedback += `<p class="correct">${i}. Correcto!</p>`;
+                    updateScore(10);
+                } else {
+                    feedback += `<p class="incorrect">${i}. Incorrecto. Respuesta: ${answers[i-1]}</p>`;
+                }
+            }
+            document.getElementById('exerciseFeedback').innerHTML = feedback;
+        }
+
+        function checkGame1() {
+            let feedback = '';
+            const q1 = document.querySelector('input[name="g1q1"]:checked');
+            if (q1 && q1.value === 'Hola') {
+                feedback += '<p class="correct">Correcto!</p>';
+                updateScore(10);
+            } else {
+                feedback += '<p class="incorrect">Incorrecto. Respuesta: Hola</p>';
+            }
+            document.getElementById('game1Feedback').innerHTML = feedback;
+        }
+
+        function checkGame2() {
+            const g2 = document.getElementById('g2').value.trim().toLowerCase();
+            let feedback = g2.includes('good morning - buenos días') ? '<p class="correct">Correcto!</p>' : '<p class="incorrect">Incorrecto.</p>';
+            if (feedback.includes('Correcto')) updateScore(10);
+            document.getElementById('game2Feedback').innerHTML = feedback;
+        }
+
+        function checkGame3() {
+            const g3 = document.getElementById('g3').value.trim().toLowerCase();
+            let feedback = g3 === 'am' ? '<p class="correct">Correcto!</p>' : '<p class="incorrect">Incorrecto. Respuesta: am</p>';
+            if (feedback.includes('Correcto')) updateScore(10);
+            document.getElementById('game3Feedback').innerHTML = feedback;
+        }
+
+        // Similar functions for other games...
+        function checkGame4() {
+            // Simplified check
+            updateScore(10); // Assume participation points
+            document.getElementById('game4Feedback').innerHTML = '<p class="correct">¡Buen intento!</p>';
+        }
+
+        function checkGame5() {
+            updateScore(10);
+            document.getElementById('game5Feedback').innerHTML = '<p class="correct">¡Buen intento!</p>';
+        }
+
+        function checkGame6() {
+            updateScore(10);
+            document.getElementById('game6Feedback').innerHTML = '<p class="correct">¡Buen intento!</p>';
+        }
+
+        function checkGame7() {
+            updateScore(10);
+            document.getElementById('game7Feedback').innerHTML = '<p class="correct">¡Buen intento!</p>';
+        }
+
+        function checkGame8() {
+            updateScore(10);
+            document.getElementById('game8Feedback').innerHTML = '<p class="correct">¡Buen intento!</p>';
+        }
+
+        function checkGame9() {
+            updateScore(10);
+            document.getElementById('game9Feedback').innerHTML = '<p class="correct">¡Buen intento!</p>';
+        }
+
+        function checkGame10() {
+            let feedback = '';
+            const q1 = document.querySelector('input[name="g10q1"]:checked');
+            if (q1 && q1.value === 'Adiós') {
+                feedback += '<p class="correct">Correcto!</p>';
+                updateScore(10);
+            } else {
+                feedback += '<p class="incorrect">Incorrecto. Respuesta: Adiós</p>';
+            }
+            document.getElementById('game10Feedback').innerHTML = feedback;
+        }
+
+        function checkEval() {
+            let feedback = '';
+            let localPoints = 0;
+            const answers = ['is', 'despedida', 'yo trabajo aquí', 'ask', 'encantado de conocerte', 'are', 'morning', 'is', 'care', 'is'];
+            for (let i = 1; i <= 10; i++) {
+                let evalVal;
+                if (i === 2) {
+                    evalVal = document.querySelector('input[name="eval2"]:checked')?.value || '';
+                } else {
+                    evalVal = document.getElementById(`eval${i}`).value.trim().toLowerCase();
+                }
+                if (evalVal.toLowerCase() === answers[i-1].toLowerCase() || evalVal.includes(answers[i-1].toLowerCase())) {
+                    feedback += `<p class="correct">${i}. Correcto!</p>`;
+                    localPoints += 10;
+                } else {
+                    feedback += `<p class="incorrect">${i}. Incorrecto. Respuesta: ${answers[i-1]}</p>`;
+                }
+            }
+            updateScore(localPoints);
+            document.getElementById('evalFeedback').innerHTML = feedback;
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
