@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curso de Inglés - Clase 2: La Familia</title>
+    <style>
+        :root {
+            --primary-color: #4e7ae6;
+            --secondary-color: #ff7e30;
+            --accent-color: #34c759;
+            --light-color: #f5f7ff;
+            --dark-color: #2c3e50;
+            --correct-color: #2ecc71;
+            --incorrect-color: #e74c3c;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f0f2f5;
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), #6c5ce7);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .progress-bar {
+            background-color: #e0e0e0;
+            border-radius: 20px;
+            height: 10px;
+            margin: 15px 0;
+            overflow: hidden;
+        }
+        
+        .progress {
+            background-color: var(--accent-color);
+            height: 100%;
+            width: 20%;
+            border-radius: 20px;
+            transition: width 0.5s ease;
+        }
+        
+        .section {
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        h1, h2, h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .verbs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .verb-card {
+            background-color: var(--light-color);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+        
+        .verb-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .verb-english {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        .verb-spanish {
+            color: var(--dark-color);
+            font-size: 0.9em;
+        }
+        
+        .game-container {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .options-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .option {
+            background-color: white;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.2s;
+        }
+        
+        .option:hover {
+            border-color: var(--primary-color);
+            background-color: #f0f5ff;
+        }
+        
+        .correct {
+            border-color: var(--correct-color);
+            background-color: #e8faf0;
+        }
+        
+        .incorrect {
+            border-color: var(--incorrect-color);
+            background-color: #fdedec;
+        }
+        
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s;
+            margin: 10px 5px;
+        }
+        
+        button:hover {
+            background-color: #3b5fc7;
+        }
+        
+        .secondary-btn {
+            background-color: var(--secondary-color);
+        }
+        
+        .secondary-btn:hover {
+            background-color: #e57229;
+        }
+        
+        input[type="text"] {
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            width: 100%;
+            margin: 10px 0;
+            font-size: 1em;
+        }
+        
+        input[type="text"]:focus {
+            border-color: var(--primary-color);
+            outline: none;
+        }
+        
+        .feedback {
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            display: none;
+        }
+        
+        .positive-feedback {
+            background-color: #e8faf0;
+            border-left: 5px solid var(--correct-color);
+        }
+        
+        .negative-feedback {
+            background-color: #fdedec;
+            border-left: 5px solid var(--incorrect-color);
+        }
+        
+        .family-member {
+            display: inline-block;
+            text-align: center;
+            margin: 15px;
+            width: 120px;
+        }
+        
+        .family-icon {
+            width: 80px;
+            height: 80px;
+            background-color: var(--light-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 10px;
+            font-size: 2em;
+            color: var(--primary-color);
+        }
+        
+        .tab-container {
+            margin: 20px 0;
+        }
+        
+        .tabs {
+            display: flex;
+            border-bottom: 2px solid #ddd;
+        }
+        
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            background-color: #f0f2f5;
+            border-radius: 5px 5px 0 0;
+            margin-right: 5px;
+        }
+        
+        .tab.active {
+            background-color: white;
+            border: 2px solid #ddd;
+            border-bottom: none;
+            font-weight: bold;
+        }
+        
+        .tab-content {
+            padding: 20px;
+            border: 2px solid #ddd;
+            border-top: none;
+            border-radius: 0 0 5px 5px;
+            background-color: white;
+        }
+        
+        .tab-pane {
+            display: none;
+        }
+        
+        .tab-pane.active {
+            display: block;
+        }
+        
+        .score-display {
+            background-color: var(--light-color);
+            padding: 10px 15px;
+            border-radius: 20px;
+            display: inline-block;
+            margin: 10px 0;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        .timer {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: var(--secondary-color);
+            margin: 10px 0;
+        }
+        
+        @media (max-width: 768px) {
+            .options-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .verbs-grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Curso de Inglés para Principiantes</h1>
+            <p>Módulo I - Clase 2: La Familia</p>
+            <div class="progress-bar">
+                <div class="progress"></div>
+            </div>
+            <p>Progreso del curso: 20%</p>
+        </header>
+        
+        <div class="section">
+            <h2>Objetivos de la Clase</h2>
+            <p>Al finalizar esta clase, serás capaz de:</p>
+            <ul>
+                <li>Identificar y nombrar a los miembros de la familia en inglés</li>
+                <li>Utilizar adjetivos posesivos correctamente</li>
+                <li>Describir relaciones familiares básicas</li>
+                <li>Utilizar 10 verbos nuevos en contextos familiares</li>
+            </ul>
+        </div>
+        
+        <div class="section">
+            <h2>Vocabulario: Miembros de la Familia</h2>
+            <div class="family-member">
+                <div class="family-icon">👨</div>
+                <p>Father<br>(Padre)</p>
+            </div>
+            <div class="family-member">
+                <div class="family-icon">👩</div>
+                <p>Mother<br>(Madre)</p>
+            </div>
+            <div class="family-member">
+                <div class="family-icon">👦</div>
+                <p>Son<br>(Hijo)</p>
+            </div>
+            <div class="family-member">
+                <div class="family-icon">👧</div>
+                <p>Daughter<br>(Hija)</p>
+            </div>
+            <div class="family-member">
+                <div class="family-icon">👨‍👩‍👧</div>
+                <p>Parents<br>(Padres)</p>
+            </div>
+            <div class="family-member">
+                <div class="family-icon">👴</div>
+                <p>Grandfather<br>(Abuelo)</p>
+            </div>
+            <div class="family-member">
+                <div class="family-icon">👵</div>
+                <p>Grandmother<br>(Abuela)</p>
+            </div>
+            <div class="family-member">
+                <div class="family-icon">👨‍🦳</div>
+                <p>Brother<br>(Hermano)</p>
+            </div>
+            <div class="family-member">
+                <div class="family-icon">👩‍🦰</div>
+                <p>Sister<br>(Hermana)</p>
+            </div>
+            <div class="family-member">
+                <div class="family-icon">👨‍👩‍👧‍👦</div>
+                <p>Family<br>(Familia)</p>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Verbos de la Clase 2</h2>
+            <p>A continuación, los 10 verbos que aprenderás hoy:</p>
+            <div class="verbs-grid">
+                <div class="verb-card">
+                    <div class="verb-english">need</div>
+                    <div class="verb-spanish">(necesitar)</div>
+                </div>
+                <div class="verb-card">
+                    <div class="verb-english">help</div>
+                    <div class="verb-spanish">(ayudar)</div>
+                </div>
+                <div class="verb-card">
+                    <div class="verb-english">try</div>
+                    <div class="verb-spanish">(intentar)</div>
+                </div>
+                <div class="verb-card">
+                    <div class="verb-english">show</div>
+                    <div class="verb-spanish">(mostrar)</div>
+                </div>
+                <div class="verb-card">
+                    <div class="verb-english">believe</div>
+                    <div class="verb-spanish">(creer)</div>
+                </div>
+                <div class="verb-card">
+                    <div class="verb-english">hold</div>
+                    <div class="verb-spanish">(sostener)</div>
+                </div>
+                <div class="verb-card">
+                    <div class="verb-english">create</div>
+                    <div class="verb-spanish">(crear)</div>
+                </div>
+                <div class="verb-card">
+                    <div class="verb-english">talk</div>
+                    <div class="verb-spanish">(hablar)</div>
+                </div>
+                <div class="verb-card">
+                    <div class="verb-english">change</div>
+                    <div class="verb-spanish">(cambiar)</div>
+                </div>
+                <div class="verb-card">
+                    <div class="verb-english">live</div>
+                    <div class="verb-spanish">(vivir)</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Gramática: Adjetivos Posesivos</h2>
+            <p>Los adjetivos posesivos indican pertenencia o posesión:</p>
+            
+            <div class="tab-container">
+                <div class="tabs">
+                    <div class="tab active" onclick="openTab(event, 'tab1')">My</div>
+                    <div class="tab" onclick="openTab(event, 'tab2')">Your</div>
+                    <div class="tab" onclick="openTab(event, 'tab3')">His/Her</div>
+                    <div class="tab" onclick="openTab(event, 'tab4')">Our</div>
+                    <div class="tab" onclick="openTab(event, 'tab5')">Their</div>
+                </div>
+                
+                <div class="tab-content">
+                    <div id="tab1" class="tab-pane active">
+                        <p><strong>My</strong> (mi, mis) - Indica posesión para la primera persona singular.</p>
+                        <p>Ejemplos:</p>
+                        <ul>
+                            <li>This is <strong>my</strong> father. (Este es mi padre)</li>
+                            <li><strong>My</strong> sister lives in Madrid. (Mi hermana vive en Madrid)</li>
+                        </ul>
+                    </div>
+                    <div id="tab2" class="tab-pane">
+                        <p><strong>Your</strong> (tu, tus) - Indica posesión para la segunda persona.</p>
+                        <p>Ejemplos:</p>
+                        <ul>
+                            <li>Is this <strong>your</strong> book? (¿Es este tu libro?)</li>
+                            <li>I like <strong>your</strong> family. (Me gusta tu familia)</li>
+                        </ul>
+                    </div>
+                    <div id="tab3" class="tab-pane">
+                        <p><strong>His/Her</strong> (su, sus) - Indica posesión para la tercera persona singular.</p>
+                        <p>Ejemplos:</p>
+                        <ul>
+                            <li>That is <strong>his</strong> brother. (Ese es su hermano - de él)</li>
+                            <li>This is <strong>her</strong> mother. (Esta es su madre - de ella)</li>
+                        </ul>
+                    </div>
+                    <div id="tab4" class="tab-pane">
+                        <p><strong>Our</strong> (nuestro, nuestra, nuestros, nuestras) - Indica posesión para la primera persona plural.</p>
+                        <p>Ejemplos:</p>
+                        <ul>
+                            <li>This is <strong>our</strong> house. (Esta es nuestra casa)</li>
+                            <li>We love <strong>our</strong> family. (Amamos a nuestra familia)</li>
+                        </ul>
+                    </div>
+                    <div id="tab5" class="tab-pane">
+                        <p><strong>Their</strong> (su, sus) - Indica posesión para la tercera persona plural.</p>
+                        <p>Ejemplos:</p>
+                        <ul>
+                            <li>That is <strong>their</strong> dog. (Ese es su perro - de ellos)</li>
+                            <li>I know <strong>their</strong> parents. (Conozco a sus padres)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Juego: Completa la Oración</h2>
+            <p>Selecciona la opción correcta para completar cada oración:</p>
+            
+            <div class="game-container">
+                <div class="timer">Tiempo: <span id="time">60</span> segundos</div>
+                <div class="score-display">Puntuación: <span id="score">0</span>/10</div>
+                
+                <p id="question">1. I ____ my family. (Yo necesito a mi familia)</p>
+                <div class="options-container" id="options">
+                    <div class="option" onclick="checkAnswer(this, 'need')">need</div>
+                    <div class="option" onclick="checkAnswer(this, 'wrong')">live</div>
+                    <div class="option" onclick="checkAnswer(this, 'wrong')">change</div>
+                    <div class="option" onclick="checkAnswer(this, 'wrong')">hold</div>
+                </div>
+                
+                <div id="feedback" class="feedback"></div>
+                
+                <button onclick="nextQuestion()">Siguiente Pregunta</button>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Ejercicio: Traducción de Oraciones</h2>
+            <p>Traduce las siguientes oraciones al inglés:</p>
+            
+            <div class="game-container">
+                <p>1. Mi hermana ayuda a mi madre.</p>
+                <input type="text" id="translation1" placeholder="Escribe la traducción aquí">
+                
+                <p>2. ¿Crees en tu familia?</p>
+                <input type="text" id="translation2" placeholder="Escribe la traducción aquí">
+                
+                <p>3. Ellos viven con sus abuelos.</p>
+                <input type="text" id="translation3" placeholder="Escribe la traducción aquí">
+                
+                <p>4. Necesito hablar con mi padre.</p>
+                <input type="text" id="translation4" placeholder="Escribe la traducción aquí">
+                
+                <p>5. ¿Podemos cambiar nuestra casa?</p>
+                <input type="text" id="translation5" placeholder="Escribe la traducción aquí">
+                
+                <button onclick="checkTranslations()">Verificar Respuestas</button>
+                <div id="translation-feedback" class="feedback"></div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Diálogo: La Familia de María</h2>
+            <p>Escucha y lee el siguiente diálogo:</p>
+            
+            <div class="game-container" style="background-color: #e8f4f8;">
+                <p><strong>John:</strong> Hi Maria! Tell me about your family.</p>
+                <p><strong>Maria:</strong> Well, I <strong>live</strong> with my parents and my brother. My father <strong>needs</strong> help with his business sometimes.</p>
+                <p><strong>John:</strong> Do you have sisters?</p>
+                <p><strong>Maria:</strong> No, but I have a grandmother who <strong>lives</strong> with us. We <strong>try</strong> to help her every day.</p>
+                <p><strong>John:</strong> That's nice! I <strong>believe</strong> family is important.</p>
+                <p><strong>Maria:</strong> Yes, we <strong>talk</strong> every night at dinner. We want to <strong>create</strong> good memories together.</p>
+                
+                <button onclick="playAudio()">▶ Escuchar diálogo</button>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Evaluación Final</h2>
+            <p>Completa esta evaluación para verificar tu comprensión de la clase:</p>
+            
+            <div class="game-container">
+                <form id="quiz-form">
+                    <p>1. ¿Cómo se dice "hermana" en inglés?</p>
+                    <input type="radio" name="q1" value="a"> sister<br>
+                    <input type="radio" name="q1" value="b"> brother<br>
+                    <input type="radio" name="q1" value="c"> mother<br>
+                    
+                    <p>2. Selecciona el adjetivo posesivo correcto: "This is ____ book" (refiriéndose a un libro de María)</p>
+                    <input type="radio" name="q2" value="a"> my<br>
+                    <input type="radio" name="q2" value="b"> his<br>
+                    <input type="radio" name="q2" value="c"> her<br>
+                    
+                    <p>3. ¿Cuál de estos verbos significa "necesitar"?</p>
+                    <input type="radio" name="q3" value="a"> need<br>
+                    <input type="radio" name="q3" value="b"> live<br>
+                    <input type="radio" name="q3" value="c"> try<br>
+                    
+                    <p>4. "They ____ in a big house" (Ellos viven en una casa grande)</p>
+                    <input type="radio" name="q4" value="a"> need<br>
+                    <input type="radio" name="q4" value="b"> live<br>
+                    <input type="radio" name="q4" value="c"> change<br>
+                    
+                    <p>5. ¿Cómo se dice "abuelo" en inglés?</p>
+                    <input type="radio" name="q5" value="a"> grandmother<br>
+                    <input type="radio" name="q5" value="b"> grandfather<br>
+                    <input type="radio" name="q5" value="c"> parents<br>
+                    
+                    <button type="button" onclick="submitQuiz()">Enviar Evaluación</button>
+                </form>
+                
+                <div id="quiz-result" class="feedback"></div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Tarea para el Hogar</h2>
+            <p>Para la próxima clase, por favor:</p>
+            <ol>
+                <li>Crea un árbol genealógico de tu familia con los nombres en inglés</li>
+                <li>Escribe 5 oraciones describiendo a los miembros de tu familia usando adjetivos posesivos</li>
+                <li>Practica la pronunciación de los 10 verbos nuevos</li>
+                <li>Prepara 3 preguntas sobre tu familia para compartir en la próxima clase</li>
+            </ol>
+        </div>
+        
+        <div class="section">
+            <h2>Próxima Clase: Números y Fechas</h2>
+            <p>En la próxima clase aprenderás:</p>
+            <ul>
+                <li>Números cardinales y ordinales</li>
+                <li>Días de la semana y meses del año</li>
+                <li>Cómo decir fechas en inglés</li>
+                <li>10 verbos nuevos: find, use, mean, include, set, learn, meet, pay, continue, read</li>
+            </ul>
+            <p>¡No olvides practicar los números del 1 al 100 como preparación!</p>
+        </div>
+        
+        <div class="section" style="text-align: center;">
+            <button onclick="markAsCompleted()" class="secondary-btn">Marcar Clase como Completada</button>
+            <p id="completion-message" style="display: none; margin-top: 15px; color: var(--accent-color); font-weight: bold;">¡Felicidades! Has completado la Clase 2.</p>
+        </div>
+    </div>
+
+    <script>
+        // Variables para el juego
+        let currentQuestion = 1;
+        let score = 0;
+        let timeLeft = 60;
+        let timer;
+        
+        // Preguntas para el juego
+        const questions = [
+            {
+                question: "I ____ my family. (Yo necesito a mi familia)",
+                options: ["need", "live", "change", "hold"],
+                correct: "need"
+            },
+            {
+                question: "We ____ in Bogotá. (Vivimos en Bogotá)",
+                options: ["need", "live", "try", "believe"],
+                correct: "live"
+            },
+            {
+                question: "I ____ to help my brother. (Intento ayudar a mi hermano)",
+                options: ["need", "show", "try", "hold"],
+                correct: "try"
+            },
+            {
+                question: "Can you ____ me your photos? (¿Puedes mostrarme tus fotos?)",
+                options: ["need", "show", "create", "change"],
+                correct: "show"
+            },
+            {
+                question: "I ____ in magic. (Creo en la magia)",
+                options: ["need", "try", "believe", "hold"],
+                correct: "believe"
+            },
+            {
+                question: "Please ____ my hand. (Por favor sostén mi mano)",
+                options: ["need", "try", "believe", "hold"],
+                correct: "hold"
+            },
+            {
+                question: "We want to ____ a better future. (Queremos crear un futuro mejor)",
+                options: ["create", "change", "talk", "live"],
+                correct: "create"
+            },
+            {
+                question: "Let's ____ about our plans. (Hablemos de nuestros planes)",
+                options: ["need", "try", "talk", "hold"],
+                correct: "talk"
+            },
+            {
+                question: "I want to ____ my life. (Quiero cambiar mi vida)",
+                options: ["need", "change", "create", "believe"],
+                correct: "change"
+            },
+            {
+                question: "They ____ in a small apartment. (Ellos viven en un apartamento pequeño)",
+                options: ["need", "try", "believe", "live"],
+                correct: "live"
+            }
+        ];
+        
+        // Funciones para las pestañas
+        function openTab(evt, tabName) {
+            const tabcontent = document.getElementsByClassName("tab-pane");
+            for (let i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            
+            const tablinks = document.getElementsByClassName("tab");
+            for (let i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+        
+        // Funciones para el juego de opción múltiple
+        function startTimer() {
+            clearInterval(timer);
+            timeLeft = 60;
+            document.getElementById("time").textContent = timeLeft;
+            
+            timer = setInterval(function() {
+                timeLeft--;
+                document.getElementById("time").textContent = timeLeft;
+                
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                    nextQuestion();
+                }
+            }, 1000);
+        }
+        
+        function checkAnswer(element, answer) {
+            const options = document.querySelectorAll('.option');
+            options.forEach(opt => {
+                opt.classList.remove('correct', 'incorrect');
+                opt.onclick = null;
+            });
+            
+            if (answer === questions[currentQuestion - 1].correct) {
+                element.classList.add('correct');
+                score++;
+                document.getElementById("score").textContent = score;
+                showFeedback("¡Correcto! Bien hecho.", true);
+            } else {
+                element.classList.add('incorrect');
+                options.forEach(opt => {
+                    if (opt.textContent === questions[currentQuestion - 1].correct) {
+                        opt.classList.add('correct');
+                    }
+                });
+                showFeedback("Incorrecto. La respuesta correcta es: " + questions[currentQuestion - 1].correct, false);
+            }
+        }
+        
+        function nextQuestion() {
+            clearInterval(timer);
+            
+            if (currentQuestion < questions.length) {
+                currentQuestion++;
+                document.getElementById("question").textContent = currentQuestion + ". " + questions[currentQuestion - 1].question;
+                
+                const optionsContainer = document.getElementById("options");
+                optionsContainer.innerHTML = "";
+                
+                questions[currentQuestion - 1].options.forEach(option => {
+                    const optionElement = document.createElement("div");
+                    optionElement.className = "option";
+                    optionElement.textContent = option;
+                    optionElement.onclick = function() {
+                        checkAnswer(this, option);
+                    };
+                    optionsContainer.appendChild(optionElement);
+                });
+                
+                document.getElementById("feedback").style.display = "none";
+                startTimer();
+            } else {
+                document.getElementById("question").textContent = "¡Juego completado!";
+                document.getElementById("options").innerHTML = "";
+                document.getElementById("feedback").style.display = "none";
+                document.querySelector("button").style.display = "none";
+                
+                let message = "";
+                if (score >= 8) {
+                    message = "¡Excelente! Obtuviste " + score + " de 10 puntos.";
+                } else if (score >= 5) {
+                    message = "Buen trabajo! Obtuviste " + score + " de 10 puntos. Sigue practicando.";
+                } else {
+                    message = "Obtuviste " + score + " de 10 puntos. Necesitas repasar más.";
+                }
+                
+                showFeedback(message, score >= 5);
+            }
+        }
+        
+        function showFeedback(text, isPositive) {
+            const feedback = document.getElementById("feedback");
+            feedback.textContent = text;
+            feedback.className = isPositive ? "feedback positive-feedback" : "feedback negative-feedback";
+            feedback.style.display = "block";
+        }
+        
+        // Función para verificar traducciones
+        function checkTranslations() {
+            const answers = [
+                "My sister helps my mother",
+                "Do you believe in your family?",
+                "They live with their grandparents",
+                "I need to talk to my father",
+                "Can we change our house?"
+            ];
+            
+            let correctCount = 0;
+            let feedbackText = "";
+            
+            for (let i = 1; i <= 5; i++) {
+                const userAnswer = document.getElementById("translation" + i).value.trim().toLowerCase();
+                const correctAnswer = answers[i - 1].toLowerCase();
+                
+                if (userAnswer === correctAnswer || 
+                    userAnswer === correctAnswer + "." ||
+                    userAnswer === correctAnswer.replace("?", "") ||
+                    userAnswer === correctAnswer.replace("?", "") + "?") {
+                    correctCount++;
+                    feedbackText += i + ". Correcto!<br>";
+                } else {
+                    feedbackText += i + ". Incorrecto. La respuesta correcta es: " + answers[i - 1] + "<br>";
+                }
+            }
+            
+            const feedbackElement = document.getElementById("translation-feedback");
+            feedbackElement.innerHTML = feedbackText + "<br>Obtuviste " + correctCount + " de 5 correctas.";
+            feedbackElement.className = correctCount >= 3 ? "feedback positive-feedback" : "feedback negative-feedback";
+            feedbackElement.style.display = "block";
+        }
+        
+        // Función para la evaluación final
+        function submitQuiz() {
+            const answers = {
+                q1: "a",
+                q2: "c",
+                q3: "a",
+                q4: "b",
+                q5: "b"
+            };
+            
+            let correctCount = 0;
+            let resultHTML = "";
+            
+            for (let i = 1; i <= 5; i++) {
+                const selected = document.querySelector('input[name="q' + i + '"]:checked');
+                if (selected) {
+                    if (selected.value === answers["q" + i]) {
+                        correctCount++;
+                        resultHTML += "Pregunta " + i + ": Correcto!<br>";
+                    } else {
+                        resultHTML += "Pregunta " + i + ": Incorrecto. La respuesta correcta es: " + 
+                                    document.querySelector('input[name="q' + i + '"][value="' + answers["q" + i] + '"]').parentNode.textContent + "<br>";
+                    }
+                } else {
+                    resultHTML += "Pregunta " + i + ": No respondida. La respuesta correcta es: " + 
+                                document.querySelector('input[name="q' + i + '"][value="' + answers["q" + i] + '"]').parentNode.textContent + "<br>";
+                }
+            }
+            
+            const resultElement = document.getElementById("quiz-result");
+            resultElement.innerHTML = resultHTML + "<br><strong>Resultado: " + correctCount + " de 5 correctas (" + (correctCount/5*100) + "%)</strong>";
+            
+            if (correctCount >= 4) {
+                resultElement.className = "feedback positive-feedback";
+            } else {
+                resultElement.className = "feedback negative-feedback";
+            }
+            
+            resultElement.style.display = "block";
+        }
+        
+        // Función para marcar la clase como completada
+        function markAsCompleted() {
+            document.getElementById("completion-message").style.display = "block";
+            localStorage.setItem('clase2-completed', 'true');
+        }
+        
+        // Función para reproducir audio (simulado)
+        function playAudio() {
+            alert("Reproduciendo diálogo de audio...");
+        }
+        
+        // Inicializar la página
+        window.onload = function() {
+            startTimer();
+            if (localStorage.getItem('clase2-completed') === 'true') {
+                document.getElementById("completion-message").style.display = "block";
+            }
+        };
+    </script>
+</body>
+</html>
