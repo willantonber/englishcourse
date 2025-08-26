@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mini Campus: Do vs Does - Curso de Inglés</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f8f9fa;
+      color: #333;
+      line-height: 1.7;
+      margin: 0;
+      padding: 20px;
+    }
+    header {
+      background: #0056b3;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+    h1 {
+      margin: 0;
+      font-size: 1.8em;
+    }
+    h2 {
+      color: #0056b3;
+      border-bottom: 2px solid #0056b3;
+      padding-bottom: 5px;
+      margin-top: 30px;
+    }
+    h3 {
+      color: #d9534f;
+    }
+    .container {
+      max-width: 900px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+    table, th, td {
+      border: 1px solid #ddd;
+    }
+    th, td {
+      padding: 12px;
+      text-align: left;
+    }
+    th {
+      background-color: #007acc;
+      color: white;
+    }
+    .game-box {
+      background: #d4edda;
+      border: 1px solid #c3e6cb;
+      padding: 15px;
+      margin: 15px 0;
+      border-radius: 8px;
+    }
+    .btn {
+      background: #28a745;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1em;
+    }
+    .feedback {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <h1>📘 Mini Campus Virtual: ¿Cuándo usar DO y DOES?</h1>
+      <p>Aprende a formar preguntas en presente simple | Por: William Bermúdez</p>
+    </header>
+
+    <h2>🎯 ¿Cuándo se usa "Do" y "Does"?</h2>
+    <p>Usamos <strong>do</strong> o <strong>does</strong> para formar preguntas en presente simple cuando el verbo principal <strong>no es un auxiliar</strong>.</p>
+
+    <table>
+      <tr><th>Forma</th><th>Sujeto</th><th>Ejemplo</th></tr>
+      <tr><td><strong>Do</strong></td><td>I, you, we, they</td><td>Do you like coffee?</td></tr>
+      <tr><td><strong>Does</strong></td><td>he, she, it</td><td>Does she work here?</td></tr>
+    </table>
+
+    <h2>🚫 Verbos que NO usan "Do/Does"</h2>
+    <p>Cuando el verbo ya es un auxiliar (va al inicio), <strong>NO usamos "do/does"</strong>.</p>
+    <table>
+      <tr><th>Verbo</th><th>Ejemplo Correcto</th><th>❌ Incorrecto</th></tr>
+      <tr><td>am/is/are</td><td>Are you happy?</td><td>Do you are happy?</td></tr>
+      <tr><td>can</td><td>Can he swim?</td><td>Do he can swim?</td></tr>
+      <tr><td>will</td><td>Will they come?</td><td>Do they will come?</td></tr>
+      <tr><td>should</td><td>Should I go?</td><td>Do I should go?</td></tr>
+    </table>
+
+    <h2>✅ Verbos que SÍ usan "Do/Does"</h2>
+    <p>Cuando el verbo es de acción (trabajar, comer, vivir, etc.), usamos "do/does".</p>
+    <ul>
+      <li>Do you <strong>work</strong> here?</li>
+      <li>Does she <strong>like</strong> pizza?</li>
+      <li>Do they <strong>have to</strong> leave?</li>
+    </ul>
+
+    <h2>🎮 Juego: ¿"Do" o no "Do"?</h2>
+    <p>Elige si la pregunta necesita "Do/Does" o si ya tiene un auxiliar correcto.</p>
+
+    <div class="game-box">
+      <p><strong>1. ___ you speak English?</strong></p>
+      <button class="btn" onclick="checkAnswer(1, 'do')">Do/Does</button>
+      <button class="btn" onclick="checkAnswer(1, 'aux')">Ya tiene auxiliar</button>
+      <div id="feedback1" class="feedback"></div>
+    </div>
+
+    <div class="game-box">
+      <p><strong>2. Can she swim?</strong></p>
+      <button class="btn" onclick="checkAnswer(2, 'do')">Do/Does</button>
+      <button class="btn" onclick="checkAnswer(2, 'aux')">Ya tiene auxiliar</button>
+      <div id="feedback2" class="feedback"></div>
+    </div>
+
+    <div class="game-box">
+      <p><strong>3. ___ he like coffee?</strong></p>
+      <button class="btn" onclick="checkAnswer(3, 'do')">Do/Does</button>
+      <button class="btn" onclick="checkAnswer(3, 'aux')">Ya tiene auxiliar</button>
+      <div id="feedback3" class="feedback"></div>
+    </div>
+
+    <div class="game-box">
+      <p><strong>4. Are they ready?</strong></p>
+      <button class="btn" onclick="checkAnswer(4, 'do')">Do/Does</button>
+      <button class="btn" onclick="checkAnswer(4, 'aux')">Ya tiene auxiliar</button>
+      <div id="feedback4" class="feedback"></div>
+    </div>
+
+    <script>
+      function checkAnswer(question, answer) {
+        const feedback = document.getElementById(`feedback${question}`);
+        if (question === 1 && answer === 'do') {
+          feedback.textContent = "¡Correcto! 'speak' es un verbo de acción → Necesita 'Do'.";
+          feedback.style.color = "green";
+        } else if (question === 2 && answer === 'aux') {
+          feedback.textContent = "¡Correcto! 'Can' ya es un auxiliar → No se usa 'Do'.";
+          feedback.style.color = "green";
+        } else if (question === 3 && answer === 'do') {
+          feedback.textContent = "¡Correcto! 'like' es verbo de acción → Necesita 'Does'.";
+          feedback.style.color = "green";
+        } else if (question === 4 && answer === 'aux') {
+          feedback.textContent = "¡Correcto! 'Are' es el verbo 'to be' → Ya es auxiliar.";
+          feedback.style.color = "green";
+        } else {
+          feedback.textContent = "Incorrecto. Piensa: ¿El verbo ya puede ir al inicio?";
+          feedback.style.color = "red";
+        }
+      }
+    </script>
+
+    <h2>📝 Mini Evaluación</h2>
+    <ol>
+      <li>Escribe una pregunta con "Do" → <input type="text" placeholder="Ej: Do you..."> </li>
+      <li>Escribe una pregunta con "Does" → <input type="text" placeholder="Ej: Does she..."> </li>
+      <li>¿Por qué no se dice "Do you are happy?"? → <textarea placeholder="Escribe tu respuesta"></textarea></li>
+    </ol>
+
+    <footer>
+      &copy; 2025 Curso de Inglés para Principiantes | Mini Campus Interactivo - Gramática
+    </footer>
+  </div>
+
+</body>
+</html>
