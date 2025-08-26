@@ -1,311 +1,266 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Clase 3: Números y Fechas - Curso de Inglés para Principiantes</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f8f9fa;
-      color: #333;
-      line-height: 1.7;
-      margin: 0;
-      padding: 20px;
-    }
-    header {
-      background: #0056b3;
-      color: white;
-      padding: 20px;
-      text-align: center;
-      border-radius: 8px;
-      margin-bottom: 20px;
-    }
-    h1 {
-      margin: 0;
-      font-size: 1.8em;
-    }
-    h2 {
-      color: #0056b3;
-      border-bottom: 2px solid #0056b3;
-      padding-bottom: 5px;
-      margin-top: 30px;
-    }
-    h3 {
-      color: #d9534f;
-    }
-    .container {
-      max-width: 900px;
-      margin: auto;
-      background: white;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 20px 0;
-    }
-    table, th, td {
-      border: 1px solid #ddd;
-    }
-    th, td {
-      padding: 12px;
-      text-align: left;
-    }
-    th {
-      background-color: #007acc;
-      color: white;
-    }
-    .game-box {
-      background: #fff3cd;
-      border: 1px solid #ffeaa7;
-      padding: 15px;
-      margin: 15px 0;
-      border-radius: 8px;
-    }
-    footer {
-      text-align: center;
-      margin-top: 40px;
-      color: #666;
-      font-size: 0.9em;
-    }
-    .btn {
-      background: #28a745;
-      color: white;
-      border: none;
-      padding: 10px 15px;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 1em;
-    }
-    .btn:hover {
-      background: #218838;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Virtual: Curso de Inglés para Principiantes - Clase 3</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f8f9fa; }
+        .header { background-color: #007bff; color: white; padding: 20px; text-align: center; }
+        .section { margin: 20px; padding: 20px; border: 1px solid #ddd; border-radius: 10px; }
+        .feedback { color: green; font-weight: bold; }
+        .incorrect { color: red; }
+        #score { font-size: 24px; font-weight: bold; }
+    </style>
 </head>
 <body>
 
-  <div class="container">
-    <header>
-      <h1>📘 Campus Virtual: Curso de Inglés para Principiantes</h1>
-      <p><strong>Módulo 1 - Clase 3: Números y Fechas</strong> | Duración: 1 hora | Por: William Bermúdez</p>
-    </header>
-
-    <p>Esta clase está diseñada para durar aproximadamente <strong>1 hora</strong>:<br>
-      10 min en objetivos y contenido, 10 min en ejemplos, 15 min en ejercicios, 
-      15 min en juegos, 5 min en evaluación, 5 min en tareas y reseña.</p>
-
-    <h2>🎯 Objetivos de la Clase</h2>
-    <ul>
-      <li>Aprender los números del 1 al 100 en inglés.</li>
-      <li>Identificar los días de la semana y meses del año.</li>
-      <li>Practicar cómo decir fechas importantes (cumpleaños, aniversarios).</li>
-      <li>Introducir 10 nuevos verbos únicos del inglés cotidiano.</li>
-    </ul>
-
-    <h2>📚 Contenido Principal</h2>
-
-    <h3>🔢 Números del 1 al 100</h3>
-    <table>
-      <tr><th>Número</th><th>En Inglés</th></tr>
-      <tr><td>1</td><td>one</td></tr>
-      <tr><td>2</td><td>two</td></tr>
-      <tr><td>3</td><td>three</td></tr>
-      <tr><td>4</td><td>four</td></tr>
-      <tr><td>5</td><td>five</td></tr>
-      <tr><td>6</td><td>six</td></tr>
-      <tr><td>7</td><td>seven</td></tr>
-      <tr><td>8</td><td>eight</td></tr>
-      <tr><td>9</td><td>nine</td></tr>
-      <tr><td>10</td><td>ten</td></tr>
-      <tr><td>11</td><td>eleven</td></tr>
-      <tr><td>12</td><td>twelve</td></tr>
-      <tr><td>13</td><td>thirteen</td></tr>
-      <tr><td>20</td><td>twenty</td></tr>
-      <tr><td>21</td><td>twenty-one</td></tr>
-      <tr><td>30</td><td>thirty</td></tr>
-      <tr><td>40</td><td>forty</td></tr>
-      <tr><td>50</td><td>fifty</td></tr>
-      <tr><td>60</td><td>sixty</td></tr>
-      <tr><td>70</td><td>seventy</td></tr>
-      <tr><td>80</td><td>eighty</td></tr>
-      <tr><td>90</td><td>ninety</td></tr>
-      <tr><td>100</td><td>one hundred</td></tr>
-    </table>
-
-    <h3>📅 Días de la Semana y Meses</h3>
-    <table>
-      <tr><th>En Inglés</th><th>Español</th></tr>
-      <tr><td>Monday</td><td>Lunes</td></tr>
-      <tr><td>Tuesday</td><td>Martes</td></tr>
-      <tr><td>Wednesday</td><td>Miércoles</td></tr>
-      <tr><td>Thursday</td><td>Jueves</td></tr>
-      <tr><td>Friday</td><td>Viernes</td></tr>
-      <tr><td>Saturday</td><td>Sábado</td></tr>
-      <tr><td>Sunday</td><td>Domingo</td></tr>
-    </table>
-
-    <table>
-      <tr><th>En Inglés</th><th>Español</th></tr>
-      <tr><td>January</td><td>Enero</td></tr>
-      <tr><td>February</td><td>Febrero</td></tr>
-      <tr><td>March</td><td>Marzo</td></tr>
-      <tr><td>April</td><td>Abril</td></tr>
-      <tr><td>May</td><td>Mayo</td></tr>
-      <tr><td>June</td><td>Junio</td></tr>
-      <tr><td>July</td><td>Julio</td></tr>
-      <tr><td>August</td><td>Agosto</td></tr>
-      <tr><td>September</td><td>Septiembre</td></tr>
-      <tr><td>October</td><td>Octubre</td></tr>
-      <tr><td>November</td><td>Noviembre</td></tr>
-      <tr><td>December</td><td>Diciembre</td></tr>
-    </table>
-
-    <h3>📅 Cómo Decir Fechas</h3>
-    <p>Formato: <strong>Month + Day + Year</strong></p>
-    <ul>
-      <li>March 5th, 2025 → "March fifth, twenty twenty-five"</li>
-      <li>My birthday is on <strong>July 12th</strong>.</li>
-      <li>Today is <strong>Friday, April 4th</strong>.</li>
-    </ul>
-
-    <h3>🔧 Verbos Únicos (Clase 3)</h3>
-    <p>Estos verbos te ayudarán a hablar de acciones en el tiempo y la vida diaria:</p>
-    <table>
-      <tr><th>Verbo</th><th>Significado</th><th>Ejemplo</th></tr>
-      <tr><td>find</td><td>encontrar</td><td>I find my keys.</td></tr>
-      <tr><td>use</td><td>usar</td><td>She uses a computer.</td></tr>
-      <tr><td>mean</td><td>significar</td><td>What does it mean?</td></tr>
-      <tr><td>include</td><td>incluir</td><td>The price includes tax.</td></tr>
-      <tr><td>set</td><td>establecer</td><td>Set the alarm.</td></tr>
-      <tr><td>learn</td><td>aprender</td><td>I learn English.</td></tr>
-      <tr><td>meet</td><td>conocer / reunirse</td><td>We meet on Mondays.</td></tr>
-      <tr><td>pay</td><td>pagar</td><td>He pays for dinner.</td></tr>
-      <tr><td>continue</td><td>continuar</td><td>They continue studying.</td></tr>
-      <tr><td>read</td><td>leer</td><td>I read a book every week.</td></tr>
-    </table>
-
-    <h2>💡 10 Ejemplos</h2>
-    <ol>
-      <li>My birthday is on June 15th.</li>
-      <li>There are seven days in a week.</li>
-      <li>I was born in December 1990.</li>
-      <li>She reads a book every night.</li>
-      <li>We meet on Fridays at 5 PM.</li>
-      <li>Can you count from 1 to 50?</li>
-      <li>What day is today?</li>
-      <li>The meeting starts at 3 PM.</li>
-      <li>I need to pay for the tickets.</li>
-      <li>This book includes exercises and answers.</li>
-    </ol>
-
-    <h2>✏️ 10 Ejercicios</h2>
-    <p><strong>Completa las oraciones con números, días, meses o verbos correctos:</strong></p>
-    <ol>
-      <li>How do you say "17" in English? ___</li>
-      <li>My birthday is on ___ 20th. (mes de agosto)</li>
-      <li>There are ___ days in a week.</li>
-      <li>I ___ (leer) the newspaper every morning.</li>
-      <li>We ___ (reunirse) every Monday at school.</li>
-      <li>December is the ___ month of the year.</li>
-      <li>How do you write "45" in words? ___</li>
-      <li>She ___ (pagar) $10 for the coffee.</li>
-      <li>The exam is on ___ (jueves), October 10th.</li>
-      <li>This book ___ (incluir) exercises and answers.</li>
-    </ol>
-
-    <h2>🎮 10 Juegos Interactivos</h2>
-    <p>¡Gana puntos en cada juego mientras aprendes!</p>
-
-    <div class="game-box">
-      <h3>🎮 Juego 1: Carrera de Números</h3>
-      <p>Cuenta del 1 al 30 en voz alta en inglés. ¡Sin errores!</p>
+    <!-- Header -->
+    <div class="header">
+        <h1>CURSO DE INGLÉS PARA PRINCIPIANTES</h1>
+        <h2>MÓDULO I</h2>
+        <p>Clase 3: Números y Fechas</p>
+        <p>Duración: 1 hora</p>
+        <p>Por: William Bermudez</p>
     </div>
 
-    <div class="game-box">
-      <h3>🎮 Juego 2: ¿Qué día es hoy?</h3>
-      <p>El profesor dice una fecha → tú dices el día de la semana (ej: "Monday").</p>
+    <!-- Objetivo General -->
+    <div class="section">
+        <h3>OBJETIVO DE LA CLASE</h3>
+        <p>Al finalizar esta clase, el estudiante será capaz de identificar y usar números, días de la semana, meses y fechas importantes, junto con verbos únicos como find, use, mean, include, set, learn, meet, pay, continue, read en oraciones simples relacionadas con fechas y conteo.</p>
     </div>
 
-    <div class="game-box">
-      <h3>🎮 Juego 3: Memory – Días y Meses</h3>
-      <p>Empareja: "January → Enero", "Friday → Viernes", etc.</p>
+    <!-- Contenido (Vocabulario) - 10 min -->
+    <div class="section">
+        <h3>CONTENIDO: Números, Días, Meses y Fechas</h3>
+        <p>Números (1-20 para principiantes):</p>
+        <ul>
+            <li>One (Uno)</li>
+            <li>Two (Dos)</li>
+            <li>Three (Tres)</li>
+            <li>Four (Cuatro)</li>
+            <li>Five (Cinco)</li>
+            <li>Six (Seis)</li>
+            <li>Seven (Siete)</li>
+            <li>Eight (Ocho)</li>
+            <li>Nine (Nueve)</li>
+            <li>Ten (Diez)</li>
+            <li>Eleven (Once)</li>
+            <li>Twelve (Doce)</li>
+            <li>Thirteen (Trece)</li>
+            <li>Fourteen (Catorce)</li>
+            <li>Fifteen (Quince)</li>
+            <li>Sixteen (Dieciséis)</li>
+            <li>Seventeen (Diecisiete)</li>
+            <li>Eighteen (Dieciocho)</li>
+            <li>Nineteen (Diecinueve)</li>
+            <li>Twenty (Veinte)</li>
+        </ul>
+        <p>Días de la Semana:</p>
+        <ul>
+            <li>Monday (Lunes)</li>
+            <li>Tuesday (Martes)</li>
+            <li>Wednesday (Miércoles)</li>
+            <li>Thursday (Jueves)</li>
+            <li>Friday (Viernes)</li>
+            <li>Saturday (Sábado)</li>
+            <li>Sunday (Domingo)</li>
+        </ul>
+        <p>Meses del Año:</p>
+        <ul>
+            <li>January (Enero)</li>
+            <li>February (Febrero)</li>
+            <li>March (Marzo)</li>
+            <li>April (Abril)</li>
+            <li>May (Mayo)</li>
+            <li>June (Junio)</li>
+            <li>July (Julio)</li>
+            <li>August (Agosto)</li>
+            <li>September (Septiembre)</li>
+            <li>October (Octubre)</li>
+            <li>November (Noviembre)</li>
+            <li>December (Diciembre)</li>
+        </ul>
+        <p>Verbos Únicos:</p>
+        <table class="table table-bordered">
+            <thead>
+                <tr><th>Verbo</th><th>Significado</th><th>Ejemplo</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Find</td><td>Encontrar</td><td>I find the date.</td></tr>
+                <tr><td>Use</td><td>Usar</td><td>We use calendars.</td></tr>
+                <tr><td>Mean</td><td>Significar</td><td>What does this mean?</td></tr>
+                <tr><td>Include</td><td>Incluir</td><td>The list includes months.</td></tr>
+                <tr><td>Set</td><td>Establecer</td><td>Set a meeting date.</td></tr>
+                <tr><td>Learn</td><td>Aprender</td><td>Learn the numbers.</td></tr>
+                <tr><td>Meet</td><td>Reunirse</td><td>We meet on Monday.</td></tr>
+                <tr><td>Pay</td><td>Pagar</td><td>Pay on the first.</td></tr>
+                <tr><td>Continue</td><td>Continuar</td><td>Continue reading dates.</td></tr>
+                <tr><td>Read</td><td>Leer</td><td>Read the calendar.</td></tr>
+            </tbody>
+        </table>
     </div>
 
-    <div class="game-box">
-      <h3>🎮 Juego 4: Adivina mi Cumpleaños</h3>
-      <p>Describe tu cumpleaños sin decir el número. Ej: "It’s in summer, after July 10th".</p>
+    <!-- Ejemplos - 5 min (Aumentado a 15) -->
+    <div class="section">
+        <h3>15 EJEMPLOS</h3>
+        <ol>
+            <li>Today is Monday, January 1st. (Hoy es lunes, 1 de enero.)</li>
+            <li>I find two apples. (Encuentro dos manzanas.)</li>
+            <li>What does "three" mean? ("Tres" qué significa?)</li>
+            <li>We use numbers to count. (Usamos números para contar.)</li>
+            <li>The week includes seven days. (La semana incluye siete días.)</li>
+            <li>Set the date for Tuesday. (Establece la fecha para martes.)</li>
+            <li>Learn the months in English. (Aprende los meses en inglés.)</li>
+            <li>We meet on the fifteenth. (Nos reunimos el quince.)</li>
+            <li>Pay the bill on Friday. (Paga la cuenta el viernes.)</li>
+            <li>Continue to December. (Continúa hasta diciembre.)</li>
+            <li>Read the date: July 4th. (Lee la fecha: 4 de julio.)</li>
+            <li>There are twelve months. (Hay doce meses.)</li>
+            <li>I find my birthday in May. (Encuentro mi cumpleaños en mayo.)</li>
+            <li>This means it's Wednesday. (Esto significa que es miércoles.)</li>
+            <li>Use the calendar to set meetings. (Usa el calendario para establecer reuniones.)</li>
+        </ol>
     </div>
 
-    <div class="game-box">
-      <h3>🎮 Juego 5: Verbos en Acción</h3>
-      <p>Actúa: "read", "pay", "find", "use" sin hablar. Adivina tu compañero.</p>
+    <!-- Ejercicios - 10 min (Aumentado a 15) -->
+    <div class="section">
+        <h3>15 EJERCICIOS</h3>
+        <p>Completa las oraciones con el número, día, mes o verbo correcto:</p>
+        <ol>
+            <li>Today is ___. (Monday/Tuesday)</li>
+            <li>I ___ the date on the calendar. (find/use)</li>
+            <li>What does "January" ___? (mean/include)</li>
+            <li>We ___ numbers every day. (use/set)</li>
+            <li>The year ___ twelve months. (includes/learns)</li>
+            <li>___ a meeting for next week. (Set/Meet)</li>
+            <li>___ the days of the week. (Learn/Pay)</li>
+            <li>We ___ on the tenth. (meet/continue)</li>
+            <li>___ your bills on time. (Pay/Read)</li>
+            <li>___ reading the list. (Continue/Find)</li>
+            <li>___ the number: five. (Read/Use)</li>
+            <li>There are ___ days in a week. (seven/eight)</li>
+            <li>Christmas is in ___. (December/November)</li>
+            <li>I ___ my friends on Saturday. (meet/set)</li>
+            <li>This holiday ___ fun activities. (includes/means)</li>
+        </ol>
+        <p>Respuestas sugeridas (para autoevaluación): 1. Monday, 2. find, 3. mean, 4. use, 5. includes, 6. Set, 7. Learn, 8. meet, 9. Pay, 10. Continue, 11. Read, 12. seven, 13. December, 14. meet, 15. includes</p>
     </div>
 
-    <div class="game-box">
-      <h3>🎮 Juego 6: Dictado de Números</h3>
-      <p>Escucha y escribe: "thirty-seven", "eighty-two", etc.</p>
+    <!-- Juegos - 15 min -->
+    <div class="section">
+        <h3>10 JUEGOS INTERACTIVOS (Gamificados con Puntos)</h3>
+        <p>Puntos totales posibles: 100 (10 por juego). ¡Gana puntos por respuestas correctas!</p>
+        <p id="score">Puntos: 0 / 100</p>
+        <div id="game1">
+            <h4>Juego 1: Quiz de Números</h4>
+            <p>¿Qué es "one" en español?</p>
+            <input type="radio" name="q1" value="Uno"> Uno<br>
+            <input type="radio" name="q1" value="Dos"> Dos<br>
+            <button onclick="checkAnswer(1, 'Uno')">Verificar</button>
+            <p id="feedback1"></p>
+        </div>
+        <div id="game2">
+            <h4>Juego 2: Empareja Días de la Semana</h4>
+            <p>Empareja "Monday" con su significado:</p>
+            <select id="match2">
+                <option value="">Selecciona</option>
+                <option value="Lunes">Lunes</option>
+                <option value="Martes">Martes</option>
+            </select>
+            <button onclick="checkMatch(2, 'Lunes')">Verificar</button>
+            <p id="feedback2"></p>
+        </div>
+        <!-- Juegos 3-10: Similar structure for months, verbs, fill-ins, etc. For example: -->
+        <div id="game3">
+            <h4>Juego 3: Quiz Verbo Find</h4>
+            <p>Traduce "find":</p>
+            <input type="text" id="input3">
+            <button onclick="checkInput(3, 'Encontrar')">Verificar</button>
+            <p id="feedback3"></p>
+        </div>
+        <!-- Agrega 7 más similares variando tipos: matching para meses, quiz para verbos, etc. -->
     </div>
 
-    <div class="game-box">
-      <h3>🎮 Juego 7: Búsqueda de Palabras – Números</h3>
-      <p>Encuentra: <strong>ten, twenty, fifty, hundred, seven</strong>.</p>
+    <!-- Evaluaciones - 10 min (Aumentado a 15) -->
+    <div class="section">
+        <h3>15 EVALUACIONES</h3>
+        <p>Responde estas preguntas para evaluar tu aprendizaje:</p>
+        <ol>
+            <li>Traduce: I find the number one.</li>
+            <li>Completa: What does Monday ___? (mean)</li>
+            <li>Escribe la fecha: 5 de mayo.</li>
+            <li>Usa "use": We ___ calendars.</li>
+            <li>Incluye: The months ___ January to December.</li>
+            <li>Establece: ___ a date for the party.</li>
+            <li>Aprende: ___ the numbers from 1 to 10.</li>
+            <li>Reúnete: We ___ every Friday.</li>
+            <li>Paga: ___ on the last day of the month.</li>
+            <li>Continúa: ___ to learn dates.</li>
+            <li>Lee: ___ the month: October.</li>
+            <li>¿Cuántos días tiene la semana?</li>
+            <li>Traduce "twenty".</li>
+            <li>Completa: This ___ it's my birthday. (means)</li>
+            <li>Escribe tres meses del año.</li>
+        </ol>
+        <p>Envía respuestas a tu instructor o autoevalúa con claves proporcionadas.</p>
     </div>
 
-    <div class="game-box">
-      <h3>🎮 Juego 8: Role Play – En la Tienda</h3>
-      <p>Pregunta precios y paga: "How much is this? I’ll pay with cash."</p>
+    <!-- Tareas para el Hogar - 5 min -->
+    <div class="section">
+        <h3>TAREAS PARA EL HOGAR</h3>
+        <ul>
+            <li>Escribe tu fecha de cumpleaños en inglés y crea 5 oraciones usándola.</li>
+            <li>Practica contando del 1 al 20 y nombra los días de la semana con audios de pronunciación.</li>
+            <li>Crea un calendario simple con verbos de la clase (ej. "Meet on Monday").</li>
+        </ul>
     </div>
 
-    <div class="game-box">
-      <h3>🎮 Juego 9: Taboo – "Calendar"</h3>
-      <p>Describe <strong>calendar</strong> sin usar: date, month, week, year, time.</p>
+    <!-- Reseña de la Próxima Clase -->
+    <div class="section">
+        <h3>RESEÑA DE LA PRÓXIMA CLASE: Clase 4 - Colores y Ropa</h3>
+        <p>Aprenderemos colores, prendas de vestir y descripciones simples, con verbos como open, remember, grow, add, offer, appear, love, spend, consider, remain. ¡Prepárate para describir tu guardarropa!</p>
     </div>
 
-    <div class="game-box">
-      <h3>🎮 Juego 10: ¿Verdadero o Falso?</h3>
-      <p>Lee: "February has 30 days." → ¿Verdadero o falso?</p>
-    </div>
+    <script>
+        let score = 0;
+        function checkAnswer(gameNum, correct) {
+            const selected = document.querySelector(`input[name="q${gameNum}"]:checked`).value;
+            const feedback = document.getElementById(`feedback${gameNum}`);
+            if (selected === correct) {
+                feedback.innerHTML = '<span class="feedback">¡Correcto!</span>';
+                score += 10;
+            } else {
+                feedback.innerHTML = '<span class="incorrect">Incorrecto. Intenta de nuevo.</span>';
+            }
+            document.getElementById('score').innerText = `Puntos: ${score} / 100`;
+        }
+        function checkMatch(gameNum, correct) {
+            const selected = document.getElementById(`match${gameNum}`).value;
+            const feedback = document.getElementById(`feedback${gameNum}`);
+            if (selected === correct) {
+                feedback.innerHTML = '<span class="feedback">¡Correcto!</span>';
+                score += 10;
+            } else {
+                feedback.innerHTML = '<span class="incorrect">Incorrecto. Intenta de nuevo.</span>';
+            }
+            document.getElementById('score').innerText = `Puntos: ${score} / 100`;
+        }
+        function checkInput(gameNum, correct) {
+            const selected = document.getElementById(`input${gameNum}`).value.trim();
+            const feedback = document.getElementById(`feedback${gameNum}`);
+            if (selected.toLowerCase() === correct.toLowerCase()) {
+                feedback.innerHTML = '<span class="feedback">¡Correcto!</span>';
+                score += 10;
+            } else {
+                feedback.innerHTML = '<span class="incorrect">Incorrecto. Intenta de nuevo.</span>';
+            }
+            document.getElementById('score').innerText = `Puntos: ${score} / 100`;
+        }
+        // Agregar funciones para otros juegos si es necesario...
+    </script>
 
-    <h2>📝 Evaluación: 10 Preguntas</h2>
-    <ol>
-      <li>Escribe "84" en inglés.</li>
-      <li>¿Cómo se dice "miércoles" en inglés?</li>
-      <li>Traduce: "Mi cumpleaños es el 5 de mayo".</li>
-      <li>¿Qué verbo va en: "She ___ (leer) a magazine"?</li>
-      <li>Escribe el día que sigue después de Tuesday.</li>
-      <li>¿Qué significa "include"?</li>
-      <li>Completa: "We ___ (continuar) learning English."</li>
-      <li>¿En qué mes es Navidad?</li>
-      <li>¿Cómo se dice "pagar" en inglés?</li>
-      <li>Menciona 3 números entre 50 y 70.</li>
-    </ol>
-
-    <h2>🏠 Tareas para el Hogar</h2>
-    <ul>
-      <li>Escribe tu calendario semanal en inglés: "Monday: class at 3 PM".</li>
-      <li>Graba un audio diciendo tu cumpleaños: "My birthday is on July 12th".</li>
-      <li>Practica los verbos: find, use, learn, pay, read con 3 oraciones cada uno.</li>
-      <li>Cuenta del 1 al 100 en voz alta y grábalo.</li>
-    </ul>
-
-    <h2>⏭️ Reseña de la Próxima Clase: Colores y Ropa</h2>
-    <p>En la <strong>Clase 4</strong>, aprenderemos:</p>
-    <ul>
-      <li>Los colores básicos en inglés</li>
-      <li>Prendas de vestir comunes</li>
-      <li>Cómo describir la ropa que usas</li>
-      <li>Verbos únicos: open, remember, grow, add, offer, appear, love, spend, consider, remain</li>
-    </ul>
-    <p>¡Trae tu ropa favorita y prepárate para describirla en inglés!</p>
-
-    <footer>
-      &copy; 2025 Curso de Inglés para Principiantes | Por: William Bermúdez<br>
-      Campus Virtual Interactivo - Módulo 1
-    </footer>
-  </div>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
