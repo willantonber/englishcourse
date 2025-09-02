@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curso de Inglés - Clase 6: La Casa y los Muebles</title>
+    <style>
+        :root {
+            --primary-color: #4e7ae6;
+            --secondary-color: #ff7e30;
+            --accent-color: #34c759;
+            --light-color: #f5f7ff;
+            --dark-color: #2c3e50;
+            --correct-color: #2ecc71;
+            --incorrect-color: #e74c3c;
+            --house-color: #9b59b6;
+            --furniture-color: #16a085;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f0f2f5;
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), #6c5ce7);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .progress-bar {
+            background-color: #e0e0e0;
+            border-radius: 20px;
+            height: 10px;
+            margin: 15px 0;
+            overflow: hidden;
+        }
+        
+        .progress {
+            background-color: var(--accent-color);
+            height: 100%;
+            width: 60%;
+            border-radius: 20px;
+            transition: width 0.5s ease;
+        }
+        
+        .section {
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        h1, h2, h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .house-title {
+            color: var(--house-color);
+        }
+        
+        .furniture-title {
+            color: var(--furniture-color);
+        }
+        
+        .verbs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .verb-card {
+            background-color: var(--light-color);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+        
+        .verb-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .verb-english {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        .verb-spanish {
+            color: var(--dark-color);
+            font-size: 0.9em;
+        }
+        
+        .game-container {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .options-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .option {
+            background-color: white;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.2s;
+        }
+        
+        .option:hover {
+            border-color: var(--primary-color);
+            background-color: #f0f5ff;
+        }
+        
+        .correct {
+            border-color: var(--correct-color);
+            background-color: #e8faf0;
+        }
+        
+        .incorrect {
+            border-color: var(--incorrect-color);
+            background-color: #fdedec;
+        }
+        
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s;
+            margin: 10px 5px;
+        }
+        
+        button:hover {
+            background-color: #3b5fc7;
+        }
+        
+        .secondary-btn {
+            background-color: var(--secondary-color);
+        }
+        
+        .secondary-btn:hover {
+            background-color: #e57229;
+        }
+        
+        input[type="text"], input[type="number"] {
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            width: 100%;
+            margin: 10px 0;
+            font-size: 1em;
+        }
+        
+        input[type="text"]:focus, input[type="number"]:focus {
+            border-color: var(--primary-color);
+            outline: none;
+        }
+        
+        .feedback {
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            display: none;
+        }
+        
+        .positive-feedback {
+            background-color: #e8faf0;
+            border-left: 5px solid var(--correct-color);
+        }
+        
+        .negative-feedback {
+            background-color: #fdedec;
+            border-left: 5px solid var(--incorrect-color);
+        }
+        
+        .vocabulary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .vocab-card {
+            background-color: var(--light-color);
+            padding: 15px 5px;
+            border-radius: 8px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        
+        .house-card {
+            border-left: 4px solid var(--house-color);
+        }
+        
+        .furniture-card {
+            border-left: 4px solid var(--furniture-color);
+        }
+        
+        .vocab-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .tab-container {
+            margin: 20px 0;
+        }
+        
+        .tabs {
+            display: flex;
+            border-bottom: 2px solid #ddd;
+            flex-wrap: wrap;
+        }
+        
+        .tab {
+            padding: 10px 15px;
+            cursor: pointer;
+            background-color: #f0f2f5;
+            border-radius: 5px 5px 0 0;
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+        
+        .tab.active {
+            background-color: white;
+            border: 2px solid #ddd;
+            border-bottom: none;
+            font-weight: bold;
+        }
+        
+        .tab-content {
+            padding: 20px;
+            border: 2px solid #ddd;
+            border-top: none;
+            border-radius: 0 0 5px 5px;
+            background-color: white;
+        }
+        
+        .tab-pane {
+            display: none;
+        }
+        
+        .tab-pane.active {
+            display: block;
+        }
+        
+        .score-display {
+            background-color: var(--light-color);
+            padding: 10px 15px;
+            border-radius: 20px;
+            display: inline-block;
+            margin: 10px 0;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        .timer {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: var(--secondary-color);
+            margin: 10px 0;
+        }
+        
+        .house-scene {
+            background-color: #f4f6f9;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            position: relative;
+            min-height: 300px;
+        }
+        
+        .preposition-example {
+            background-color: #e8f4f8;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+        
+        .house-map {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            gap: 10px;
+            height: 250px;
+            margin: 20px 0;
+        }
+        
+        .room {
+            background-color: #e0e6ff;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 10px;
+            font-weight: bold;
+        }
+        
+        .living-room {
+            grid-column: 1 / 3;
+            background-color: #d6eaf8;
+        }
+        
+        .kitchen {
+            background-color: #fdebd0;
+        }
+        
+        .bedroom {
+            background-color: #e8daef;
+        }
+        
+        .bathroom {
+            background-color: #d1f2eb;
+        }
+        
+        @media (max-width: 768px) {
+            .options-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .verbs-grid, .vocabulary-grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            }
+            
+            .house-map {
+                grid-template-columns: 1fr;
+                grid-template-rows: repeat(6, 1fr);
+                height: 500px;
+            }
+            
+            .living-room {
+                grid-column: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Curso de Inglés para Principiantes</h1>
+            <p>Módulo I - Clase 6: La Casa y los Muebles</p>
+            <div class="progress-bar">
+                <div class="progress"></div>
+            </div>
+            <p>Progreso del curso: 60%</p>
+        </header>
+        
+        <div class="section">
+            <h2>Objetivos de la Clase</h2>
+            <p>Al finalizar esta clase, serás capaz de:</p>
+            <ul>
+                <li>Identificar y nombrar las partes de una casa en inglés</li>
+                <li>Describir muebles y objetos del hogar</li>
+                <li>Usar preposiciones de lugar correctamente</li>
+                <li>Utilizar 10 verbos nuevos en contextos relacionados con el hogar</li>
+            </ul>
+        </div>
+        
+        <div class="section">
+            <h2 class="house-title">Vocabulario: Partes de la Casa</h2>
+            <div class="vocabulary-grid">
+                <div class="vocab-card house-card">Living room<br>(Sala de estar)</div>
+                <div class="vocab-card house-card">Kitchen<br>(Cocina)</div>
+                <div class="vocab-card house-card">Bedroom<br>(Dormitorio)</div>
+                <div class="vocab-card house-card">Bathroom<br>(Baño)</div>
+                <div class="vocab-card house-card">Dining room<br>(Comedor)</div>
+                <div class="vocab-card house-card">Garden<br>(Jardín)</div>
+                <div class="vocab-card house-card">Garage<br>(Garaje)</div>
+                <div class="vocab-card house-card">Balcony<br>(Balcón)</div>
+                <div class="vocab-card house-card">Hall<br>(Pasillo)</div>
+                <div class="vocab-card house-card">Stairs<br>(Escaleras)</div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="furniture-title">Vocabulario: Muebles y Objetos</h2>
+            <div class="vocabulary-grid">
+                <div class="vocab-card furniture-card">Table<br>(Mesa)</div>
+                <div class="vocab-card furniture-card">Chair<br>(Silla)</div>
+                <div class="vocab-card furniture-card">Bed<br>(Cama)</div>
+                <div class="vocab-card furniture-card">Sofa<br>(Sofá)</div>
+                <div class="vocab-card furniture-card">Cabinet<br>(Armario)</div>
+                <div class="vocab-card furniture-card">Desk<br>(Escritorio)</div>
+                <div class="vocab-card furniture-card">Lamp<br>(Lámpara)</div>
+                <div class="vocab-card furniture-card">Mirror<br>(Espejo)</div>
+                <div class="vocab-card furniture-card">Clock<br>(Reloj)</div>
+                <div class="vocab-card furniture-card">Window<br>(Ventana)</div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Verbos de la Clase 6</h2>
+            <p>A continuación, los 10 verbos que aprenderás hoy:</p>
+            <div class="verbs-grid">
+                <div class="verb-card">
+                    <div class="verb-english">sit</div>
+                    <div class="verb-spanish">(sentarse)</div>
+                </div>
+                <div class="verb-card">
+                    <div class="verb-english">stand</div>
+                    <div class="verb-spanish">(estar de pie)</div>
+                </div>
+                <div class="verb-card">
+                    <div class="verb-english">lead</div>
+                    <div class="verb-spanish">(dirigir)</div>
+                </div>
+                <div class="verb-card">
+                    <div class="verb-english">fall</div>
+                    <div class="verb-spanish">(caer)</div>
+                </div>
+                <div class="verb-card">
+                    <div class="verb-english">understand</div>
+                    <div class="verb-spanish">(entender)</div>
+                </div>
+                <div class="verb-card">
+                    <div class="verb-english">draw</div>
+                    <div class="verb-spanish">(dibujar)</div>
+                </div>
+                <div class="verb-card">
+                    <div class="verb-english">drink</div>
+                    <div class="verb-spanish">(beber)</div>
+                </div>
+                <div class="verb-card">
+                    <div class="verb-english">break</div>
+                    <div class="verb-spanish">(romper)</div>
+                </div>
+                <div class="verb-card">
+                    <div class="verb-english">choose</div>
+                    <div class="verb-spanish">(elegir)</div>
+                </div>
+                <div class="verb-card">
+                    <div class="verb-english">meet</div>
+                    <div class="verb-spanish">(encontrarse)</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Gramática: Preposiciones de Lugar</h2>
+            
+            <div class="tab-container">
+                <div class="tabs">
+                    <div class="tab active" onclick="openTab(event, 'prepositionsTab')">Preposiciones</div>
+                    <div class="tab" onclick="openTab(event, 'examplesTab')">Ejemplos</div>
+                    <div class="tab" onclick="openTab(event, 'practiceTab')">Práctica</div>
+                </div>
+                
+                <div class="tab-content">
+                    <div id="prepositionsTab" class="tab-pane active">
+                        <p><strong>Preposiciones de lugar más comunes:</strong></p>
+                        <ul>
+                            <li>in (en, dentro de)</li>
+                            <li>on (sobre, encima de)</li>
+                            <li>under (debajo de)</li>
+                            <li>next to (al lado de)</li>
+                            <li>between (entre)</li>
+                            <li>in front of (delante de)</li>
+                            <li>behind (detrás de)</li>
+                            <li>above (por encima de)</li>
+                            <li>below (por debajo de)</li>
+                            <li>near (cerca de)</li>
+                        </ul>
+                    </div>
+                    <div id="examplesTab" class="tab-pane">
+                        <p><strong>Ejemplos de uso:</strong></p>
+                        <div class="preposition-example">
+                            <p>The book is <strong>on</strong> the table. (El libro está sobre la mesa)</p>
+                        </div>
+                        <div class="preposition-example">
+                            <p>The cat is <strong>under</strong> the chair. (El gato está debajo de la silla)</p>
+                        </div>
+                        <div class="preposition-example">
+                            <p>The picture is <strong>above</strong> the sofa. (El cuadro está encima del sofá)</p>
+                        </div>
+                        <div class="preposition-example">
+                            <p>The bank is <strong>next to</strong> the post office. (El banco está al lado del correo)</p>
+                        </div>
+                        <div class="preposition-example">
+                            <p>I live <strong>near</strong> the school. (Vivo cerca de la escuela)</p>
+                        </div>
+                    </div>
+                    <div id="practiceTab" class="tab-pane">
+                        <p><strong>Practica con preposiciones:</strong></p>
+                        <p>Completa con la preposición correcta:</p>
+                        <ol>
+                            <li>The keys are ______ the drawer. (Las llaves están en el cajón)</li>
+                            <li>The dog is sleeping ______ the bed. (El perro está durmiendo debajo de la cama)</li>
+                            <li>The supermarket is ______ the bank and the pharmacy. (El supermercado está entre el banco y la farmacia)</li>
+                            <li>Park your car ______ the garage. (Estaciona tu carro en el garaje)</li>
+                            <li>The mirror is ______ the wall. (El espejo está sobre la pared)</li>
+                        </ol>
+                        <button onclick="showPrepositionAnswers()">Ver respuestas</button>
+                        <div id="preposition-answers" class="feedback" style="display:none">
+                            <p>Respuestas:</p>
+                            <ol>
+                                <li>in</li>
+                                <li>under</li>
+                                <li>between</li>
+                                <li>in</li>
+                                <li>on</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Juego: Completa la Oración</h2>
+            <p>Selecciona la opción correcta para completar cada oración:</p>
+            
+            <div class="game-container">
+                <div class="timer">Tiempo: <span id="time">60</span> segundos</div>
+                <div class="score-display">Puntuación: <span id="score">0</span>/10</div>
+                
+                <p id="question">1. Please ____ on the chair. (Por favor siéntate en la silla)</p>
+                <div class="options-container" id="options">
+                    <div class="option" onclick="checkAnswer(this, 'sit')">sit</div>
+                    <div class="option" onclick="checkAnswer(this, 'wrong')">stand</div>
+                    <div class="option" onclick="checkAnswer(this, 'wrong')">break</div>
+                    <div class="option" onclick="checkAnswer(this, 'wrong')">meet</div>
+                </div>
+                
+                <div id="feedback" class="feedback"></div>
+                
+                <button onclick="nextQuestion()">Siguiente Pregunta</button>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Ejercicio: Describe tu casa</h2>
+            <p>Completa las oraciones para describir una casa:</p>
+            
+            <div class="game-container">
+                <p>1. The __________ is where we cook food. (La __________ es donde cocinamos)</p>
+                <input type="text" id="word1" placeholder="(cocina)">
+                
+                <p>2. We sleep in the __________. (Dormimos en el __________)</p>
+                <input type="text" id="word2" placeholder="(dormitorio)">
+                
+                <p>3. The __________ is where we watch TV. (La __________ es donde vemos TV)</p>
+                <input type="text" id="word3" placeholder="(sala)">
+                
+                <p>4. We eat at the __________. (Comemos en la __________)</p>
+                <input type="text" id="word4" placeholder="(mesa)">
+                
+                <p>5. The books are on the __________. (Los libros están en el __________)</p>
+                <input type="text" id="word5" placeholder="(estante)">
+                
+                <button onclick="checkHouseDescription()">Verificar Respuestas</button>
+                <div id="description-feedback" class="feedback"></div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Ejercicio: ¿Dónde está el objeto?</h2>
+            <p>Observa el plano de la casa y responde las preguntas:</p>
+            
+            <div class="game-container">
+                <div class="house-map">
+                    <div class="room living-room">Sala<br>Sofa, TV, Lamp</div>
+                    <div class="room kitchen">Cocina<br>Table, Chairs</div>
+                    <div class="room bedroom">Dormitorio 1<br>Bed, Mirror</div>
+                    <div class="room bedroom">Dormitorio 2<br>Bed, Desk</div>
+                    <div class="room bathroom">Baño<br>Shower, Sink</div>
+                    <div class="room">Jardín<br>Plants, Table</div>
+                </div>
+                
+                <p>1. Where is the TV? <input type="text" id="q1" placeholder="(En la sala)"></p>
+                <p>2. Where is the shower? <input type="text" id="q2" placeholder="(En el baño)"></p>
+                <p>3. Where is the desk? <input type="text" id="q3" placeholder="(En el dormitorio 2)"></p>
+                <p>4. Where are the plants? <input type="text" id="q4" placeholder="(En el jardín)"></p>
+                <p>5. Where is the table in the kitchen? <input type="text" id="q5" placeholder="(En la cocina)"></p>
+                
+                <button onclick="checkHouseQuestions()">Verificar Respuestas</button>
+                <div id="house-feedback" class="feedback"></div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Diálogo: Decorando la Casa</h2>
+            <p>Escucha y lee el siguiente diálogo:</p>
+            
+            <div class="game-container" style="background-color: #e8f4f8;">
+                <p><strong>Maria:</strong> We need to <strong>choose</strong> new furniture for the living room.</p>
+                <p><strong>John:</strong> I like this sofa. We can <strong>sit</strong> here comfortably.</p>
+                <p><strong>Maria:</strong> Yes, but we need to <strong>understand</strong> the space. That lamp should <strong>stand</strong> in the corner.</p>
+                <p><strong>John:</strong> Be careful! Don't <strong>break</strong> that vase. Let's <strong>meet</strong> with the interior designer.</p>
+                <p><strong>Maria:</strong> Good idea. First, I want to <strong>draw</strong> a plan. Would you like to <strong>drink</strong> coffee while we work?</p>
+                <p><strong>John:</strong> Yes, please. I don't want to <strong>fall</strong> asleep. This will <strong>lead</strong> to a beautiful home!</p>
+                
+                <button onclick="playAudio()">▶ Escuchar diálogo</button>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Evaluación Final</h2>
+            <p>Completa esta evaluación para verificar tu comprensión de la clase:</p>
+            
+            <div class="game-container">
+                <form id="quiz-form">
+                    <p>1. ¿Cómo se dice "dormitorio" en inglés?</p>
+                    <input type="radio" name="q1" value="a"> bedroom<br>
+                    <input type="radio" name="q1" value="b"> bathroom<br>
+                    <input type="radio" name="q1" value="c"> living room<br>
+                    
+                    <p>2. ¿Cuál de estos verbos significa "entender"?</p>
+                    <input type="radio" name="q2" value="a"> understand<br>
+                    <input type="radio" name="q2" value="b"> stand<br>
+                    <input type="radio" name="q2" value="c"> sit<br>
+                    
+                    <p>3. "The cat is ______ the table" (El gato está debajo de la mesa)</p>
+                    <input type="radio" name="q3" value="a"> under<br>
+                    <input type="radio" name="q3" value="b"> on<br>
+                    <input type="radio" name="q3" value="c"> above<br>
+                    
+                    <p>4. ¿Cómo se dice "silla" en inglés?</p>
+                    <input type="radio" name="q4" value="a"> chair<br>
+                    <input type="radio" name="q4" value="b"> table<br>
+                    <input type="radio" name="q4" value="c"> bed<br>
+                    
+                    <p>5. ¿Qué significa "break" en español?</p>
+                    <input type="radio" name="q5" value="a"> romper<br>
+                    <input type="radio" name="q5" value="b"> sentarse<br>
+                    <input type="radio" name="q5" value="c"> elegir<br>
+                    
+                    <button type="button" onclick="submitQuiz()">Enviar Evaluación</button>
+                </form>
+                
+                <div id="quiz-result" class="feedback"></div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Tarea para el Hogar</h2>
+            <p>Para la próxima clase, por favor:</p>
+            <ol>
+                <li>Dibuja el plano de tu casa y etiqueta cada habitación en inglés</li>
+                <li>Escribe 10 oraciones describiendo dónde están los objetos usando preposiciones</li>
+                <li>Graba un audio describiendo tu habitación favorita</li>
+                <li>Prepara una lista de 5 muebles que te gustaría tener y cómo se dicen en inglés</li>
+            </ol>
+        </div>
+        
+        <div class="section">
+            <h2>Próxima Clase: Rutinas Diarias</h2>
+            <p>En la próxima clase aprenderás:</p>
+            <ul>
+                <li>Cómo describir tu rutina diaria en inglés</li>
+                <li>Expresar horas y momentos del día</li>
+                <li>El uso del presente simple</li>
+                <li>10 verbos nuevos: sleep, write, bring, speak, teach, learn, decide, read, wait, continue</li>
+            </ul>
+            <p>¡No olvides repasar el vocabulario de la casa y preposiciones!</p>
+        </div>
+        
+        <div class="section" style="text-align: center;">
+            <button onclick="markAsCompleted()" class="secondary-btn">Marcar Clase como Completada</button>
+            <p id="completion-message" style="display: none; margin-top: 15px; color: var(--accent-color); font-weight: bold;">¡Felicidades! Has completado la Clase 6.</p>
+        </div>
+    </div>
+
+    <script>
+        // Variables para el juego
+        let currentQuestion = 1;
+        let score = 0;
+        let timeLeft = 60;
+        let timer;
+        
+        // Preguntas para el juego
+        const questions = [
+            {
+                question: "Please ____ on the chair. (Por favor siéntate en la silla)",
+                options: ["sit", "stand", "break", "meet"],
+                correct: "sit"
+            },
+            {
+                question: "____ up when the teacher enters. (Levántate cuando entre la profesora)",
+                options: ["Stand", "Sit", "Fall", "Draw"],
+                correct: "Stand"
+            },
+            {
+                question: "This path will ____ to the garden. (Este camino llevará al jardín)",
+                options: ["lead", "break", "understand", "choose"],
+                correct: "lead"
+            },
+            {
+                question: "Be careful not to ____. (Ten cuidado de no caer)",
+                options: ["fall", "sit", "drink", "meet"],
+                correct: "fall"
+            },
+            {
+                question: "I don't ____ this exercise. (No entiendo este ejercicio)",
+                options: ["understand", "stand", "draw", "break"],
+                correct: "understand"
+            },
+            {
+                question: "She likes to ____ pictures. (A ella le gusta dibujar imágenes)",
+                options: ["draw", "drink", "break", "choose"],
+                correct: "draw"
+            },
+            {
+                question: "I want to ____ water. (Quiero beber agua)",
+                options: ["drink", "sit", "meet", "lead"],
+                correct: "drink"
+            },
+            {
+                question: "Don't ____ the window! (¡No rompas la ventana!)",
+                options: ["break", "stand", "draw", "understand"],
+                correct: "break"
+            },
+            {
+                question: "We need to ____ a color for the wall. (Necesitamos elegir un color para la pared)",
+                options: ["choose", "break", "fall", "drink"],
+                correct: "choose"
+            },
+            {
+                question: "Let's ____ at the café. (Encontrémonos en el café)",
+                options: ["meet", "sit", "stand", "lead"],
+                correct: "meet"
+            }
+        ];
+        
+        // Funciones para las pestañas
+        function openTab(evt, tabName) {
+            const tabcontent = document.getElementsByClassName("tab-pane");
+            for (let i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            
+            const tablinks = document.getElementsByClassName("tab");
+            for (let i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+        
+        function showPrepositionAnswers() {
+            document.getElementById("preposition-answers").style.display = "block";
+        }
+        
+        // Funciones para el juego de opción múltiple
+        function startTimer() {
+            clearInterval(timer);
+            timeLeft = 60;
+            document.getElementById("time").textContent = timeLeft;
+            
+            timer = setInterval(function() {
+                timeLeft--;
+                document.getElementById("time").textContent = timeLeft;
+                
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                    nextQuestion();
+                }
+            }, 1000);
+        }
+        
+        function checkAnswer(element, answer) {
+            const options = document.querySelectorAll('.option');
+            options.forEach(opt => {
+                opt.classList.remove('correct', 'incorrect');
+                opt.onclick = null;
+            });
+            
+            if (answer === questions[currentQuestion - 1].correct) {
+                element.classList.add('correct');
+                score++;
+                document.getElementById("score").textContent = score;
+                showFeedback("¡Correcto! Bien hecho.", true);
+            } else {
+                element.classList.add('incorrect');
+                options.forEach(opt => {
+                    if (opt.textContent === questions[currentQuestion - 1].correct) {
+                        opt.classList.add('correct');
+                    }
+                });
+                showFeedback("Incorrecto. La respuesta correcta es: " + questions[currentQuestion - 1].correct, false);
+            }
+        }
+        
+        function nextQuestion() {
+            clearInterval(timer);
+            
+            if (currentQuestion < questions.length) {
+                currentQuestion++;
+                document.getElementById("question").textContent = currentQuestion + ". " + questions[currentQuestion - 1].question;
+                
+                const optionsContainer = document.getElementById("options");
+                optionsContainer.innerHTML = "";
+                
+                questions[currentQuestion - 1].options.forEach(option => {
+                    const optionElement = document.createElement("div");
+                    optionElement.className = "option";
+                    optionElement.textContent = option;
+                    optionElement.onclick = function() {
+                        checkAnswer(this, option);
+                    };
+                    optionsContainer.appendChild(optionElement);
+                });
+                
+                document.getElementById("feedback").style.display = "none";
+                startTimer();
+            } else {
+                document.getElementById("question").textContent = "¡Juego completado!";
+                document.getElementById("options").innerHTML = "";
+                document.getElementById("feedback").style.display = "none";
+                document.querySelector("button").style.display = "none";
+                
+                let message = "";
+                if (score >= 8) {
+                    message = "¡Excelente! Obtuviste " + score + " de 10 puntos.";
+                } else if (score >= 5) {
+                    message = "Buen trabajo! Obtuviste " + score + " de 10 puntos. Sigue practicando.";
+                } else {
+                    message = "Obtuviste " + score + " de 10 puntos. Necesitas repasar más.";
+                }
+                
+                showFeedback(message, score >= 5);
+            }
+        }
+        
+        function showFeedback(text, isPositive) {
+            const feedback = document.getElementById("feedback");
+            feedback.textContent = text;
+            feedback.className = isPositive ? "feedback positive-feedback" : "feedback negative-feedback";
+            feedback.style.display = "block";
+        }
+        
+        // Función para verificar descripción de la casa
+        function checkHouseDescription() {
+            const answers = {
+                word1: "kitchen",
+                word2: "bedroom",
+                word3: "living room",
+                word4: "table",
+                word5: "shelf"
+            };
+            
+            let correctCount = 0;
+            let feedbackText = "";
+            
+            for (let i = 1; i <= 5; i++) {
+                const userAnswer = document.getElementById("word" + i).value.trim().toLowerCase();
+                const correctAnswer = answers["word" + i];
+                
+                if (userAnswer === correctAnswer) {
+                    correctCount++;
+                    feedbackText += "Pregunta " + i + ": Correcto!<br>";
+                } else {
+                    feedbackText += "Pregunta " + i + ": Incorrecto. La respuesta correcta es: " + correctAnswer + "<br>";
+                }
+            }
+            
+            const feedbackElement = document.getElementById("description-feedback");
+            feedbackElement.innerHTML = feedbackText + "<br>Obtuviste " + correctCount + " de 5 correctas.";
+            feedbackElement.className = correctCount >= 3 ? "feedback positive-feedback" : "feedback negative-feedback";
+            feedbackElement.style.display = "block";
+        }
+        
+        // Función para verificar preguntas sobre la casa
+        function checkHouseQuestions() {
+            const answers = {
+                q1: "in the living room",
+                q2: "in the bathroom",
+                q3: "in the second bedroom",
+                q4: "in the garden",
+                q5: "in the kitchen"
+            };
+            
+            let correctCount = 0;
+            let feedbackText = "";
+            
+            for (let i = 1; i <= 5; i++) {
+                const userAnswer = document.getElementById("q" + i).value.trim().toLowerCase();
+                const correctAnswer = answers["q" + i];
+                
+                // Verificación flexible
+                if (userAnswer.includes("living room") || userAnswer.includes("sala")) {
+                    correctCount++;
+                    feedbackText += "Pregunta " + i + ": Correcto!<br>";
+                } else if (userAnswer.includes("bathroom") || userAnswer.includes("baño")) {
+                    correctCount++;
+                    feedbackText += "Pregunta " + i + ": Correcto!<br>";
+                } else if (userAnswer.includes("second bedroom") || userAnswer.includes("dormitorio 2")) {
+                    correctCount++;
+                    feedbackText += "Pregunta " + i + ": Correcto!<br>";
+                } else if (userAnswer.includes("garden") || userAnswer.includes("jardín")) {
+                    correctCount++;
+                    feedbackText += "Pregunta " + i + ": Correcto!<br>";
+                } else if (userAnswer.includes("kitchen") || userAnswer.includes("cocina")) {
+                    correctCount++;
+                    feedbackText += "Pregunta " + i + ": Correcto!<br>";
+                } else {
+                    feedbackText += "Pregunta " + i + ": Incorrecto. La respuesta correcta es: " + answers["q" + i] + "<br>";
+                }
+            }
+            
+            const feedbackElement = document.getElementById("house-feedback");
+            feedbackElement.innerHTML = feedbackText + "<br>Obtuviste " + correctCount + " de 5 correctas.";
+            feedbackElement.className = correctCount >= 3 ? "feedback positive-feedback" : "feedback negative-feedback";
+            feedbackElement.style.display = "block";
+        }
+        
+        // Función para la evaluación final
+        function submitQuiz() {
+            const answers = {
+                q1: "a",
+                q2: "a",
+                q3: "a",
+                q4: "a",
+                q5: "a"
+            };
+            
+            let correctCount = 0;
+            let resultHTML = "";
+            
+            for (let i = 1; i <= 5; i++) {
+                const selected = document.querySelector('input[name="q' + i + '"]:checked');
+                if (selected) {
+                    if (selected.value === answers["q" + i]) {
+                        correctCount++;
+                        resultHTML += "Pregunta " + i + ": Correcto!<br>";
+                    } else {
+                        resultHTML += "Pregunta " + i + ": Incorrecto. La respuesta correcta es: " + 
+                                    document.querySelector('input[name="q' + i + '"][value="' + answers["q" + i] + '"]').parentNode.textContent + "<br>";
+                    }
+                } else {
+                    resultHTML += "Pregunta " + i + ": No respondida. La respuesta correcta es: " + 
+                                document.querySelector('input[name="q' + i + '"][value="' + answers["q" + i] + '"]').parentNode.textContent + "<br>";
+                }
+            }
+            
+            const resultElement = document.getElementById("quiz-result");
+            resultElement.innerHTML = resultHTML + "<br><strong>Resultado: " + correctCount + " de 5 correctas (" + (correctCount/5*100) + "%)</strong>";
+            
+            if (correctCount >= 4) {
+                resultElement.className = "feedback positive-feedback";
+            } else {
+                resultElement.className = "feedback negative-feedback";
+            }
+            
+            resultElement.style.display = "block";
+        }
+        
+        // Función para marcar la clase como completada
+        function markAsCompleted() {
+            document.getElementById("completion-message").style.display = "block";
+            localStorage.setItem('clase6-completed', 'true');
+        }
+        
+        // Función para reproducir audio (simulado)
+        function playAudio() {
+            alert("Reproduciendo diálogo de audio...");
+        }
+        
+        // Inicializar la página
+        window.onload = function() {
+            startTimer();
+            if (localStorage.getItem('clase6-completed') === 'true') {
+                document.getElementById("completion-message").style.display = "block";
+            }
+        };
+    </script>
+</body>
+</html>
