@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curso de Inglés - Clase 5: Comida y Bebidas</title>
+    <style>
+        :root {
+            --primary-color: #4e7ae6;
+            --secondary-color: #ff7e30;
+            --accent-color: #34c759;
+            --light-color: #f5f7ff;
+            --dark-color: #2c3e50;
+            --correct-color: #2ecc71;
+            --incorrect-color: #e74c3c;
+            --food-color: #e67e22;
+            --drink-color: #3498db;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f0f2f5;
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), #6c5ce7);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .progress-bar {
+            background-color: #e0e0e0;
+            border-radius: 20px;
+            height: 10px;
+            margin: 15px 0;
+            overflow: hidden;
+        }
+        
+        .progress {
+            background-color: var(--accent-color);
+            height: 100%;
+            width: 50%;
+            border-radius: 20px;
+            transition: width 0.5s ease;
+        }
+        
+        .section {
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        h1, h2, h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .food-title {
+            color: var(--food-color);
+        }
+        
+        .drink-title {
+            color: var(--drink-color);
+        }
+        
+        .verbs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .verb-card {
+            background-color: var(--light-color);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+        
+        .verb-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .verb-english {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        .verb-spanish {
+            color: var(--dark-color);
+            font-size: 0.9em;
+        }
+        
+        .game-container {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .options-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .option {
+            background-color: white;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.2s;
+        }
+        
+        .option:hover {
+            border-color: var(--primary-color);
+            background-color: #f0f5ff;
+        }
+        
+        .correct {
+            border-color: var(--correct-color);
+            background-color: #e8faf0;
+        }
+        
+        .incorrect {
+            border-color: var(--incorrect-color);
+            background-color: #fdedec;
+        }
+        
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s;
+            margin: 10px 5px;
+        }
+        
+        button:hover {
+            background-color: #3b5fc7;
+        }
+        
+        .secondary-btn {
+            background-color: var(--secondary-color);
+        }
+        
+        .secondary-btn:hover {
+            background-color: #e57229;
+        }
+        
+        input[type="text"], input[type="number"] {
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            width: 100%;
+            margin: 10px 0;
+            font-size: 1em;
+        }
+        
+        input[type="text"]:focus, input[type="number"]:focus {
+            border-color: var(--primary-color);
+            outline: none;
+        }
+        
+        .feedback {
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            display: none;
+        }
+        
+        .positive-feedback {
+            background-color: #e8faf0;
+            border-left: 5px solid var(--correct-color);
+        }
+        
+        .negative-feedback {
+            background-color: #fdedec;
+            border-left: 5px solid var(--incorrect-color);
+        }
+        
+        .vocabulary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .vocab-card {
+            background-color: var(--light-color);
+            padding: 15px 5px;
+            border-radius: 8px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        
+        .food-card {
+            border-left: 4px solid var(--food-color);
+        }
+        
+        .drink-card {
+            border-left: 4px solid var(--drink-color);
+        }
+        
+        .vocab-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .tab-container {
+            margin: 20px 0;
+        }
+        
+        .tabs {
+            display: flex;
+            border-bottom: 2px solid #ddd;
+        }
+        
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            background-color: #f0f2f5;
+            border-radius: 5px 5px 0 0;
+            margin-right: 5px;
+        }
+        
+        .tab.active {
+            background-color: white;
+            border: 2px solid #ddd;
+            border-bottom: none;
+            font-weight: bold;
+        }
+        
+        .tab-content {
+            padding: 20px;
+            border: 2px solid #ddd;
+            border-top: none;
+            border-radius: 0 0 5px 5px;
+            background-color: white;
+        }
+        
+        .tab-pane {
+            display: none;
+        }
+        
+        .tab-pane.active {
+            display: block;
+        }
+        
+        .score-display {
+            background-color: var(--light-color);
+            padding: 10px 15px;
+            border-radius: 20px;
+            display: inline-block;
+            margin: 10px 0;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        .timer {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: var(--secondary-color);
+            margin: 10px 0;
+        }
+        
+        .restaurant-scene {
+            background-color: #fffaea;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            border: 2px dashed #f39c12;
+        }
+        
+        .menu-item {
+            padding: 10px;
+            margin: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        @media (max-width: 768px) {
+            .options-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .verbs-grid, .vocabulary-grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Curso de Inglés para Principiantes</h1>
+            <p>Módulo I - Clase 5: Comida y Bebidas</p>
+            <div class="progress-bar">
+                <div class="progress"></div>
+            </div>
+            <p>Progreso del curso: 50%</p>
+        </header>
+        
+        <div class="section">
+            <h2>Objetivos de la Clase</h2>
+            <p>Al finalizar esta clase, serás capaz de:</p>
+            <ul>
+                <li>Identificar y nombrar alimentos y bebidas comunes en inglés</li>
+                <li>Ordenar comida en un restaurante</li>
+                <li>Expresar preferencias alimenticias</li>
+                <li>Utilizar 10 verbos nuevos relacionados con comida</li>
+            </ul>
+        </div>
+        
+        <div class="section">
+            <h2 class="food-title">Vocabulario: Alimentos</h2>
+            <div class="vocabulary-grid">
+                <div class="vocab-card food-card">Apple<br>(Manzana)</div>
+                <div class="vocab-card food-card">Bread<br>(Pan)</div>
+                <div class="vocab-card food-card">Cheese<br>(Queso)</div>
+                <div class="vocab-card food-card">Chicken<br>(Pollo)</div>
+                <div class="vocab-card food-card">Egg<br>(Huevo)</div>
+                <div class="vocab-card food-card">Fish<br>(Pescado)</div>
+                <div class="vocab-card food-card">Meat<br>(Carne)</div>
+                <div class="vocab-card food-card">Pasta<br>(Pasta)</div>
+                <div class="vocab-card food-card">Rice<br>(Arroz)</div>
+                <div class="vocab-card food-card">Salad<br>(Ensalada)</div>
+                <div class="vocab-card food-card">Sandwich<br>(Sándwich)</div>
+                <div class="vocab-card food-card">Soup<br>(Sopa)</div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="drink-title">Vocabulario: Bebidas</h2>
+            <div class="vocabulary-grid">
+                <div class="vocab-card drink-card">Water<br>(Agua)</div>
+                <div class="vocab-card drink-card">Coffee<br>(Café)</div>
+                <div class="vocab-card drink-card">Tea<br>(Té)</div>
+                <div class="vocab-card drink-card">Juice<br>(Jugo)</div>
+                <div class="vocab-card drink-card">Milk<br>(Leche)</div>
+                <div class="vocab-card drink-card">Soda<br>(Refresco)</div>
+                <div class="vocab-card drink-card">Beer<br>(Cerveza)</div>
+                <div class="vocab-card drink-card">Wine<br>(Vino)</div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Verbos de la Clase 5</h2>
+            <p>A continuación, los 10 verbos que aprenderás hoy:</p>
+            <div class="verbs-grid">
+                <div class="verb-card">
+                    <div class="verb-english">buy</div>
+                    <div class="verb-spanish">(comprar)</div>
+                </div>
+                <div class="verb-card">
+                    <div class="verb-english">serve</div>
+                    <div class="verb-spanish">(servir)</div>
+                </div>
+                <div class="verb-card">
+                    <div class="verb-english">send</div>
+                    <div class="verb-spanish">(enviar)</div>
+                </div>
+                <div class="verb-card">
+                    <div class="verb-english">expect</div>
+                    <div class="verb-spanish">(esperar)</div>
+                </div>
+                <div class="verb-card">
+                    <div class="verb-english">stay</div>
+                    <div class="verb-spanish">(permanecer)</div>
+                </div>
+                <div class="verb-card">
+                    <div class="verb-english">die</div>
+                    <div class="verb-spanish">(morir)</div>
+                </div>
+                <div class="verb-card">
+                    <div class="verb-english">build</div>
+                    <div class="verb-spanish">(construir)</div>
+                </div>
+                <div class="verb-card">
+                    <div class="verb-english">cut</div>
+                    <div class="verb-spanish">(cortar)</div>
+                </div>
+                <div class="verb-card">
+                    <div class="verb-english">fall</div>
+                    <div class="verb-spanish">(caer)</div>
+                </div>
+                <div class="verb-card">
+                    <div class="verb-english">win</div>
+                    <div class="verb-spanish">(ganar)</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Expresiones útiles en restaurantes</h2>
+            
+            <div class="tab-container">
+                <div class="tabs">
+                    <div class="tab active" onclick="openTab(event, 'orderingTab')">Para ordenar</div>
+                    <div class="tab" onclick="openTab(event, 'problemsTab')">Problemas</div>
+                    <div class="tab" onclick="openTab(event, 'payingTab')">Para pagar</div>
+                </div>
+                
+                <div class="tab-content">
+                    <div id="orderingTab" class="tab-pane active">
+                        <p><strong>Frases útiles para ordenar comida:</strong></p>
+                        <ul>
+                            <li>I would like... (Me gustaría...)</li>
+                            <li>Can I have...? (¿Puedo tener...?)</li>
+                            <li>What do you recommend? (¿Qué recomienda?)</li>
+                            <li>I'll have... (Voy a tomar...) </li>
+                            <li>Could I see the menu? (¿Podría ver el menú?)</li>
+                        </ul>
+                    </div>
+                    <div id="problemsTab" class="tab-pane">
+                        <p><strong>Frases para resolver problemas:</strong></p>
+                        <ul>
+                            <li>This is not what I ordered. (Esto no es lo que pedí)</li>
+                            <li>My food is cold. (Mi comida está fría)</li>
+                            <li>Could I change this? (¿Podría cambiar esto?)</li>
+                            <li>We've been waiting a long time. (Hemos esperado mucho tiempo)</li>
+                        </ul>
+                    </div>
+                    <div id="payingTab" class="tab-pane">
+                        <p><strong>Frases para pagar:</strong></p>
+                        <ul>
+                            <li>Can I have the bill? (¿Me puede traer la cuenta?)</li>
+                            <li>We'd like to pay. (Nos gustaría pagar)</li>
+                            <li>Do you accept credit cards? (¿Aceptan tarjetas de crédito?)</li>
+                            <li>Is service included? (¿El servicio está incluido?)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Juego: Completa la Oración</h2>
+            <p>Selecciona la opción correcta para completar cada oración:</p>
+            
+            <div class="game-container">
+                <div class="timer">Tiempo: <span id="time">60</span> segundos</div>
+                <div class="score-display">Puntuación: <span id="score">0</span>/10</div>
+                
+                <p id="question">1. I need to ____ some bread at the store. (Necesito comprar pan en la tienda)</p>
+                <div class="options-container" id="options">
+                    <div class="option" onclick="checkAnswer(this, 'buy')">buy</div>
+                    <div class="option" onclick="checkAnswer(this, 'wrong')">serve</div>
+                    <div class="option" onclick="checkAnswer(this, 'wrong')">cut</div>
+                    <div class="option" onclick="checkAnswer(this, 'wrong')">win</div>
+                </div>
+                
+                <div id="feedback" class="feedback"></div>
+                
+                <button onclick="nextQuestion()">Siguiente Pregunta</button>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Ejercicio: Ordena en el restaurante</h2>
+            <p>Completa el diálogo con las palabras correctas:</p>
+            
+            <div class="game-container restaurant-scene">
+                <p><strong>Waiter:</strong> Good evening. Are you ready to order?</p>
+                <p><strong>Customer:</strong> Yes, I'd like to <input type="text" id="word1" placeholder="(ordenar)"> the chicken with rice, please.</p>
+                <p><strong>Waiter:</strong> Excellent choice. What would you like to <input type="text" id="word2" placeholder="(beber)">?</p>
+                <p><strong>Customer:</strong> I'll have a glass of water, and later I'd like to <input type="text" id="word3" placeholder="(pedir)"> coffee.</p>
+                <p><strong>Waiter:</strong> Very well. Would you like anything else?</p>
+                <p><strong>Customer:</strong> No, that's all. Thank you. Can you <input type="text" id="word4" placeholder="(traer)"> the bill with the coffee?</p>
+                
+                <button onclick="checkRestaurantDialog()">Verificar Respuestas</button>
+                <div id="dialog-feedback" class="feedback"></div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Ejercicio: Empareja la comida</h2>
+            <p>Arrastra cada alimento a su categoría correcta:</p>
+            
+            <div class="game-container">
+                <div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
+                    <div style="width: 48%; min-width: 250px;">
+                        <h3 class="food-title">Comida</h3>
+                        <div id="food-box" style="min-height: 150px; border: 2px dashed var(--food-color); border-radius: 8px; padding: 10px; margin-bottom: 20px;">
+                            <!-- Aquí se soltarán los alimentos -->
+                        </div>
+                    </div>
+                    
+                    <div style="width: 48%; min-width: 250px;">
+                        <h3 class="drink-title">Bebidas</h3>
+                        <div id="drink-box" style="min-height: 150px; border: 2px dashed var(--drink-color); border-radius: 8px; padding: 10px; margin-bottom: 20px;">
+                            <!-- Aquí se soltarán las bebidas -->
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="items-container" style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px;">
+                    <div class="vocab-card food-card" draggable="true" onclick="dragItem(event)">Apple</div>
+                    <div class="vocab-card drink-card" draggable="true" onclick="dragItem(event)">Coffee</div>
+                    <div class="vocab-card food-card" draggable="true" onclick="dragItem(event)">Bread</div>
+                    <div class="vocab-card drink-card" draggable="true" onclick="dragItem(event)">Water</div>
+                    <div class="vocab-card food-card" draggable="true" onclick="dragItem(event)">Cheese</div>
+                    <div class="vocab-card drink-card" draggable="true" onclick="dragItem(event)">Juice</div>
+                    <div class="vocab-card food-card" draggable="true" onclick="dragItem(event)">Chicken</div>
+                    <div class="vocab-card drink-card" draggable="true" onclick="dragItem(event)">Milk</div>
+                </div>
+                
+                <button onclick="checkMatching()" style="margin-top: 20px;">Verificar Respuestas</button>
+                <div id="matching-feedback" class="feedback"></div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Diálogo: En el Restaurante</h2>
+            <p>Escucha y lee el siguiente diálogo:</p>
+            
+            <div class="game-container" style="background-color: #e8f4f8;">
+                <p><strong>Waiter:</strong> Good evening. Welcome to our restaurant.</p>
+                <p><strong>Customer:</strong> Good evening. We'd like to <strong>buy</strong> dinner here. Can you <strong>serve</strong> us at that table?</p>
+                <p><strong>Waiter:</strong> Of course. Here are the menus. I'll <strong>send</strong> someone to take your order.</p>
+                <p><strong>Customer:</strong> Thank you. We <strong>expect</strong> to try your special pasta.</p>
+                <p><strong>Waiter:</strong> Excellent choice. How long will you <strong>stay</strong> in town?</p>
+                <p><strong>Customer:</strong> We're here for three days. We don't want to <strong>die</strong> without trying the local food!</p>
+                <p><strong>Waiter:</strong> (Laughs) I'm sure you'll <strong>win</strong> with our dishes. Enjoy your meal!</p>
+                
+                <button onclick="playAudio()">▶ Escuchar diálogo</button>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Evaluación Final</h2>
+            <p>Completa esta evaluación para verificar tu comprensión de la clase:</p>
+            
+            <div class="game-container">
+                <form id="quiz-form">
+                    <p>1. ¿Cómo se dice "pollo" en inglés?</p>
+                    <input type="radio" name="q1" value="a"> chicken<br>
+                    <input type="radio" name="q1" value="b"> cheese<br>
+                    <input type="radio" name="q1" value="c"> bread<br>
+                    
+                    <p>2. ¿Cuál de estos verbos significa "comprar"?</p>
+                    <input type="radio" name="q2" value="a"> buy<br>
+                    <input type="radio" name="q2" value="b"> serve<br>
+                    <input type="radio" name="q2" value="c"> cut<br>
+                    
+                    <p>3. ¿Cómo se pide la cuenta en un restaurante?</p>
+                    <input type="radio" name="q3" value="a"> Can I have the bill?<br>
+                    <input type="radio" name="q3" value="b"> Where is the food?<br>
+                    <input type="radio" name="q3" value="c"> I need water.<br>
+                    
+                    <p>4. ¿Cómo se dice "Me gustaría..." en inglés?</p>
+                    <input type="radio" name="q4" value="a"> I would like...<br>
+                    <input type="radio" name="q4" value="b"> I want now...<br>
+                    <input type="radio" name="q4" value="c"> I need that...<br>
+                    
+                    <p>5. ¿Qué significa "serve" en español?</p>
+                    <input type="radio" name="q5" value="a"> servir<br>
+                    <input type="radio" name="q5" value="b"> comprar<br>
+                    <input type="radio" name="q5" value="c"> enviar<br>
+                    
+                    <button type="button" onclick="submitQuiz()">Enviar Evaluación</button>
+                </form>
+                
+                <div id="quiz-result" class="feedback"></div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Tarea para el Hogar</h2>
+            <p>Para la próxima clase, por favor:</p>
+            <ol>
+                <li>Escribe un menú de restaurante en inglés con 5 platos principales y 3 bebidas</li>
+                <li>Graba un audio pidiendo comida en un restaurante imaginario (usando 5 expresiones de esta clase)</li>
+                <li>Escribe 5 oraciones usando los verbos aprendidos hoy</li>
+                <li>Prepara una lista de tus 5 comidas favoritas y cómo se dicen en inglés</li>
+            </ol>
+        </div>
+        
+        <div class="section">
+            <h2>Próxima Clase: La Casa y los Muebles</h2>
+            <p>En la próxima clase aprenderás:</p>
+            <ul>
+                <li>Partes de la casa en inglés</li>
+                <li>Vocabulario de muebles y objetos del hogar</li>
+                <li>Preposiciones de lugar</li>
+                <li>10 verbos nuevos: sit, stand, lead, fall, understand, draw, drink, break, choose, meet</li>
+            </ul>
+            <p>¡No olvides repasar el vocabulario de comida y bebidas!</p>
+        </div>
+        
+        <div class="section" style="text-align: center;">
+            <button onclick="markAsCompleted()" class="secondary-btn">Marcar Clase como Completada</button>
+            <p id="completion-message" style="display: none; margin-top: 15px; color: var(--accent-color); font-weight: bold;">¡Felicidades! Has completado la Clase 5.</p>
+        </div>
+    </div>
+
+    <script>
+        // Variables para el juego
+        let currentQuestion = 1;
+        let score = 0;
+        let timeLeft = 60;
+        let timer;
+        
+        // Preguntas para el juego
+        const questions = [
+            {
+                question: "I need to ____ some bread at the store. (Necesito comprar pan en la tienda)",
+                options: ["buy", "serve", "cut", "win"],
+                correct: "buy"
+            },
+            {
+                question: "They ____ excellent food at this restaurant. (Ellos sirven excelente comida en este restaurante)",
+                options: ["serve", "buy", "send", "expect"],
+                correct: "serve"
+            },
+            {
+                question: "I will ____ you a message. (Te enviaré un mensaje)",
+                options: ["send", "buy", "stay", "die"],
+                correct: "send"
+            },
+            {
+                question: "We ____ to arrive at 8 PM. (Esperamos llegar a las 8 PM)",
+                options: ["expect", "buy", "build", "cut"],
+                correct: "expect"
+            },
+            {
+                question: "How long will you ____ in Madrid? (¿Cuánto tiempo te quedarás en Madrid?)",
+                options: ["stay", "send", "fall", "win"],
+                correct: "stay"
+            },
+            {
+                question: "Without water, plants ____. (Sin agua, las plantas mueren)",
+                options: ["die", "fall", "build", "cut"],
+                correct: "die"
+            },
+            {
+                question: "They want to ____ a new house. (Quieren construir una casa nueva)",
+                options: ["build", "buy", "stay", "win"],
+                correct: "build"
+            },
+            {
+                question: "Please ____ the vegetables. (Por favor corta las verduras)",
+                options: ["cut", "buy", "serve", "fall"],
+                correct: "cut"
+            },
+            {
+                question: "Be careful not to ____. (Ten cuidado de no caer)",
+                options: ["fall", "die", "build", "send"],
+                correct: "fall"
+            },
+            {
+                question: "I hope we ____ the game. (Espero que ganemos el juego)",
+                options: ["win", "buy", "stay", "expect"],
+                correct: "win"
+            }
+        ];
+        
+        // Funciones para las pestañas
+        function openTab(evt, tabName) {
+            const tabcontent = document.getElementsByClassName("tab-pane");
+            for (let i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            
+            const tablinks = document.getElementsByClassName("tab");
+            for (let i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+        
+        // Funciones para el juego de opción múltiple
+        function startTimer() {
+            clearInterval(timer);
+            timeLeft = 60;
+            document.getElementById("time").textContent = timeLeft;
+            
+            timer = setInterval(function() {
+                timeLeft--;
+                document.getElementById("time").textContent = timeLeft;
+                
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                    nextQuestion();
+                }
+            }, 1000);
+        }
+        
+        function checkAnswer(element, answer) {
+            const options = document.querySelectorAll('.option');
+            options.forEach(opt => {
+                opt.classList.remove('correct', 'incorrect');
+                opt.onclick = null;
+            });
+            
+            if (answer === questions[currentQuestion - 1].correct) {
+                element.classList.add('correct');
+                score++;
+                document.getElementById("score").textContent = score;
+                showFeedback("¡Correcto! Bien hecho.", true);
+            } else {
+                element.classList.add('incorrect');
+                options.forEach(opt => {
+                    if (opt.textContent === questions[currentQuestion - 1].correct) {
+                        opt.classList.add('correct');
+                    }
+                });
+                showFeedback("Incorrecto. La respuesta correcta es: " + questions[currentQuestion - 1].correct, false);
+            }
+        }
+        
+        function nextQuestion() {
+            clearInterval(timer);
+            
+            if (currentQuestion < questions.length) {
+                currentQuestion++;
+                document.getElementById("question").textContent = currentQuestion + ". " + questions[currentQuestion - 1].question;
+                
+                const optionsContainer = document.getElementById("options");
+                optionsContainer.innerHTML = "";
+                
+                questions[currentQuestion - 1].options.forEach(option => {
+                    const optionElement = document.createElement("div");
+                    optionElement.className = "option";
+                    optionElement.textContent = option;
+                    optionElement.onclick = function() {
+                        checkAnswer(this, option);
+                    };
+                    optionsContainer.appendChild(optionElement);
+                });
+                
+                document.getElementById("feedback").style.display = "none";
+                startTimer();
+            } else {
+                document.getElementById("question").textContent = "¡Juego completado!";
+                document.getElementById("options").innerHTML = "";
+                document.getElementById("feedback").style.display = "none";
+                document.querySelector("button").style.display = "none";
+                
+                let message = "";
+                if (score >= 8) {
+                    message = "¡Excelente! Obtuviste " + score + " de 10 puntos.";
+                } else if (score >= 5) {
+                    message = "Buen trabajo! Obtuviste " + score + " de 10 puntos. Sigue practicando.";
+                } else {
+                    message = "Obtuviste " + score + " de 10 puntos. Necesitas repasar más.";
+                }
+                
+                showFeedback(message, score >= 5);
+            }
+        }
+        
+        function showFeedback(text, isPositive) {
+            const feedback = document.getElementById("feedback");
+            feedback.textContent = text;
+            feedback.className = isPositive ? "feedback positive-feedback" : "feedback negative-feedback";
+            feedback.style.display = "block";
+        }
+        
+        // Función para verificar diálogo de restaurante
+        function checkRestaurantDialog() {
+            const answers = {
+                word1: "order",
+                word2: "drink",
+                word3: "order",
+                word4: "bring"
+            };
+            
+            let correctCount = 0;
+            let feedbackText = "";
+            
+            for (let i = 1; i <= 4; i++) {
+                const userAnswer = document.getElementById("word" + i).value.trim().toLowerCase();
+                const correctAnswer = answers["word" + i];
+                
+                if (userAnswer === correctAnswer) {
+                    correctCount++;
+                    feedbackText += "Palabra " + i + ": Correcto!<br>";
+                } else {
+                    feedbackText += "Palabra " + i + ": Incorrecto. La respuesta correcta es: " + correctAnswer + "<br>";
+                }
+            }
+            
+            const feedbackElement = document.getElementById("dialog-feedback");
+            feedbackElement.innerHTML = feedbackText + "<br>Obtuviste " + correctCount + " de 4 correctas.";
+            feedbackElement.className = correctCount >= 3 ? "feedback positive-feedback" : "feedback negative-feedback";
+            feedbackElement.style.display = "block";
+        }
+        
+        // Funciones para el juego de arrastrar (simplificado)
+        function dragItem(ev) {
+            const item = ev.target;
+            const category = item.classList.contains('food-card') ? 'food' : 'drink';
+            alert("Arrastra '" + item.textContent + "' a la categoría " + category);
+        }
+        
+        function checkMatching() {
+            alert("En una implementación completa, esto verificaría los elementos en cada categoría. Por ahora, practica el vocabulario.");
+            document.getElementById("matching-feedback").textContent = "¡Sigue practicando el vocabulario de comidas y bebidas!";
+            document.getElementById("matching-feedback").className = "feedback positive-feedback";
+            document.getElementById("matching-feedback").style.display = "block";
+        }
+        
+        // Función para la evaluación final
+        function submitQuiz() {
+            const answers = {
+                q1: "a",
+                q2: "a",
+                q3: "a",
+                q4: "a",
+                q5: "a"
+            };
+            
+            let correctCount = 0;
+            let resultHTML = "";
+            
+            for (let i = 1; i <= 5; i++) {
+                const selected = document.querySelector('input[name="q' + i + '"]:checked');
+                if (selected) {
+                    if (selected.value === answers["q" + i]) {
+                        correctCount++;
+                        resultHTML += "Pregunta " + i + ": Correcto!<br>";
+                    } else {
+                        resultHTML += "Pregunta " + i + ": Incorrecto. La respuesta correcta es: " + 
+                                    document.querySelector('input[name="q' + i + '"][value="' + answers["q" + i] + '"]').parentNode.textContent + "<br>";
+                    }
+                } else {
+                    resultHTML += "Pregunta " + i + ": No respondida. La respuesta correcta es: " + 
+                                document.querySelector('input[name="q' + i + '"][value="' + answers["q" + i] + '"]').parentNode.textContent + "<br>";
+                }
+            }
+            
+            const resultElement = document.getElementById("quiz-result");
+            resultElement.innerHTML = resultHTML + "<br><strong>Resultado: " + correctCount + " de 5 correctas (" + (correctCount/5*100) + "%)</strong>";
+            
+            if (correctCount >= 4) {
+                resultElement.className = "feedback positive-feedback";
+            } else {
+                resultElement.className = "feedback negative-feedback";
+            }
+            
+            resultElement.style.display = "block";
+        }
+        
+        // Función para marcar la clase como completada
+        function markAsCompleted() {
+            document.getElementById("completion-message").style.display = "block";
+            localStorage.setItem('clase5-completed', 'true');
+        }
+        
+        // Función para reproducir audio (simulado)
+        function playAudio() {
+            alert("Reproduciendo diálogo de audio...");
+        }
+        
+        // Inicializar la página
+        window.onload = function() {
+            startTimer();
+            if (localStorage.getItem('clase5-completed') === 'true') {
+                document.getElementById("completion-message").style.display = "block";
+            }
+        };
+    </script>
+</body>
+</html>
