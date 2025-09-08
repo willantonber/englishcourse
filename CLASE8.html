@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curso de Inglés - Clase 8: Transporte y Direcciones</title>
+    <style>
+        :root {
+            --primary-color: #4e7ae6;
+            --secondary-color: #ff7e30;
+            --accent-color: #34c759;
+            --light-color: #f5f7ff;
+            --dark-color: #2c3e50;
+            --correct-color: #2ecc71;
+            --incorrect-color: #e74c3c;
+            --transport-color: #3498db;
+            --direction-color: #9b59b6;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f0f2f5;
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), #6c5ce7);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .progress-bar {
+            background-color: #e0e0e0;
+            border-radius: 20px;
+            height: 10px;
+            margin: 15px 0;
+            overflow: hidden;
+        }
+        
+        .progress {
+            background-color: var(--accent-color);
+            height: 100%;
+            width: 80%;
+            border-radius: 20px;
+            transition: width 0.5s ease;
+        }
+        
+        .section {
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        h1, h2, h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .transport-title {
+            color: var(--transport-color);
+        }
+        
+        .direction-title {
+            color: var(--direction-color);
+        }
+        
+        .verbs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .verb-card {
+            background-color: var(--light-color);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+        
+        .verb-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .verb-english {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        .verb-spanish {
+            color: var(--dark-color);
+            font-size: 0.9em;
+        }
+        
+        .game-container {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .options-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .option {
+            background-color: white;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.2s;
+        }
+        
+        .option:hover {
+            border-color: var(--primary-color);
+            background-color: #f0f5ff;
+        }
+        
+        .correct {
+            border-color: var(--correct-color);
+            background-color: #e8faf0;
+        }
+        
+        .incorrect {
+            border-color: var(--incorrect-color);
+            background-color: #fdedec;
+        }
+        
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s;
+            margin: 10px 5px;
+        }
+        
+        button:hover {
+            background-color: #3b5fc7;
+        }
+        
+        .secondary-btn {
+            background-color: var(--secondary-color);
+        }
+        
+        .secondary-btn:hover {
+            background-color: #e57229;
+        }
+        
+        input[type="text"], input[type="number"] {
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            width: 100%;
+            margin: 10px 0;
+            font-size: 1em;
+        }
+        
+        input[type="text"]:focus, input[type="number"]:focus {
+            border-color: var(--primary-color);
+            outline: none;
+        }
+        
+        .feedback {
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            display: none;
+        }
+        
+        .positive-feedback {
+            background-color: #e8faf0;
+            border-left: 5px solid var(--correct-color);
+        }
+        
+        .negative-feedback {
+            background-color: #fdedec;
+            border-left: 5px solid var(--incorrect-color);
+        }
+        
+        .vocabulary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .vocab-card {
+            background-color: var(--light-color);
+            padding: 15px 5px;
+            border-radius: 8px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        
+        .transport-card {
+            border-left: 4px solid var(--transport-color);
+        }
+        
+        .direction-card {
+            border-left: 4px solid var(--direction-color);
+        }
+        
+        .vocab-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .tab-container {
+            margin: 20px 0;
+        }
+        
+        .tabs {
+            display: flex;
+            border-bottom: 2px solid #ddd;
+            flex-wrap: wrap;
+        }
+        
+        .tab {
+            padding: 10px 15px;
+            cursor: pointer;
+            background-color: #f0f2f5;
+            border-radius: 5px 5px 0 0;
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+        
+        .tab.active {
+            background-color: white;
+            border: 2px solid #ddd;
+            border-bottom: none;
+            font-weight: bold;
+        }
+        
+        .tab-content {
+            padding: 20px;
+            border: 2px solid #ddd;
+            border-top: none;
+            border-radius: 0 0 5px 5px;
+            background-color: white;
+        }
+        
+        .tab-pane {
+            display: none;
+        }
+        
+        .tab-pane.active {
+            display: block;
+        }
+        
+        .score-display {
+            background-color: var(--light-color);
+            padding: 10px 15px;
+            border-radius: 20px;
+            display: inline-block;
+            margin: 10px 0;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        .timer {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: var(--secondary-color);
+            margin: 10px 0;
+        }
+        
+        .map-container {
+            background-color: #f4f6f9;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            position: relative;
+            height: 300px;
+        }
+        
+        .simple-map {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            grid-template-rows: repeat(5, 1fr);
+            gap: 5px;
+            height: 250px;
+            margin: 20px 0;
+        }
+        
+        .map-cell {
+            background-color: #e0e6ff;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 5px;
+            font-size: 0.8em;
+        }
+        
+        .street {
+            background-color: #d1d9ff;
+            font-weight: bold;
+        }
+        
+        .building {
+            background-color: #fdebd0;
+        }
+        
+        .park {
+            background-color: #d5f5e3;
+        }
+        
+        .you-are-here {
+            background-color: #f5b7b1;
+            font-weight: bold;
+        }
+        
+        .direction-example {
+            background-color: #e8f4f8;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+        
+        @media (max-width: 768px) {
+            .options-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .verbs-grid, .vocabulary-grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            }
+            
+            .simple-map {
+                grid-template-columns: repeat(3, 1fr);
+                grid-template-rows: repeat(7, 1fr);
+                height: 350px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Curso de Inglés para Principiantes</h1>
+            <p>Módulo I - Clase 8: Transporte y Direcciones</p>
+            <div class="progress-bar">
+                <div class="progress"></div>
+            </div>
+            <p>Progreso del curso: 80%</p>
+        </header>
+        
+        <div class="section">
+            <h2>Objetivos de la Clase</h2>
+            <p>Al finalizar esta clase, serás capaz de:</p>
+            <ul>
+                <li>Identificar y nombrar medios de transporte en inglés</li>
+                <li>Pedir y dar direcciones básicas</li>
+                <li>Utilizar preposiciones de movimiento</li>
+                <li>Utilizar 10 verbos nuevos en contextos de transporte y direcciones</li>
+            </ul>
+        </div>
+        
+        <div class="section">
+            <h2 class="transport-title">Vocabulario: Medios de Transporte</h2>
+            <div class="vocabulary-grid">
+                <div class="vocab-card transport-card">Car<br>(Carro)</div>
+                <div class="vocab-card transport-card">Bus<br>(Autobús)</div>
+                <div class="vocab-card transport-card">Train<br>(Tren)</div>
+                <div class="vocab-card transport-card">Subway<br>(Metro)</div>
+                <div class="vocab-card transport-card">Bicycle<br>(Bicicleta)</div>
+                <div class="vocab-card transport-card">Motorcycle<br>(Motocicleta)</div>
+                <div class="vocab-card transport-card">Taxi<br>(Taxi)</div>
+                <div class="vocab-card transport-card">Airplane<br>(Avión)</div>
+                <div class="vocab-card transport-card">Boat<br>(Barco)</div>
+                <div class="vocab-card transport-card">Walking<br>(Caminando)</div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="direction-title">Vocabulario: Direcciones</h2>
+            <div class="vocabulary-grid">
+                <div class="vocab-card direction-card">Street<br>(Calle)</div>
+                <div class="vocab-card direction-card">Avenue<br>(Avenida)</div>
+                <div class="vocab-card direction-card">Square<br>(Plaza)</div>
+                <div class="vocab-card direction-card">Corner<br>(Esquina)</div>
+                <div class="vocab-card direction-card">Traffic light<br>(Semáforo)</div>
+                <div class="vocab-card direction-card">Intersection<br>(Intersección)</div>
+                <div class="vocab-card direction-card">Bridge<br>(Puente)</div>
+                <div class="vocab-card direction-card">Map<br>(Mapa)</div>
+                <div class="vocab-card direction-card">Address<br>(Dirección)</div>
+                <div class="vocab-card direction-card">Distance<br>(Distancia)</div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Verbos de la Clase 8</h2>
+            <p>A continuación, los 10 verbos que aprenderás hoy:</p>
+            <div class="verbs-grid">
+                <div class="verb-card">
+                    <div class="verb-english">stop</div>
+                    <div class="verb-spanish">(detener)</div>
+                </div>
+                <div class="verb-card">
+                    <div class="verb-english">ride</div>
+                    <div class="verb-spanish">(montar)</div>
+                </div>
+                <div class="verb-card">
+                    <div class="verb-english">follow</div>
+                    <div class="verb-spanish">(seguir)</div>
+                </div>
+                <div class="verb-card">
+                    <div class="verb-english">enter</div>
+                    <div class="verb-spanish">(entrar)</div>
+                </div>
+                <div class="verb-card">
+                    <div class="verb-english">return</div>
+                    <div class="verb-spanish">(regresar)</div>
+                </div>
+                <div class="verb-card">
+                    <div class="verb-english">miss</div>
+                    <div class="verb-spanish">(perder)</div>
+                </div>
+                <div class="verb-card">
+                    <div class="verb-english">reach</div>
+                    <div class="verb-spanish">(alcanzar)</div>
+                </div>
+                <div class="verb-card">
+                    <div class="verb-english">close</div>
+                    <div class="verb-spanish">(cerrar)</div>
+                </div>
+                <div class="verb-card">
+                    <div class="verb-english">cross</div>
+                    <div class="verb-spanish">(cruzar)</div>
+                </div>
+                <div class="verb-card">
+                    <div class="verb-english">wait</div>
+                    <div class="verb-spanish">(esperar)</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Expresiones para Dar Direcciones</h2>
+            
+            <div class="tab-container">
+                <div class="tabs">
+                    <div class="tab active" onclick="openTab(event, 'basicTab')">Básicas</div>
+                    <div class="tab" onclick="openTab(event, 'prepositionsTab')">Preposiciones</div>
+                    <div class="tab" onclick="openTab(event, 'examplesTab')">Ejemplos</div>
+                </div>
+                
+                <div class="tab-content">
+                    <div id="basicTab" class="tab-pane active">
+                        <p><strong>Frases útiles para pedir direcciones:</strong></p>
+                        <ul>
+                            <li>How do I get to...? (¿Cómo llego a...?)</li>
+                            <li>Where is...? (¿Dónde está...?)</li>
+                            <li>Is it far from here? (¿Está lejos de aquí?)</li>
+                            <li>Can you show me on the map? (¿Puede mostrarme en el mapa?)</li>
+                        </ul>
+                        
+                        <p><strong>Frases útiles para dar direcciones:</strong></p>
+                        <ul>
+                            <li>Go straight ahead (Siga derecho)</li>
+                            <li>Turn left/right (Gire a la izquierda/derecha)</li>
+                            <li>It's on your left/right (Está a su izquierda/derecha)</li>
+                            <li>It's next to... (Está al lado de...)</li>
+                            <li>It's between... and... (Está entre... y...)</li>
+                        </ul>
+                    </div>
+                    <div id="prepositionsTab" class="tab-pane">
+                        <p><strong>Preposiciones de movimiento y ubicación:</strong></p>
+                        <ul>
+                            <li>Go along the street (Siga por la calle)</li>
+                            <li>Go across the bridge (Cruce el puente)</li>
+                            <li>Go through the park (Atraviese el parque)</li>
+                            <li>Go past the bank (Pase el banco)</li>
+                            <li>Go towards the hospital (Diríjase hacia el hospital)</li>
+                            <li>Go up/down the street (Suba/baje por la calle)</li>
+                        </ul>
+                    </div>
+                    <div id="examplesTab" class="tab-pane">
+                        <p><strong>Ejemplos de diálogos:</strong></p>
+                        <div class="direction-example">
+                            <p><strong>Tourist:</strong> Excuse me, how do I get to the museum?</p>
+                            <p><strong>Local:</strong> Go straight ahead for two blocks, then turn left. It's on your right, next to the library.</p>
+                        </div>
+                        <div class="direction-example">
+                            <p><strong>Person A:</strong> Where is the nearest bank?</p>
+                            <p><strong>Person B:</strong> Cross the street, go past the supermarket, and it's on the corner of Main Street and First Avenue.</p>
+                        </div>
+                        <div class="direction-example">
+                            <p><strong>Driver:</strong> How can I reach the highway?</p>
+                            <p><strong>Passerby:</strong> Continue straight, then take the second right. Follow the signs to the highway entrance.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Juego: Completa la Oración</h2>
+            <p>Selecciona la opción correcta para completar cada oración:</p>
+            
+            <div class="game-container">
+                <div class="timer">Tiempo: <span id="time">60</span> segundos</div>
+                <div class="score-display">Puntuación: <span id="score">0</span>/10</div>
+                
+                <p id="question">1. Please ____ at the red light. (Por favor detente en el semáforo en rojo)</p>
+                <div class="options-container" id="options">
+                    <div class="option" onclick="checkAnswer(this, 'stop')">stop</div>
+                    <div class="option" onclick="checkAnswer(this, 'wrong')">ride</div>
+                    <div class="option" onclick="checkAnswer(this, 'wrong')">cross</div>
+                    <div class="option" onclick="checkAnswer(this, 'wrong')">wait</div>
+                </div>
+                
+                <div id="feedback" class="feedback"></div>
+                
+                <button onclick="nextQuestion()">Siguiente Pregunta</button>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Ejercicio: Da Direcciones</h2>
+            <p>Completa las direcciones para llegar a diferentes lugares:</p>
+            
+            <div class="game-container">
+                <div class="map-container">
+                    <h3>Mapa del Centro</h3>
+                    <div class="simple-map">
+                        <div class="map-cell street">Start</div>
+                        <div class="map-cell street">Main St</div>
+                        <div class="map-cell street">Main St</div>
+                        <div class="map-cell street">Main St</div>
+                        <div class="map-cell street">Main St</div>
+                        
+                        <div class="map-cell">Park</div>
+                        <div class="map-cell building">Bank</div>
+                        <div class="map-cell building">Library</div>
+                        <div class="map-cell building">School</div>
+                        <div class="map-cell">Park</div>
+                        
+                        <div class="map-cell street">Oak Ave</div>
+                        <div class="map-cell you-are-here">YOU</div>
+                        <div class="map-cell building">Store</div>
+                        <div class="map-cell building">Museum</div>
+                        <div class="map-cell street">Pine St</div>
+                        
+                        <div class="map-cell">Park</div>
+                        <div class="map-cell building">Hotel</div>
+                        <div class="map-cell building">Restaurant</div>
+                        <div class="map-cell building">Hospital</div>
+                        <div class="map-cell">Park</div>
+                        
+                        <div class="map-cell street">Elm St</div>
+                        <div class="map-cell street">Elm St</div>
+                        <div class="map-cell street">Elm St</div>
+                        <div class="map-cell street">Elm St</div>
+                        <div class="map-cell street">End</div>
+                    </div>
+                </div>
+                
+                <p>1. How do I get to the hospital from "YOU"?</p>
+                <input type="text" id="direction1" placeholder="(Ej: Go straight and turn right)">
+                
+                <p>2. How do I get to the library?</p>
+                <input type="text" id="direction2" placeholder="(Ej: Go north two blocks)">
+                
+                <p>3. How do I get to the restaurant?</p>
+                <input type="text" id="direction3" placeholder="(Ej: Cross the street and turn left)">
+                
+                <button onclick="checkDirections()">Verificar Respuestas</button>
+                <div id="directions-feedback" class="feedback"></div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Ejercicio: Elige el Transporte Correcto</h2>
+            <p>Selecciona el medio de transporte más adecuado para cada situación:</p>
+            
+            <div class="game-container">
+                <p>1. Para viajar de Bogotá a Nueva York:</p>
+                <select id="transport1">
+                    <option value="">Selecciona...</option>
+                    <option value="airplane">Airplane</option>
+                    <option value="car">Car</option>
+                    <option value="bicycle">Bicycle</option>
+                </select>
+                
+                <p>2. Para moverte dentro de la ciudad rápidamente:</p>
+                <select id="transport2">
+                    <option value="">Selecciona...</option>
+                    <option value="subway">Subway</option>
+                    <option value="boat">Boat</option>
+                    <option value="airplane">Airplane</option>
+                </select>
+                
+                <p>3. Para hacer ejercicio y moverte distancias cortas:</p>
+                <select id="transport3">
+                    <option value="">Selecciona...</option>
+                    <option value="bicycle">Bicycle</option>
+                    <option value="taxi">Taxi</option>
+                    <option value="bus">Bus</option>
+                </select>
+                
+                <p>4. Para viajar por carretera con tu familia:</p>
+                <select id="transport4">
+                    <option value="">Selecciona...</option>
+                    <option value="car">Car</option>
+                    <option value="train">Train</option>
+                    <option value="motorcycle">Motorcycle</option>
+                </select>
+                
+                <p>5. Para cruzar un río o lago:</p>
+                <select id="transport5">
+                    <option value="">Selecciona...</option>
+                    <option value="boat">Boat</option>
+                    <option value="airplane">Airplane</option>
+                    <option value="subway">Subway</option>
+                </select>
+                
+                <button onclick="checkTransport()">Verificar Respuestas</button>
+                <div id="transport-feedback" class="feedback"></div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Diálogo: Perdido en la Ciudad</h2>
+            <p>Escucha y lee el siguiente diálogo:</p>
+            
+            <div class="game-container" style="background-color: #e8f4f8;">
+                <p><strong>Tourist:</strong> Excuse me, I think I'm lost. How can I <strong>reach</strong> the city center?</p>
+                <p><strong>Local:</strong> You need to <strong>stop</strong> at the traffic light and <strong>turn</strong> right. Then <strong>follow</strong> this street for about 10 minutes.</p>
+                <p><strong>Tourist:</strong> Should I <strong>wait</strong> for a bus or is it walking distance?</p>
+                <p><strong>Local:</strong> You can <strong>ride</strong> the bus number 5, or just walk. Don't <strong>cross</strong> the bridge, that will take you to the wrong side.</p>
+                <p><strong>Tourist:</strong> Thank you! I don't want to <strong>miss</strong> my meeting. What time does the bus <strong>return</strong> to this area?</p>
+                <p><strong>Local:</strong> The last bus <strong>returns</strong> at midnight. But you can always take a taxi if you <strong>close</strong> your meeting late.</p>
+                
+                <button onclick="playAudio()">▶ Escuchar diálogo</button>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Evaluación Final</h2>
+            <p>Completa esta evaluación para verificar tu comprensión de la clase:</p>
+            
+            <div class="game-container">
+                <form id="quiz-form">
+                    <p>1. ¿Cómo se dice "autobús" en inglés?</p>
+                    <input type="radio" name="q1" value="a"> bus<br>
+                    <input type="radio" name="q1" value="b"> car<br>
+                    <input type="radio" name="q1" value="c"> train<br>
+                    
+                    <p>2. ¿Cuál de estos verbos significa "seguir"?</p>
+                    <input type="radio" name="q2" value="a"> follow<br>
+                    <input type="radio" name="q2" value="b"> stop<br>
+                    <input type="radio" name="q2" value="c"> wait<br>
+                    
+                    <p>3. "Turn left" significa:</p>
+                    <input type="radio" name="q3" value="a"> Gire a la izquierda<br>
+                    <input type="radio" name="q3" value="b"> Siga derecho<br>
+                    <input type="radio" name="q3" value="c"> Dé la vuelta<br>
+                    
+                    <p>4. ¿Cómo se dice "está a la derecha" en inglés?</p>
+                    <input type="radio" name="q4" value="a"> It's on the right<br>
+                    <input type="radio" name="q4" value="b"> It's on the left<br>
+                    <input type="radio" name="q4" value="c"> It's straight ahead<br>
+                    
+                    <p>5. ¿Qué significa "miss the bus" en español?</p>
+                    <input type="radio" name="q5" value="a"> Perder el autobús<br>
+                    <input type="radio" name="q5" value="b"> Esperar el autobús<br>
+                    <input type="radio" name="q5" value="c"> Tomar el autobús<br>
+                    
+                    <button type="button" onclick="submitQuiz()">Enviar Evaluación</button>
+                </form>
+                
+                <div id="quiz-result" class="feedback"></div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Tarea para el Hogar</h2>
+            <p>Para la próxima clase, por favor:</p>
+            <ol>
+                <li>Dibuja un mapa de tu barrio y escribe direcciones en inglés para llegar a 5 lugares importantes</li>
+                <li>Escribe un diálogo donde pides y das direcciones a un lugar turístico de tu ciudad</li>
+                <li>Investiga y escribe sobre 3 medios de transporte típicos de un país angloparlante</li>
+                <li>Prepara 5 preguntas sobre transporte y direcciones para hacerle a un compañero</li>
+            </ol>
+        </div>
+        
+        <div class="section">
+            <h2>Próxima Clase: Tiempo y Clima</h2>
+            <p>En la próxima clase aprenderás:</p>
+            <ul>
+                <li>Cómo hablar sobre el clima en inglés</li>
+                <li>Vocabulario sobre condiciones meteorológicas</li>
+                <li>Las estaciones del año</li>
+                <li>10 verbos nuevos: rain, snow, shine, freeze, warm, cool, blow, flow, smell, sound</li>
+            </ul>
+            <p>¡No olvides repasar el vocabulario de transporte y direcciones!</p>
+        </div>
+        
+        <div class="section" style="text-align: center;">
+            <button onclick="markAsCompleted()" class="secondary-btn">Marcar Clase como Completada</button>
+            <p id="completion-message" style="display: none; margin-top: 15px; color: var(--accent-color); font-weight: bold;">¡Felicidades! Has completado la Clase 8.</p>
+        </div>
+    </div>
+
+    <script>
+        // Variables para el juego
+        let currentQuestion = 1;
+        let score = 0;
+        let timeLeft = 60;
+        let timer;
+        
+        // Preguntas para el juego
+        const questions = [
+            {
+                question: "Please ____ at the red light. (Por favor detente en el semáforo en rojo)",
+                options: ["stop", "ride", "cross", "wait"],
+                correct: "stop"
+            },
+            {
+                question: "I like to ____ my bicycle in the park. (Me gusta montar mi bicicleta en el parque)",
+                options: ["ride", "drive", "stop", "miss"],
+                correct: "ride"
+            },
+            {
+                question: "____ the signs to the airport. (Sigue las señales al aeropuerto)",
+                options: ["Follow", "Stop", "Close", "Wait"],
+                correct: "Follow"
+            },
+            {
+                question: "____ the building through the main door. (Entra al edificio por la puerta principal)",
+                options: ["Enter", "Exit", "Close", "Cross"],
+                correct: "Enter"
+            },
+            {
+                question: "What time will you ____ home? (¿A qué hora regresarás a casa?)",
+                options: ["return", "leave", "stop", "reach"],
+                correct: "return"
+            },
+            {
+                question: "Hurry up or we'll ____ the train! (¡Apresúrate o perderemos el tren!)",
+                options: ["miss", "catch", "ride", "wait"],
+                correct: "miss"
+            },
+            {
+                question: "When will we ____ our destination? (¿Cuándo alcanzaremos nuestro destino?)",
+                options: ["reach", "leave", "stop", "close"],
+                correct: "reach"
+            },
+            {
+                question: "Please ____ the door when you leave. (Por favor cierra la puerta cuando salgas)",
+                options: ["close", "open", "enter", "cross"],
+                correct: "close"
+            },
+            {
+                question: "____ the street at the crosswalk. (Cruza la calle por el paso de peatones)",
+                options: ["Cross", "Follow", "Stop", "Wait"],
+                correct: "Cross"
+            },
+            {
+                question: "____ here for the bus. (Espera aquí por el autobús)",
+                options: ["Wait", "Stop", "Go", "Run"],
+                correct: "Wait"
+            }
+        ];
+        
+        // Funciones para las pestañas
+        function openTab(evt, tabName) {
+            const tabcontent = document.getElementsByClassName("tab-pane");
+            for (let i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            
+            const tablinks = document.getElementsByClassName("tab");
+            for (let i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+        
+        // Funciones para el juego de opción múltiple
+        function startTimer() {
+            clearInterval(timer);
+            timeLeft = 60;
+            document.getElementById("time").textContent = timeLeft;
+            
+            timer = setInterval(function() {
+                timeLeft--;
+                document.getElementById("time").textContent = timeLeft;
+                
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                    nextQuestion();
+                }
+            }, 1000);
+        }
+        
+        function checkAnswer(element, answer) {
+            const options = document.querySelectorAll('.option');
+            options.forEach(opt => {
+                opt.classList.remove('correct', 'incorrect');
+                opt.onclick = null;
+            });
+            
+            if (answer === questions[currentQuestion - 1].correct) {
+                element.classList.add('correct');
+                score++;
+                document.getElementById("score").textContent = score;
+                showFeedback("¡Correcto! Bien hecho.", true);
+            } else {
+                element.classList.add('incorrect');
+                options.forEach(opt => {
+                    if (opt.textContent === questions[currentQuestion - 1].correct) {
+                        opt.classList.add('correct');
+                    }
+                });
+                showFeedback("Incorrecto. La respuesta correcta es: " + questions[currentQuestion - 1].correct, false);
+            }
+        }
+        
+        function nextQuestion() {
+            clearInterval(timer);
+            
+            if (currentQuestion < questions.length) {
+                currentQuestion++;
+                document.getElementById("question").textContent = currentQuestion + ". " + questions[currentQuestion - 1].question;
+                
+                const optionsContainer = document.getElementById("options");
+                optionsContainer.innerHTML = "";
+                
+                questions[currentQuestion - 1].options.forEach(option => {
+                    const optionElement = document.createElement("div");
+                    optionElement.className = "option";
+                    optionElement.textContent = option;
+                    optionElement.onclick = function() {
+                        checkAnswer(this, option);
+                    };
+                    optionsContainer.appendChild(optionElement);
+                });
+                
+                document.getElementById("feedback").style.display = "none";
+                startTimer();
+            } else {
+                document.getElementById("question").textContent = "¡Juego completado!";
+                document.getElementById("options").innerHTML = "";
+                document.getElementById("feedback").style.display = "none";
+                document.querySelector("button").style.display = "none";
+                
+                let message = "";
+                if (score >= 8) {
+                    message = "¡Excelente! Obtuviste " + score + " de 10 puntos.";
+                } else if (score >= 5) {
+                    message = "Buen trabajo! Obtuviste " + score + " de 10 puntos. Sigue practicando.";
+                } else {
+                    message = "Obtuviste " + score + " de 10 puntos. Necesitas repasar más.";
+                }
+                
+                showFeedback(message, score >= 5);
+            }
+        }
+        
+        function showFeedback(text, isPositive) {
+            const feedback = document.getElementById("feedback");
+            feedback.textContent = text;
+            feedback.className = isPositive ? "feedback positive-feedback" : "feedback negative-feedback";
+            feedback.style.display = "block";
+        }
+        
+        // Función para verificar direcciones
+        function checkDirections() {
+            let correctCount = 0;
+            let feedbackText = "";
+            
+            // Verificar que todas las respuestas tengan contenido
+            for (let i = 1; i <= 3; i++) {
+                const userAnswer = document.getElementById("direction" + i).value.trim();
+                if (userAnswer !== "") {
+                    correctCount++;
+                    feedbackText += "Dirección " + i + ": ¡Respuesta proporcionada!<br>";
+                } else {
+                    feedbackText += "Dirección " + i + ": Por favor completa esta respuesta.<br>";
+                }
+            }
+            
+            const feedbackElement = document.getElementById("directions-feedback");
+            feedbackElement.innerHTML = feedbackText + "<br>Completaste " + correctCount + " de 3 respuestas.";
+            feedbackElement.className = correctCount >= 2 ? "feedback positive-feedback" : "feedback negative-feedback";
+            feedbackElement.style.display = "block";
+        }
+        
+        // Función para verificar medios de transporte
+        function checkTransport() {
+            const answers = {
+                transport1: "airplane",
+                transport2: "subway",
+                transport3: "bicycle",
+                transport4: "car",
+                transport5: "boat"
+            };
+            
+            let correctCount = 0;
+            let feedbackText = "";
+            
+            for (let i = 1; i <= 5; i++) {
+                const userAnswer = document.getElementById("transport" + i).value;
+                const correctAnswer = answers["transport" + i];
+                
+                if (userAnswer === correctAnswer) {
+                    correctCount++;
+                    feedbackText += "Pregunta " + i + ": Correcto!<br>";
+                } else if (userAnswer === "") {
+                    feedbackText += "Pregunta " + i + ": Por favor selecciona una opción.<br>";
+                } else {
+                    feedbackText += "Pregunta " + i + ": Incorrecto. La respuesta correcta es: " + correctAnswer + "<br>";
+                }
+            }
+            
+            const feedbackElement = document.getElementById("transport-feedback");
+            feedbackElement.innerHTML = feedbackText + "<br>Obtuviste " + correctCount + " de 5 correctas.";
+            feedbackElement.className = correctCount >= 3 ? "feedback positive-feedback" : "feedback negative-feedback";
+            feedbackElement.style.display = "block";
+        }
+        
+        // Función para la evaluación final
+        function submitQuiz() {
+            const answers = {
+                q1: "a",
+                q2: "a",
+                q3: "a",
+                q4: "a",
+                q5: "a"
+            };
+            
+            let correctCount = 0;
+            let resultHTML = "";
+            
+            for (let i = 1; i <= 5; i++) {
+                const selected = document.querySelector('input[name="q' + i + '"]:checked');
+                if (selected) {
+                    if (selected.value === answers["q" + i]) {
+                        correctCount++;
+                        resultHTML += "Pregunta " + i + ": Correcto!<br>";
+                    } else {
+                        resultHTML += "Pregunta " + i + ": Incorrecto. La respuesta correcta es: " + 
+                                    document.querySelector('input[name="q' + i + '"][value="' + answers["q" + i] + '"]').parentNode.textContent + "<br>";
+                    }
+                } else {
+                    resultHTML += "Pregunta " + i + ": No respondida. La respuesta correcta es: " + 
+                                document.querySelector('input[name="q' + i + '"][value="' + answers["q" + i] + '"]').parentNode.textContent + "<br>";
+                }
+            }
+            
+            const resultElement = document.getElementById("quiz-result");
+            resultElement.innerHTML = resultHTML + "<br><strong>Resultado: " + correctCount + " de 5 correctas (" + (correctCount/5*100) + "%)</strong>";
+            
+            if (correctCount >= 4) {
+                resultElement.className = "feedback positive-feedback";
+            } else {
+                resultElement.className = "feedback negative-feedback";
+            }
+            
+            resultElement.style.display = "block";
+        }
+        
+        // Función para marcar la clase como completada
+        function markAsCompleted() {
+            document.getElementById("completion-message").style.display = "block";
+            localStorage.setItem('clase8-completed', 'true');
+        }
+        
+        // Función para reproducir audio (simulado)
+        function playAudio() {
+            alert("Reproduciendo diálogo de audio...");
+        }
+        
+        // Inicializar la página
+        window.onload = function() {
+            startTimer();
+            if (localStorage.getItem('clase8-completed') === 'true') {
+                document.getElementById("completion-message").style.display = "block";
+            }
+        };
+    </script>
+</body>
+</html>
