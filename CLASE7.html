@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curso de Inglés - Clase 7: Rutinas Diarias</title>
+    <style>
+        :root {
+            --primary-color: #4e7ae6;
+            --secondary-color: #ff7e30;
+            --accent-color: #34c759;
+            --light-color: #f5f7ff;
+            --dark-color: #2c3e50;
+            --correct-color: #2ecc71;
+            --incorrect-color: #e74c3c;
+            --morning-color: #f39c12;
+            --afternoon-color: #3498db;
+            --night-color: #9b59b6;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f0f2f5;
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), #6c5ce7);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .progress-bar {
+            background-color: #e0e0e0;
+            border-radius: 20px;
+            height: 10px;
+            margin: 15px 0;
+            overflow: hidden;
+        }
+        
+        .progress {
+            background-color: var(--accent-color);
+            height: 100%;
+            width: 70%;
+            border-radius: 20px;
+            transition: width 0.5s ease;
+        }
+        
+        .section {
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        h1, h2, h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .morning-title {
+            color: var(--morning-color);
+        }
+        
+        .afternoon-title {
+            color: var(--afternoon-color);
+        }
+        
+        .night-title {
+            color: var(--night-color);
+        }
+        
+        .verbs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .verb-card {
+            background-color: var(--light-color);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+        
+        .verb-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .verb-english {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        .verb-spanish {
+            color: var(--dark-color);
+            font-size: 0.9em;
+        }
+        
+        .game-container {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .options-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .option {
+            background-color: white;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.2s;
+        }
+        
+        .option:hover {
+            border-color: var(--primary-color);
+            background-color: #f0f5ff;
+        }
+        
+        .correct {
+            border-color: var(--correct-color);
+            background-color: #e8faf0;
+        }
+        
+        .incorrect {
+            border-color: var(--incorrect-color);
+            background-color: #fdedec;
+        }
+        
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s;
+            margin: 10px 5px;
+        }
+        
+        button:hover {
+            background-color: #3b5fc7;
+        }
+        
+        .secondary-btn {
+            background-color: var(--secondary-color);
+        }
+        
+        .secondary-btn:hover {
+            background-color: #e57229;
+        }
+        
+        input[type="text"], input[type="number"] {
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            width: 100%;
+            margin: 10px 0;
+            font-size: 1em;
+        }
+        
+        input[type="text"]:focus, input[type="number"]:focus {
+            border-color: var(--primary-color);
+            outline: none;
+        }
+        
+        .feedback {
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            display: none;
+        }
+        
+        .positive-feedback {
+            background-color: #e8faf0;
+            border-left: 5px solid var(--correct-color);
+        }
+        
+        .negative-feedback {
+            background-color: #fdedec;
+            border-left: 5px solid var(--incorrect-color);
+        }
+        
+        .vocabulary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .vocab-card {
+            background-color: var(--light-color);
+            padding: 15px 5px;
+            border-radius: 8px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        
+        .morning-card {
+            border-left: 4px solid var(--morning-color);
+        }
+        
+        .afternoon-card {
+            border-left: 4px solid var(--afternoon-color);
+        }
+        
+        .night-card {
+            border-left: 4px solid var(--night-color);
+        }
+        
+        .vocab-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .tab-container {
+            margin: 20px 0;
+        }
+        
+        .tabs {
+            display: flex;
+            border-bottom: 2px solid #ddd;
+            flex-wrap: wrap;
+        }
+        
+        .tab {
+            padding: 10px 15px;
+            cursor: pointer;
+            background-color: #f0f2f5;
+            border-radius: 5px 5px 0 0;
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+        
+        .tab.active {
+            background-color: white;
+            border: 2px solid #ddd;
+            border-bottom: none;
+            font-weight: bold;
+        }
+        
+        .tab-content {
+            padding: 20px;
+            border: 2px solid #ddd;
+            border-top: none;
+            border-radius: 0 0 5px 5px;
+            background-color: white;
+        }
+        
+        .tab-pane {
+            display: none;
+        }
+        
+        .tab-pane.active {
+            display: block;
+        }
+        
+        .score-display {
+            background-color: var(--light-color);
+            padding: 10px 15px;
+            border-radius: 20px;
+            display: inline-block;
+            margin: 10px 0;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        .timer {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: var(--secondary-color);
+            margin: 10px 0;
+        }
+        
+        .routine-scene {
+            background-color: #f4f6f9;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .routine-item {
+            display: flex;
+            align-items: center;
+            margin: 15px 0;
+            padding: 10px;
+            border-radius: 8px;
+            background-color: white;
+        }
+        
+        .routine-time {
+            font-weight: bold;
+            min-width: 80px;
+            margin-right: 15px;
+        }
+        
+        .routine-activity {
+            flex-grow: 1;
+        }
+        
+        .routine-icon {
+            font-size: 1.5em;
+            margin-right: 10px;
+            min-width: 30px;
+            text-align: center;
+        }
+        
+        .morning-routine {
+            border-left: 4px solid var(--morning-color);
+        }
+        
+        .afternoon-routine {
+            border-left: 4px solid var(--afternoon-color);
+        }
+        
+        .night-routine {
+            border-left: 4px solid var(--night-color);
+        }
+        
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        .schedule-table th, .schedule-table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        
+        .schedule-table th {
+            background-color: var(--light-color);
+        }
+        
+        .schedule-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        @media (max-width: 768px) {
+            .options-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .verbs-grid, .vocabulary-grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            }
+            
+            .routine-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .routine-time {
+                margin-bottom: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Curso de Inglés para Principiantes</h1>
+            <p>Módulo I - Clase 7: Rutinas Diarias</p>
+            <div class="progress-bar">
+                <div class="progress"></div>
+            </div>
+            <p>Progreso del curso: 70%</p>
+        </header>
+        
+        <div class="section">
+            <h2>Objetivos de la Clase</h2>
+            <p>Al finalizar esta clase, serás capaz de:</p>
+            <ul>
+                <li>Describir tu rutina diaria en inglés</li>
+                <li>Utilizar el presente simple correctamente</li>
+                <li>Expresar horas y momentos del día</li>
+                <li>Utilizar 10 verbos nuevos en contextos de rutinas</li>
+            </ul>
+        </div>
+        
+        <div class="section">
+            <h2 class="morning-title">Vocabulario: Rutinas Matutinas</h2>
+            <div class="vocabulary-grid">
+                <div class="vocab-card morning-card">Wake up<br>(Despertarse)</div>
+                <div class="vocab-card morning-card">Get up<br>(Levantarse)</div>
+                <div class="vocab-card morning-card">Brush teeth<br>(Cepillarse los dientes)</div>
+                <div class="vocab-card morning-card">Take a shower<br>(Ducharse)</div>
+                <div class="vocab-card morning-card">Get dressed<br>(Vestirse)</div>
+                <div class="vocab-card morning-card">Have breakfast<br>(Desayunar)</div>
+                <div class="vocab-card morning-card">Go to work<br>(Ir al trabajo)</div>
+                <div class="vocab-card morning-card">Go to school<br>(Ir a la escuela)</div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="afternoon-title">Vocabulario: Rutinas Vespertinas</h2>
+            <div class="vocabulary-grid">
+                <div class="vocab-card afternoon-card">Have lunch<br>(Almorzar)</div>
+                <div class="vocab-card afternoon-card">Work<br>(Trabajar)</div>
+                <div class="vocab-card afternoon-card">Study<br>(Estudiar)</div>
+                <div class="vocab-card afternoon-card">Exercise<br>(Ejercitarse)</div>
+                <div class="vocab-card afternoon-card">Go home<br>(Ir a casa)</div>
+                <div class="vocab-card afternoon-card">Relax<br>(Relajarse)</div>
+                <div class="vocab-card afternoon-card">Cook dinner<br>(Cocinar la cena)</div>
+                <div class="vocab-card afternoon-card">Have dinner<br>(Cenar)</div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="night-title">Vocabulario: Rutinas Nocturnas</h2>
+            <div class="vocabulary-grid">
+                <div class="vocab-card night-card">Watch TV<br>(Ver televisión)</div>
+                <div class="vocab-card night-card">Read a book<br>(Leer un libro)</div>
+                <div class="vocab-card night-card">Take a bath<br>(Bañarse)</div>
+                <div class="vocab-card night-card">Brush teeth<br>(Cepillarse los dientes)</div>
+                <div class="vocab-card night-card">Go to bed<br>(Ir a la cama)</div>
+                <div class="vocab-card night-card">Fall asleep<br>(Quedarse dormido)</div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Verbos de la Clase 7</h2>
+            <p>A continuación, los 10 verbos que aprenderás hoy:</p>
+            <div class="verbs-grid">
+                <div class="verb-card">
+                    <div class="verb-english">sleep</div>
+                    <div class="verb-spanish">(dormir)</div>
+                </div>
+                <div class="verb-card">
+                    <div class="verb-english">write</div>
+                    <div class="verb-spanish">(escribir)</div>
+                </div>
+                <div class="verb-card">
+                    <div class="verb-english">bring</div>
+                    <div class="verb-spanish">(traer)</div>
+                </div>
+                <div class="verb-card">
+                    <div class="verb-english">speak</div>
+                    <div class="verb-spanish">(hablar)</div>
+                </div>
+                <div class="verb-card">
+                    <div class="verb-english">teach</div>
+                    <div class="verb-spanish">(enseñar)</div>
+                </div>
+                <div class="verb-card">
+                    <div class="verb-english">learn</div>
+                    <div class="verb-spanish">(aprender)</div>
+                </div>
+                <div class="verb-card">
+                    <div class="verb-english">decide</div>
+                    <div class="verb-spanish">(decidir)</div>
+                </div>
+                <div class="verb-card">
+                    <div class="verb-english">read</div>
+                    <div class="verb-spanish">(leer)</div>
+                </div>
+                <div class="verb-card">
+                    <div class="verb-english">wait</div>
+                    <div class="verb-spanish">(esperar)</div>
+                </div>
+                <div class="verb-card">
+                    <div class="verb-english">continue</div>
+                    <div class="verb-spanish">(continuar)</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Gramática: Presente Simple</h2>
+            
+            <div class="tab-container">
+                <div class="tabs">
+                    <div class="tab active" onclick="openTab(event, 'usageTab')">Uso</div>
+                    <div class="tab" onclick="openTab(event, 'structureTab')">Estructura</div>
+                    <div class="tab" onclick="openTab(event, 'examplesTab')">Ejemplos</div>
+                </div>
+                
+                <div class="tab-content">
+                    <div id="usageTab" class="tab-pane active">
+                        <p><strong>Usamos el Presente Simple para:</strong></p>
+                        <ul>
+                            <li>Rutinas y hábitos: <em>I wake up at 7 AM every day.</em></li>
+                            <li>Hechos generales: <em>The sun rises in the east.</em></li>
+                            <li>Situaciones permanentes: <em>She works in a hospital.</em></li>
+                            <li>Horarios programados: <em>The train leaves at 8 PM.</em></li>
+                        </ul>
+                    </div>
+                    <div id="structureTab" class="tab-pane">
+                        <p><strong>Estructura del Presente Simple:</strong></p>
+                        <p><strong>Afirmativo:</strong> Sujeto + verbo (+ -s/-es en tercera persona) + complemento</p>
+                        <p><em>I work / He works</em></p>
+                        
+                        <p><strong>Negativo:</strong> Sujeto + do/does + not + verbo + complemento</p>
+                        <p><em>I don't work / She doesn't work</em></p>
+                        
+                        <p><strong>Interrogativo:</strong> Do/Does + sujeto + verbo + complemento + ?</p>
+                        <p><em>Do you work? / Does he work?</em></p>
+                    </div>
+                    <div id="examplesTab" class="tab-pane">
+                        <p><strong>Ejemplos con rutinas diarias:</strong></p>
+                        <div class="routine-item morning-routine">
+                            <div class="routine-icon">⏰</div>
+                            <div class="routine-time">7:00 AM</div>
+                            <div class="routine-activity">I <strong>wake up</strong> and <strong>get up</strong> immediately.</div>
+                        </div>
+                        <div class="routine-item morning-routine">
+                            <div class="routine-icon">🍳</div>
+                            <div class="routine-time">7:30 AM</div>
+                            <div class="routine-activity">I <strong>have</strong> breakfast with my family.</div>
+                        </div>
+                        <div class="routine-item afternoon-routine">
+                            <div class="routine-icon">💼</div>
+                            <div class="routine-time">9:00 AM</div>
+                            <div class="routine-activity">I <strong>go</strong> to work by bus.</div>
+                        </div>
+                        <div class="routine-item night-routine">
+                            <div class="routine-icon">📺</div>
+                            <div class="routine-time">8:00 PM</div>
+                            <div class="routine-activity">We <strong>watch</strong> TV after dinner.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Juego: Completa la Oración</h2>
+            <p>Selecciona la opción correcta para completar cada oración:</p>
+            
+            <div class="game-container">
+                <div class="timer">Tiempo: <span id="time">60</span> segundos</div>
+                <div class="score-display">Puntuación: <span id="score">0</span>/10</div>
+                
+                <p id="question">1. I usually ____ at 11 PM. (Normalmente duermo a las 11 PM)</p>
+                <div class="options-container" id="options">
+                    <div class="option" onclick="checkAnswer(this, 'sleep')">sleep</div>
+                    <div class="option" onclick="checkAnswer(this, 'wrong')">wait</div>
+                    <div class="option" onclick="checkAnswer(this, 'wrong')">read</div>
+                    <div class="option" onclick="checkAnswer(this, 'wrong')">bring</div>
+                </div>
+                
+                <div id="feedback" class="feedback"></div>
+                
+                <button onclick="nextQuestion()">Siguiente Pregunta</button>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Ejercicio: Mi Rutina Diaria</h2>
+            <p>Completa las oraciones sobre tu rutina:</p>
+            
+            <div class="game-container">
+                <p>1. I usually wake up at <input type="text" id="word1" placeholder="(hora)"> in the morning.</p>
+                
+                <p>2. For breakfast, I often <input type="text" id="word2" placeholder="(comer/beber)"> coffee and toast.</p>
+                
+                <p>3. I <input type="text" id="word3" placeholder="(ir)"> to work/school by bus/car.</p>
+                
+                <p>4. In the evening, I like to <input type="text" id="word4" placeholder="(actividad)"> for relaxation.</p>
+                
+                <p>5. I usually go to bed at <input type="text" id="word5" placeholder="(hora)"> at night.</p>
+                
+                <button onclick="checkRoutine()">Verificar Respuestas</button>
+                <div id="routine-feedback" class="feedback"></div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Ejercicio: Ordena la Rutina</h2>
+            <p>Organiza las actividades en el orden correcto de una rutina diaria:</p>
+            
+            <div class="game-container">
+                <div id="sortable-list">
+                    <div class="routine-item" data-order="1">Wake up</div>
+                    <div class="routine-item" data-order="2">Brush teeth</div>
+                    <div class="routine-item" data-order="3">Have breakfast</div>
+                    <div class="routine-item" data-order="4">Go to work/school</div>
+                    <div class="routine-item" data-order="5">Have lunch</div>
+                    <div class="routine-item" data-order="6">Return home</div>
+                    <div class="routine-item" data-order="7">Have dinner</div>
+                    <div class="routine-item" data-order="8">Watch TV or read</div>
+                    <div class="routine-item" data-order="9">Brush teeth</div>
+                    <div class="routine-item" data-order="10">Go to bed</div>
+                </div>
+                
+                <button onclick="checkOrder()" style="margin-top: 20px;">Verificar Orden</button>
+                <div id="order-feedback" class="feedback"></div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Diálogo: Un Día en la Vida de María</h2>
+            <p>Escucha y lee el siguiente diálogo:</p>
+            
+            <div class="game-container" style="background-color: #e8f4f8;">
+                <p><strong>Interviewer:</strong> Maria, can you tell us about your daily routine?</p>
+                <p><strong>Maria:</strong> Sure! I usually <strong>wake up</strong> at 6:30 AM. I need to <strong>write</strong> my daily plan.</p>
+                <p><strong>Interviewer:</strong> What do you do next?</p>
+                <p><strong>Maria:</strong> I <strong>bring</strong> my children to school at 7:30. Then I <strong>speak</strong> with my colleagues at work.</p>
+                <p><strong>Interviewer:</strong> What about your job?</p>
+                <p><strong>Maria:</strong> I <strong>teach</strong> English at a university. I love to <strong>learn</strong> from my students too.</p>
+                <p><strong>Interviewer:</strong> How do you <strong>decide</strong> what to do after work?</p>
+                <p><strong>Maria:</strong> I usually <strong>read</strong> or <strong>wait</strong> for my husband. Then we <strong>continue</strong> with our evening routine.</p>
+                
+                <button onclick="playAudio()">▶ Escuchar diálogo</button>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Evaluación Final</h2>
+            <p>Completa esta evaluación para verificar tu comprensión de la clase:</p>
+            
+            <div class="game-container">
+                <form id="quiz-form">
+                    <p>1. ¿Cómo se dice "dormir" en inglés?</p>
+                    <input type="radio" name="q1" value="a"> sleep<br>
+                    <input type="radio" name="q1" value="b"> read<br>
+                    <input type="radio" name="q1" value="c"> write<br>
+                    
+                    <p>2. ¿Cuál es la forma correcta en presente simple para "he/teach"?</p>
+                    <input type="radio" name="q2" value="a"> teaches<br>
+                    <input type="radio" name="q2" value="b"> teach<br>
+                    <input type="radio" name="q2" value="c"> teaching<br>
+                    
+                    <p>3. "I ____ breakfast at 8 AM every day." (Yo desayuno a las 8 AM todos los días)</p>
+                    <input type="radio" name="q3" value="a"> have<br>
+                    <input type="radio" name="q3" value="b"> has<br>
+                    <input type="radio" name="q3" value="c"> having<br>
+                    
+                    <p>4. ¿Cómo se dice "cepillarse los dientes" en inglés?</p>
+                    <input type="radio" name="q4" value="a"> brush teeth<br>
+                    <input type="radio" name="q4" value="b"> wash teeth<br>
+                    <input type="radio" name="q4" value="c"> clean teeth<br>
+                    
+                    <p>5. ¿Qué significa "decide" en español?</p>
+                    <input type="radio" name="q5" value="a"> decidir<br>
+                    <input type="radio" name="q5" value="b"> escribir<br>
+                    <input type="radio" name="q5" value="c"> enseñar<br>
+                    
+                    <button type="button" onclick="submitQuiz()">Enviar Evaluación</button>
+                </form>
+                
+                <div id="quiz-result" class="feedback"></div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Tarea para el Hogar</h2>
+            <p>Para la próxima clase, por favor:</p>
+            <ol>
+                <li>Escribe un texto de 10 oraciones describiendo tu rutina diaria completa</li>
+                <li>Crea una tabla con tus actividades de lunes a viernes y los horarios</li>
+                <li>Graba un audio describiendo tu día ideal usando al menos 8 verbos de esta clase</li>
+                <li>Prepara 5 preguntas sobre rutinas para hacerle a un compañero</li>
+            </ol>
+        </div>
+        
+        <div class="section">
+            <h2>Próxima Clase: Transporte y Direcciones</h2>
+            <p>En la próxima clase aprenderás:</p>
+            <ul>
+                <li>Medios de transporte en inglés</li>
+                <li>Cómo dar y entender direcciones</li>
+                <li>Preposiciones de movimiento</li>
+                <li>10 verbos nuevos: stop, ride, follow, enter, return, miss, reach, close, cross, wait</li>
+            </ul>
+            <p>¡No olvides repasar el presente simple y las rutinas!</p>
+        </div>
+        
+        <div class="section" style="text-align: center;">
+            <button onclick="markAsCompleted()" class="secondary-btn">Marcar Clase como Completada</button>
+            <p id="completion-message" style="display: none; margin-top: 15px; color: var(--accent-color); font-weight: bold;">¡Felicidades! Has completado la Clase 7.</p>
+        </div>
+    </div>
+
+    <script>
+        // Variables para el juego
+        let currentQuestion = 1;
+        let score = 0;
+        let timeLeft = 60;
+        let timer;
+        
+        // Preguntas para el juego
+        const questions = [
+            {
+                question: "I usually ____ at 11 PM. (Normalmente duermo a las 11 PM)",
+                options: ["sleep", "wait", "read", "bring"],
+                correct: "sleep"
+            },
+            {
+                question: "She ____ emails every morning. (Ella escribe emails cada mañana)",
+                options: ["writes", "write", "writing", "written"],
+                correct: "writes"
+            },
+            {
+                question: "Can you ____ me a glass of water? (¿Puedes traerme un vaso de agua?)",
+                options: ["bring", "take", "have", "wait"],
+                correct: "bring"
+            },
+            {
+                question: "They ____ English very well. (Ellos hablan inglés muy bien)",
+                options: ["speak", "speaks", "speaking", "spoke"],
+                correct: "speak"
+            },
+            {
+                question: "My father ____ mathematics. (Mi padre enseña matemáticas)",
+                options: ["teaches", "teach", "teaching", "taught"],
+                correct: "teaches"
+            },
+            {
+                question: "We ____ new words every day. (Aprendemos palabras nuevas cada día)",
+                options: ["learn", "learns", "learning", "learnt"],
+                correct: "learn"
+            },
+            {
+                question: "I need to ____ what to do. (Necesito decidir qué hacer)",
+                options: ["decide", "decides", "deciding", "decided"],
+                correct: "decide"
+            },
+            {
+                question: "He ____ the newspaper every morning. (Él lee el periódico cada mañana)",
+                options: ["reads", "read", "reading", "red"],
+                correct: "reads"
+            },
+            {
+                question: "Please ____ for me. (Por favor espera por mí)",
+                options: ["wait", "waits", "waiting", "waited"],
+                correct: "wait"
+            },
+            {
+                question: "We will ____ with the lesson. (Continuaremos con la lección)",
+                options: ["continue", "continues", "continuing", "continued"],
+                correct: "continue"
+            }
+        ];
+        
+        // Funciones para las pestañas
+        function openTab(evt, tabName) {
+            const tabcontent = document.getElementsByClassName("tab-pane");
+            for (let i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            
+            const tablinks = document.getElementsByClassName("tab");
+            for (let i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+        
+        // Funciones para el juego de opción múltiple
+        function startTimer() {
+            clearInterval(timer);
+            timeLeft = 60;
+            document.getElementById("time").textContent = timeLeft;
+            
+            timer = setInterval(function() {
+                timeLeft--;
+                document.getElementById("time").textContent = timeLeft;
+                
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                    nextQuestion();
+                }
+            }, 1000);
+        }
+        
+        function checkAnswer(element, answer) {
+            const options = document.querySelectorAll('.option');
+            options.forEach(opt => {
+                opt.classList.remove('correct', 'incorrect');
+                opt.onclick = null;
+            });
+            
+            if (answer === questions[currentQuestion - 1].correct) {
+                element.classList.add('correct');
+                score++;
+                document.getElementById("score").textContent = score;
+                showFeedback("¡Correcto! Bien hecho.", true);
+            } else {
+                element.classList.add('incorrect');
+                options.forEach(opt => {
+                    if (opt.textContent === questions[currentQuestion - 1].correct) {
+                        opt.classList.add('correct');
+                    }
+                });
+                showFeedback("Incorrecto. La respuesta correcta es: " + questions[currentQuestion - 1].correct, false);
+            }
+        }
+        
+        function nextQuestion() {
+            clearInterval(timer);
+            
+            if (currentQuestion < questions.length) {
+                currentQuestion++;
+                document.getElementById("question").textContent = currentQuestion + ". " + questions[currentQuestion - 1].question;
+                
+                const optionsContainer = document.getElementById("options");
+                optionsContainer.innerHTML = "";
+                
+                questions[currentQuestion - 1].options.forEach(option => {
+                    const optionElement = document.createElement("div");
+                    optionElement.className = "option";
+                    optionElement.textContent = option;
+                    optionElement.onclick = function() {
+                        checkAnswer(this, option);
+                    };
+                    optionsContainer.appendChild(optionElement);
+                });
+                
+                document.getElementById("feedback").style.display = "none";
+                startTimer();
+            } else {
+                document.getElementById("question").textContent = "¡Juego completado!";
+                document.getElementById("options").innerHTML = "";
+                document.getElementById("feedback").style.display = "none";
+                document.querySelector("button").style.display = "none";
+                
+                let message = "";
+                if (score >= 8) {
+                    message = "¡Excelente! Obtuviste " + score + " de 10 puntos.";
+                } else if (score >= 5) {
+                    message = "Buen trabajo! Obtuviste " + score + " de 10 puntos. Sigue practicando.";
+                } else {
+                    message = "Obtuviste " + score + " de 10 puntos. Necesitas repasar más.";
+                }
+                
+                showFeedback(message, score >= 5);
+            }
+        }
+        
+        function showFeedback(text, isPositive) {
+            const feedback = document.getElementById("feedback");
+            feedback.textContent = text;
+            feedback.className = isPositive ? "feedback positive-feedback" : "feedback negative-feedback";
+            feedback.style.display = "block";
+        }
+        
+        // Función para verificar la rutina
+        function checkRoutine() {
+            let correctCount = 0;
+            let feedbackText = "";
+            
+            // Verificar que todas las respuestas tengan contenido
+            for (let i = 1; i <= 5; i++) {
+                const userAnswer = document.getElementById("word" + i).value.trim();
+                if (userAnswer !== "") {
+                    correctCount++;
+                    feedbackText += "Pregunta " + i + ": ¡Respuesta proporcionada!<br>";
+                } else {
+                    feedbackText += "Pregunta " + i + ": Por favor completa esta respuesta.<br>";
+                }
+            }
+            
+            const feedbackElement = document.getElementById("routine-feedback");
+            feedbackElement.innerHTML = feedbackText + "<br>Completaste " + correctCount + " de 5 respuestas.";
+            feedbackElement.className = correctCount >= 3 ? "feedback positive-feedback" : "feedback negative-feedback";
+            feedbackElement.style.display = "block";
+        }
+        
+        // Función para verificar el orden (simulada)
+        function checkOrder() {
+            alert("En una implementación completa, esto verificaría el orden de las actividades. ¡Buen trabajo organizando tu rutina!");
+            document.getElementById("order-feedback").textContent = "¡Sigue practicando las rutinas diarias en inglés!";
+            document.getElementById("order-feedback").className = "feedback positive-feedback";
+            document.getElementById("order-feedback").style.display = "block";
+        }
+        
+        // Función para la evaluación final
+        function submitQuiz() {
+            const answers = {
+                q1: "a",
+                q2: "a",
+                q3: "a",
+                q4: "a",
+                q5: "a"
+            };
+            
+            let correctCount = 0;
+            let resultHTML = "";
+            
+            for (let i = 1; i <= 5; i++) {
+                const selected = document.querySelector('input[name="q' + i + '"]:checked');
+                if (selected) {
+                    if (selected.value === answers["q" + i]) {
+                        correctCount++;
+                        resultHTML += "Pregunta " + i + ": Correcto!<br>";
+                    } else {
+                        resultHTML += "Pregunta " + i + ": Incorrecto. La respuesta correcta es: " + 
+                                    document.querySelector('input[name="q' + i + '"][value="' + answers["q" + i] + '"]').parentNode.textContent + "<br>";
+                    }
+                } else {
+                    resultHTML += "Pregunta " + i + ": No respondida. La respuesta correcta es: " + 
+                                document.querySelector('input[name="q' + i + '"][value="' + answers["q" + i] + '"]').parentNode.textContent + "<br>";
+                }
+            }
+            
+            const resultElement = document.getElementById("quiz-result");
+            resultElement.innerHTML = resultHTML + "<br><strong>Resultado: " + correctCount + " de 5 correctas (" + (correctCount/5*100) + "%)</strong>";
+            
+            if (correctCount >= 4) {
+                resultElement.className = "feedback positive-feedback";
+            } else {
+                resultElement.className = "feedback negative-feedback";
+            }
+            
+            resultElement.style.display = "block";
+        }
+        
+        // Función para marcar la clase como completada
+        function markAsCompleted() {
+            document.getElementById("completion-message").style.display = "block";
+            localStorage.setItem('clase7-completed', 'true');
+        }
+        
+        // Función para reproducir audio (simulado)
+        function playAudio() {
+            alert("Reproduciendo diálogo de audio...");
+        }
+        
+        // Inicializar la página
+        window.onload = function() {
+            startTimer();
+            if (localStorage.getItem('clase7-completed') === 'true') {
+                document.getElementById("completion-message").style.display = "block";
+            }
+        };
+    </script>
+</body>
+</html>
