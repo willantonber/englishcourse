@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curso de Inglés - Módulo 2, Clase 1: Clima y Experiencias</title>
+    <style>
+        :root {
+            --primary-color: #4e7ae6;
+            --secondary-color: #ff7e30;
+            --accent-color: #34c759;
+            --light-color: #f5f7ff;
+            --dark-color: #2c3e50;
+            --correct-color: #2ecc71;
+            --incorrect-color: #e74c3c;
+            --review-color: #9b59b6;
+            --extension-color: #16a085;
+            --sunny-color: #f39c12;
+            --rainy-color: #3498db;
+            --cold-color: #95a5a6;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f0f2f5;
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), #6c5ce7);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .progress-bar {
+            background-color: #e0e0e0;
+            border-radius: 20px;
+            height: 10px;
+            margin: 15px 0;
+            overflow: hidden;
+        }
+        
+        .progress {
+            background-color: var(--accent-color);
+            height: 100%;
+            width: 14%;
+            border-radius: 20px;
+            transition: width 0.5s ease;
+        }
+        
+        .time-indicator {
+            background-color: var(--light-color);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            text-align: center;
+            font-weight: bold;
+            color: var(--primary-color);
+            border-left: 4px solid var(--secondary-color);
+        }
+        
+        .section {
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        h1, h2, h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .review-title {
+            color: var(--review-color);
+        }
+        
+        .extension-title {
+            color: var(--extension-color);
+        }
+        
+        .verbs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .verb-card {
+            background-color: var(--light-color);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+        
+        .verb-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .verb-english {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        .verb-spanish {
+            color: var(--dark-color);
+            font-size: 0.9em;
+        }
+        
+        .game-container {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .options-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .option {
+            background-color: white;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.2s;
+        }
+        
+        .option:hover {
+            border-color: var(--primary-color);
+            background-color: #f0f5ff;
+        }
+        
+        .correct {
+            border-color: var(--correct-color);
+            background-color: #e8faf0;
+        }
+        
+        .incorrect {
+            border-color: var(--incorrect-color);
+            background-color: #fdedec;
+        }
+        
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s;
+            margin: 10px 5px;
+        }
+        
+        button:hover {
+            background-color: #3b5fc7;
+        }
+        
+        .secondary-btn {
+            background-color: var(--secondary-color);
+        }
+        
+        .secondary-btn:hover {
+            background-color: #e57229;
+        }
+        
+        input[type="text"], select, textarea {
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            width: 100%;
+            margin: 10px 0;
+            font-size: 1em;
+        }
+        
+        input[type="text"]:focus, select:focus, textarea:focus {
+            border-color: var(--primary-color);
+            outline: none;
+        }
+        
+        .feedback {
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            display: none;
+        }
+        
+        .positive-feedback {
+            background-color: #e8faf0;
+            border-left: 5px solid var(--correct-color);
+        }
+        
+        .negative-feedback {
+            background-color: #fdedec;
+            border-left: 5px solid var(--incorrect-color);
+        }
+        
+        .vocabulary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .vocab-card {
+            background-color: var(--light-color);
+            padding: 15px 5px;
+            border-radius: 8px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        
+        .review-card {
+            border-left: 4px solid var(--review-color);
+        }
+        
+        .extension-card {
+            border-left: 4px solid var(--extension-color);
+        }
+        
+        .vocab-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .extended-activity {
+            background-color: #fffaea;
+            border-left: 4px solid var(--secondary-color);
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 8px;
+        }
+        
+        .conversation-practice {
+            background-color: #e8f4f8;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .dialog {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .review-vocab {
+            background-color: #e8daf7;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+        
+        .new-vocab {
+            background-color: #d1f2eb;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+        
+        .tab-container {
+            margin: 20px 0;
+        }
+        
+        .tabs {
+            display: flex;
+            border-bottom: 2px solid #ddd;
+            flex-wrap: wrap;
+        }
+        
+        .tab {
+            padding: 10px 15px;
+            cursor: pointer;
+            background-color: #f0f2f5;
+            border-radius: 5px 5px 0 0;
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+        
+        .tab.active {
+            background-color: white;
+            border: 2px solid #ddd;
+            border-bottom: none;
+            font-weight: bold;
+        }
+        
+        .tab-content {
+            padding: 20px;
+            border: 2px solid #ddd;
+            border-top: none;
+            border-radius: 0 0 5px 5px;
+            background-color: white;
+        }
+        
+        .tab-pane {
+            display: none;
+        }
+        
+        .tab-pane.active {
+            display: block;
+        }
+        
+        .score-display {
+            background-color: var(--light-color);
+            padding: 10px 15px;
+            border-radius: 20px;
+            display: inline-block;
+            margin: 10px 0;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        .timer {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: var(--secondary-color);
+            margin: 10px 0;
+        }
+        
+        .season-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .season-card {
+            background-color: var(--light-color);
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        @media (max-width: 768px) {
+            .options-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .verbs-grid, .vocabulary-grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            }
+            
+            .season-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Curso de Inglés - Módulo 2: Comunicación Avanzada</h1>
+            <p>Clase 1: Clima y Experiencias Personales</p>
+            <div class="progress-bar">
+                <div class="progress"></div>
+            </div>
+            <p>Progreso del curso: 14% (Módulo 2)</p>
+        </header>
+        
+        <div class="time-indicator">
+            🕐 Duración de la clase: 90 minutos | 🎯 Enfoque: Integración de Módulo 1 + Nuevo contenido
+        </div>
+        
+        <div class="section">
+            <h2>Objetivos de la Clase</h2>
+            <p>Al finalizar esta clase de 90 minutos, serás capaz de:</p>
+            <ul>
+                <li>Describir condiciones climáticas integrando vocabulario del Módulo 1</li>
+                <li>Narrar experiencias personales relacionadas con el clima</li>
+                <li>Mantener conversaciones extendidas sobre preferencias climáticas</li>
+                <li>Utilizar el verbo "can" en contextos de posibilidad climática</li>
+                <li>Integrar 20+ palabras del Módulo 1 en contextos nuevos</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2 class="review-title">📚 Repaso Rápido: Vocabulario del Módulo 1</h2>
+            <p>Vamos a reactivar el vocabulario que ya conoces:</p>
+            <div class="vocabulary-grid">
+                <div class="vocab-card review-card">Family<br>(Familia)</div>
+                <div class="vocab-card review-card">Routine<br>(Rutina)</div>
+                <div class="vocab-card review-card">Food<br>(Comida)</div>
+                <div class="vocab-card review-card">House<br>(Casa)</div>
+                <div class="vocab-card review-card">Transport<br>(Transporte)</div>
+                <div class="vocab-card review-card">Numbers<br>(Números)</div>
+                <div class="vocab-card review-card">Colors<br>(Colores)</div>
+                <div class="vocab-card review-card">Dates<br>(Fechas)</div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="extension-title">🌤️ Vocabulario Extendido: Clima y Sensaciones</h2>
+            <div class="vocabulary-grid">
+                <div class="vocab-card extension-card">Sunny<br>(Soleado)</div>
+                <div class="vocab-card extension-card">Rainy<br>(Lluvioso)</div>
+                <div class="vocab-card extension-card">Snowy<br>(Nevado)</div>
+                <div class="vocab-card extension-card">Windy<br>(Ventoso)</div>
+                <div class="vocab-card extension-card">Humid<br>(Húmedo)</div>
+                <div class="vocab-card extension-card">Breeze<br>(Brisa)</div>
+                <div class="vocab-card extension-card">Forecast<br>(Pronóstico)</div>
+                <div class="vocab-card extension-card">Temperature<br>(Temperatura)</div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Verbos de Acción Climática</h2>
+            <p>Combinamos verbos conocidos con nuevos contextos:</p>
+            <div class="verbs-grid">
+                <div class="verb-card">
+                    <div class="verb-english">rain</div>
+                    <div class="verb-spanish">(llover)</div>
+                </div>
+                <div class="verb-card">
+                    <div class="verb-english">snow</div>
+                    <div class="verb-spanish">(nevar)</div>
+                </div>
+                <div class="verb-card">
+                    <div class="verb-english">shine</div>
+                    <div class="verb-spanish">(brillar)</div>
+                </div>
+                <div class="verb-card">
+                    <div class="verb-english">feel</div>
+                    <div class="verb-spanish">(sentir)</div>
+                </div>
+                <div class="verb-card">
+                    <div class="verb-english">need</div>
+                    <div class="verb-spanish">(necesitar)</div>
+                </div>
+                <div class="verb-card">
+                    <div class="verb-english">wear</div>
+                    <div class="verb-spanish">(usar ropa)</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="extended-activity">
+            <h3>📋 Actividad Extendida (15 minutos): Mi Clima Ideal</h3>
+            <p>Describe tu clima ideal para diferentes actividades. Usa al menos <strong>10 palabras del Módulo 1</strong> y <strong>5 palabras nuevas</strong>:</p>
+            
+            <div class="tab-container">
+                <div class="tabs">
+                    <div class="tab active" onclick="openTab(event, 'morningTab')">Mañana</div>
+                    <div class="tab" onclick="openTab(event, 'afternoonTab')">Tarde</div>
+                    <div class="tab" onclick="openTab(event, 'weekendTab')">Fin de Semana</div>
+                </div>
+                
+                <div class="tab-content">
+                    <div id="morningTab" class="tab-pane active">
+                        <p><strong>Para mi rutina matutina:</strong></p>
+                        <textarea placeholder="Ej: I need sunny weather to wake up early. My family likes to have breakfast when it's warm..." rows="4"></textarea>
+                    </div>
+                    <div id="afternoonTab" class="tab-pane">
+                        <p><strong>Para la tarde de trabajo/estudio:</strong></p>
+                        <textarea placeholder="Ej: I prefer cool weather when I work. The temperature should be perfect..." rows="4"></textarea>
+                    </div>
+                    <div id="weekendTab" class="tab-pane">
+                        <p><strong>Para mis actividades de fin de semana:</strong></p>
+                        <textarea placeholder="Ej: On weekends, I like windy weather to go to the park with my family..." rows="4"></textarea>
+                    </div>
+                </div>
+            </div>
+            <button>Guardar descripciones</button>
+        </div>
+        
+        <div class="section">
+            <h2>💬 Conversación Integrada: Planificando con el Clima</h2>
+            <div class="conversation-practice">
+                <div class="dialog">
+                    <p><strong>Maria:</strong> Hey Carlos, what's the <span class="new-vocab">weather forecast</span> for this weekend?</p>
+                    <p><strong>Carlos:</strong> I think it will be <span class="new-vocab">sunny</span> on Saturday, but <span class="new-vocab">rainy</span> on Sunday. The <span class="new-vocab">temperature</span> will be around 25 degrees.</p>
+                    <p><strong>Maria:</strong> Perfect! My <span class="review-vocab">family</span> wants to visit the <span class="review-vocab">park</span> on Saturday. We can have a <span class="review-vocab">picnic</span> with some <span class="review-vocab">food</span>.</p>
+                    <p><strong>Carlos:</strong> That sounds nice! What will you do if it <span class="new-vocab">rains</span> on Sunday?</p>
+                    <p><strong>Maria:</strong> Well, we can stay at <span class="review-vocab">home</span>. Maybe watch a <span class="review-vocab">movie</span> or play games in the <span class="review-vocab">living room</span>.</p>
+                    <p><strong>Carlos:</strong> Do you need to take any special <span class="review-vocab">clothes</span> for the <span class="new-vocab">weather</span>?</p>
+                    <p><strong>Maria:</strong> Yes, I'll <span class="new-vocab">wear</span> a hat for the <span class="new-vocab">sun</span>, and bring an umbrella just in case.</p>
+                </div>
+                
+                <div class="game-container">
+                    <h3>Practica esta conversación:</h3>
+                    <p><strong>Instrucciones:</strong> Cambia las palabras coloreadas y crea tu propia versión</p>
+                    <div class="options-container">
+                        <div class="option" onclick="practiceConversation('family', 'friends')">Cambia "family" por "friends"</div>
+                        <div class="option" onclick="practiceConversation('park', 'beach')">Cambia "park" por "beach"</div>
+                        <div class="option" onclick="practiceConversation('picnic', 'barbecue')">Cambia "picnic" por "barbecue"</div>
+                        <div class="option" onclick="practiceConversation('movie', 'board games')">Cambia "movie" por "board games"</div>
+                    </div>
+                    <button onclick="startRecording()">🎤 Grabar mi versión</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🎯 Juego: Clima y Actividades</h2>
+            <p>Combina condiciones climáticas con actividades apropiadas:</p>
+            
+            <div class="game-container">
+                <div class="timer">Tiempo: <span id="time">90</span> segundos</div>
+                <div class="score-display">Puntuación: <span id="score">0</span>/8</div>
+                
+                <div id="matching-game">
+                    <!-- Juego de emparejamiento interactivo -->
+                </div>
+                
+                <button onclick="checkMatches()">Verificar coincidencias</button>
+                <div id="game-feedback" class="feedback"></div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>📝 Evaluación Integrada</h2>
+            <p>Responde usando vocabulario de ambos módulos:</p>
+            
+            <div class="game-container">
+                <form id="quiz-form">
+                    <p>1. Describe cómo el clima afecta tu rutina diaria (usa 3 palabras del Módulo 1):</p>
+                    <textarea name="q1" rows="3" placeholder="Ej: When it rains, I need to take the bus instead of walking..."></textarea>
+                    
+                    <p>2. ¿Qué actividades puedes hacer en clima soleado? (usa "can" + 2 actividades):</p>
+                    <input type="text" name="q2" placeholder="Ej: I can go to the park and have a picnic">
+                    
+                    <p>3. Describe tu estación favorita y por qué (menciona familia o casa):</p>
+                    <textarea name="q3" rows="3" placeholder="Ej: My favorite season is summer because my family goes to the beach..."></textarea>
+                    
+                    <button type="button" onclick="submitIntegrationQuiz()">Enviar evaluación</button>
+                </form>
+                
+                <div id="integration-result" class="feedback"></div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>📋 Tarea para la Próxima Clase</h2>
+            <p>Para la próxima clase (Experiencias Pasadas), prepara:</p>
+            <ol>
+                <li>Una historia de 1 minuto sobre una experiencia climática memorable</li>
+                <li>Usa al menos <strong>15 palabras del Módulo 1</strong> y <strong>8 palabras nuevas</strong></li>
+                <li>Incluye cómo afectó a tu familia, casa o rutina</li>
+                <li>Prepara 3 preguntas sobre experiencias climáticas para hacerle a un compañero</li>
+            </ol>
+        </div>
+        
+        <div class="section">
+            <h2>➡️ Próxima Clase: Experiencias Pasadas y Tiempos Verbales</h2>
+            <p>En la próxima clase de 90 minutos aprenderemos:</p>
+            <ul>
+                <li>Cómo hablar sobre experiencias pasadas relacionadas con el clima</li>
+                <li>Uso del pasado simple con verbos regulares e irregulares</li>
+                <li>Narrar historias personales integrando vocabulario conocido</li>
+                <li>Nuevo vocabulario sobre experiencias y emociones</li>
+            </ul>
+        </div>
+        
+        <div class="section" style="text-align: center;">
+            <button onclick="markAsCompleted()" class="secondary-btn">Marcar Clase como Completada</button>
+            <p id="completion-message" style="display: none; margin-top: 15px; color: var(--accent-color); font-weight: bold;">¡Excelente! Has completado la primera clase del Módulo 2.</p>
+        </div>
+    </div>
+
+    <script>
+        // Variables para el juego
+        let currentQuestion = 1;
+        let score = 0;
+        let timeLeft = 90;
+        let timer;
+        
+        // Funciones para las pestañas
+        function openTab(evt, tabName) {
+            const tabcontent = document.getElementsByClassName("tab-pane");
+            for (let i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            
+            const tablinks = document.getElementsByClassName("tab");
+            for (let i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+        
+        // Función para practicar conversación
+        function practiceConversation(oldWord, newWord) {
+            alert(`Vas a cambiar "${oldWord}" por "${newWord}" en la conversación. ¡Practica en voz alta!`);
+        }
+        
+        // Función para grabar (simulada)
+        function startRecording() {
+            alert("🎤 Grabación iniciada (simulación). Habla durante 30 segundos practicando la conversación.");
+            setTimeout(() => {
+                alert("⏹️ Grabación completada. ¡Buen trabajo!");
+            }, 3000);
+        }
+        
+        // Función para el juego de emparejamiento
+        function checkMatches() {
+            alert("En una implementación completa, esto verificaría las coincidencias. ¡Sigue practicando!");
+            document.getElementById("game-feedback").textContent = "¡Buen trabajo combinando clima y actividades!";
+            document.getElementById("game-feedback").className = "feedback positive-feedback";
+            document.getElementById("game-feedback").style.display = "block";
+        }
+        
+        // Función para la evaluación integrada
+        function submitIntegrationQuiz() {
+            let feedbackText = "<strong>Retroalimentación de tu evaluación:</strong><br><br>";
+            
+            // Verificar que todas las respuestas tengan contenido
+            const q1 = document.querySelector('textarea[name="q1"]').value.trim();
+            const q2 = document.querySelector('input[name="q2"]').value.trim();
+            const q3 = document.querySelector('textarea[name="q3"]').value.trim();
+            
+            if (q1 && q2 && q3) {
+                feedbackText += "✅ Todas las preguntas respondidas<br>";
+                feedbackText += "✅ Uso adecuado de vocabulario integrado<br>";
+                feedbackText += "✅ Estructuras gramaticales apropiadas<br>";
+                feedbackText += "<br><strong>¡Excelente trabajo integrando el conocimiento de ambos módulos!</strong>";
+                
+                document.getElementById("integration-result").className = "feedback positive-feedback";
+            } else {
+                feedbackText += "⚠️ Por favor completa todas las preguntas<br>";
+                feedbackText += "💡 Recuerda usar vocabulario de ambos módulos";
+                
+                document.getElementById("integration-result").className = "feedback negative-feedback";
+            }
+            
+            document.getElementById("integration-result").innerHTML = feedbackText;
+            document.getElementById("integration-result").style.display = "block";
+        }
+        
+        // Función para marcar la clase como completada
+        function markAsCompleted() {
+            document.getElementById("completion-message").style.display = "block";
+            localStorage.setItem('modulo2-clase1-completed', 'true');
+        }
+        
+        // Inicializar temporizador de 90 minutos
+        function startTimer() {
+            clearInterval(timer);
+            timeLeft = 90;
+            document.getElementById("time").textContent = timeLeft;
+            
+            timer = setInterval(function() {
+                timeLeft--;
+                document.getElementById("time").textContent = timeLeft;
+                
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                    alert("⏰ Tiempo completado. ¡Has terminado las actividades principales!");
+                }
+            }, 1000);
+        }
+        
+        // Inicializar la página
+        window.onload = function() {
+            startTimer();
+            if (localStorage.getItem('modulo2-clase1-completed') === 'true') {
+                document.getElementById("completion-message").style.display = "block";
+            }
+        };
+    </script>
+</body>
+</html>
